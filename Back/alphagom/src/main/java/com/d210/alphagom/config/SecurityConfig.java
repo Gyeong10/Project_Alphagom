@@ -1,26 +1,33 @@
 package com.d210.alphagom.config;
 
 import com.d210.alphagom.domain.entity.Role;
+import com.d210.alphagom.domain.exception.jwt.JwtAccessDeniedHandler;
+import com.d210.alphagom.domain.exception.jwt.JwtAuthenticationEntryPoint;
 import com.d210.alphagom.domain.service.CustomOAuth2UserService;
+import com.d210.alphagom.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @RequiredArgsConstructor //final이 붙거나 @NotNull 이 붙은 필드의 생성자를 자동 생성해주는 롬복 어노테이션
 @EnableWebSecurity // Spring Security 설정 활성화
-public class SecurityConfig{
+public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
+
+    private final TokenProvider tokenProvider;
+
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     @Bean
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
@@ -28,6 +35,11 @@ public class SecurityConfig{
         http
                 .cors()
                 .configurationSource(corsConfigurationSource())
+            .and()
+                // exception handling 할 때 우리가 만든 클래스를 추가
+                .exceptionHandling()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
             .and()
                 .sessionManagement()
                 // 웹 통신 방식 -> stateless 설정 - jwt 때문에 가능
@@ -48,6 +60,9 @@ public class SecurityConfig{
                 // 소셜로그인 성공 시 후속 조치를 진행할 UserService 인터페이스 구현체 등록
                 .userService(customOAuth2UserService); // 리소스 서버에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능 명시
 
+        http
+                // JwtFilter 를 addFilterBefore 로 등록했던 JwtSecurityConfig 클래스를 적용
+                .apply(new JwtSecurityConfig(tokenProvider));
         // 지정된 필터 앞에 커스텀 필터를 추가
         // 인증을 처리하는 기본필터 UsernamePasswordAuthenticationFilter 전에 필터를 실행하겠다.
 //        http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
