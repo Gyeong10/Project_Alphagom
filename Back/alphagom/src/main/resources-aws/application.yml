@@ -41,3 +41,7 @@ logging:
     org.springframework.web: debug
     #    org.hibernate.type: trace
     com.ssafy.alpagom: debug
+
+# jwt secret key 설정
+jwt:
+  secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWFscGhhZ29tLXNwcmluZy1ib290LXNlY3VyaXR5LWp3dC10dXRvcmlhbAo=
