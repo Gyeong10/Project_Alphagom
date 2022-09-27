@@ -1,4 +1,4 @@
-package com.d210.alphagom.api.dto.jwt;
+package com.d210.alphagom.security.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

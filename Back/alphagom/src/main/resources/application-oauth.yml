@@ -4,6 +4,17 @@ spring:
       client:
         registration:
           google:
-            client-id: 1017781499436-1bjj4oggvoqeitf297hr7sqgi3hesrve.apps.googleusercontent.com
-            client-secret: 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
+#            client-id: 1017781499436-1bjj4oggvoqeitf297hr7sqgi3hesrve.apps.googleusercontent.com
+#            client-secret: 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
+            client-id: 1017781499436-d9mofg2igi2ma8eii0e1rf36gu1jasev.apps.googleusercontent.com
             scope: profile, email
+#            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+
+app:
+  oauth2:
+    authorizedRedirectUri: "http://localhost:3000/oauth2/redirect"
+
+# jwt secret key 설정
+jwt:
+  secret: c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWFscGhhZ29tLXNwcmluZy1ib290LXNlY3VyaXR5LWp3dC10dXRvcmlhbAo=
+  refresh-cookie-key: refresh

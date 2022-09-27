@@ -1,6 +1,5 @@
-package com.d210.alphagom.domain.repository.jwt;
+package com.d210.alphagom.security.jwt;
 
-import com.d210.alphagom.domain.entity.jwt.RefreshToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

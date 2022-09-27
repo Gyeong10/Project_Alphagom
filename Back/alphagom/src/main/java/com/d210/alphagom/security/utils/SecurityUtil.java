@@ -1,4 +1,4 @@
-package com.d210.alphagom.domain.utils;
+package com.d210.alphagom.security.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

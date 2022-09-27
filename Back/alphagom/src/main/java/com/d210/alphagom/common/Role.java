@@ -1,4 +1,4 @@
-package com.d210.alphagom.domain.entity;
+package com.d210.alphagom.common;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

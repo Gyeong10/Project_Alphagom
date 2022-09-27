@@ -1,7 +1,7 @@
 package com.d210.alphagom.config;
 
-import com.d210.alphagom.jwt.JwtFilter;
-import com.d210.alphagom.jwt.TokenProvider;
+import com.d210.alphagom.security.jwt.JwtFilter;
+import com.d210.alphagom.security.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

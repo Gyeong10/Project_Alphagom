@@ -1,4 +1,4 @@
-package com.d210.alphagom.domain.exception.jwt;
+package com.d210.alphagom.security.exception;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
