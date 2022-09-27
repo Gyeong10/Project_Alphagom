@@ -1,4 +1,4 @@
-package com.d210.alphagom.domain.entity.jwt;
+package com.d210.alphagom.security.jwt;
 
 import lombok.Builder;
 import lombok.Getter;
