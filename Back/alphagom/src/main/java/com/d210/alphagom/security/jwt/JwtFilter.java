@@ -1,4 +1,4 @@
-package com.d210.alphagom.jwt;
+package com.d210.alphagom.security.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
