@@ -4,7 +4,7 @@ import com.d210.alphagom.api.dto.BirdGameResponse;
 import com.d210.alphagom.api.dto.TongueGameResponse;
 import com.d210.alphagom.api.dto.WordGameResponse;
 import com.d210.alphagom.domain.entity.Game;
-import com.d210.alphagom.domain.entity.GameTag;
+import com.d210.alphagom.common.GameTag;
 import com.d210.alphagom.domain.service.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
