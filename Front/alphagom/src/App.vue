@@ -26,7 +26,7 @@ function myFunction_get() {
 function myFunction_set() {
   // Set the value of variable --blue to another value (in this case "lightblue")
   // r.style.setProperty('--bg-url', bgUrl);
-  r.style.setProperty('--bg-url', 'url("https://j7d210.p.ssafy.io/src/assets/image/bg_map.png")');
+  r.style.setProperty('--bg-url', 'url("/src/assets/image/bg_map.png")');
   console.log(rs.getPropertyValue('--bg-url'))
 }
 </script>

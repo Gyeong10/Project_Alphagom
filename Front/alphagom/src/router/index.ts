@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
   // 로그인되어 있지 않으면
   if (!isLoggedIn && to.name !== "login") {
     alert("로그인이 필요합니다");
-    next({ name: "login" });
+    // next({ name: "login" });
   } else {
     next();
   }
