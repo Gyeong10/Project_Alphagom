@@ -10,7 +10,7 @@
         <div class="user-info">
           <img
             class="user-img"
-            src="@/assets/image/jara_look_openly.png"
+            src="/image/jara_look_openly.png"
             alt="프로필 사진"
             height="20"
           />

@@ -10,7 +10,7 @@
       <h2>{{exam}}</h2>
     </div>
     </div>
-    <img class="samgyetang" src="@/assets/image/삼계탕.png" width="200" @click="getRecord()"/>
+    <img class="samgyetang" src="/image/chicken_soup.png" width="200" @click="getRecord()"/>
       
     <div v-if="answer === problems[probidx].answer && answer">
       정답이야!
