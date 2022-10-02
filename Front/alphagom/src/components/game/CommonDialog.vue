@@ -1,51 +1,39 @@
 <template>
-    <div>
-        <h1>stage : {{ dialog.stage }}</h1>
-        <h1>scriptNum : {{ scriptNum }}</h1>
-        <h1>script : {{ script }}</h1>
-        <h1>type : {{ type }}</h1>
-        <h1>effect : {{ effect }}</h1>
-        <h1>gameList : {{ gameList }}</h1>
-        <h1>setStage : {{ setStage }}</h1>
+    <div class="common">
+        <img v-if="game.imgBody" :src="game.getImgUrl(game.imgBody)" width="50">
+        <img v-if="game.faceImg" :src="game.getImgUrl(game.faceImg)" width="50">
+        <div class="scriptText">
+            <h1>{{ game.script.char }}</h1>
+            <p>{{ game.script.line1 }}</p>
+            <p>{{ game.script.line2 }}</p>
+        </div>
+        <button @click="game.plusNum()">다음으로오오오오오</button>
+        <button @click="game.skip()">스으으으으으킵</button>
+        <button v-if="game.isActive" @click="game.plusNum()">버튼트튼</button>
     </div>
 </template>
 
-<script>
-import { useRouter } from 'vue-router';
-// import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
-import DarkcaveLine from '@/assets/dialog/DarkcaveLine.json';
-import { useGameStore } from "@/stores/game";
-// import { skyDialog } from '@/assets/dialog/SkyLine.json';
-// import { swampDialog } from '@/assets/dialog/SwampLine.json';
-
-export default {
-    setup() {
-        const game = useGameStore();
-        const dialog = game.dialog;
-        const router = useRouter();
-        // const store = defineStore();
-        const scriptNum = game.scriptNum;
-        const script = game.script;
-        const type = game.type;
-        const effect = game.effect;
-        const gameList = game.gameList;
-        const setStage = game.setStage;
-        
-        return {
-            dialog, 
-            scriptNum, 
-            script,
-            type,
-            effect,
-            gameList,
-            setStage,
-        };
-    }
+<script setup>
+    import { useRouter } from 'vue-router';
+    // import { defineStore } from 'pinia';
+    import { computed, ref } from 'vue';
+    import DarkcaveLine from '@/assets/dialog/DarkcaveLine.json';
+    import { useGameStore } from "@/stores/game";
+    // import { skyDialog } from '@/assets/dialog/SkyLine.json';
+    // import { swampDialog } from '@/assets/dialog/SwampLine.json';
     
-}
+    const game = useGameStore();
+
 </script>
 
 <style>
-    
+.common {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scriptText {
+    color: black;
+}
 </style>

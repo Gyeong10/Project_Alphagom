@@ -213,7 +213,19 @@ def kingcure():
 @app.route('/api/ai/bird', methods=["GET"])
 @cross_origin()
 def skybird():
-    test_result = {
+    test_result = [{
+        "answer": "참새",
+        "example": [
+            "참새",
+            "꿩",
+            "까마귀",
+            "오리",
+            "뱁새",
+            "황새"
+        ],
+        "sentance": "**가 방앗간을 그냥 지나치랴"
+        },
+        {
         "answer": "황새",
         "example": [
             "참새",
@@ -223,8 +235,21 @@ def skybird():
             "뱁새",
             "황새"
         ],
-        "sentance": "뱁새가 ** 걸음을 하면 가랑이가 찢어진다"
+        "sentance": "뱁새가 **걸음을 하면 가랑이가 찢어진다"
+        },
+        {
+        "answer": "까마귀",
+        "example": [
+            "참새",
+            "꿩",
+            "까마귀",
+            "오리",
+            "뱁새",
+            "황새"
+        ],
+        "sentance": "*** 날자 배 떨어진다"
         }
+        ]
     return test_result
 
 if __name__ == '__main__':

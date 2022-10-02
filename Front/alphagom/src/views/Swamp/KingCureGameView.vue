@@ -82,5 +82,5 @@ const getNextPage = () => {
 }
 </script>
 
-<style>
+<style scoped>
 </style>
