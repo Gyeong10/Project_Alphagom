@@ -68,11 +68,7 @@ const clickMapItem = name => {
 <style scoped>
 .container-bg {
   position: absolute;
-<<<<<<< HEAD
   background-image: url("@/assets/image/map_bg_picture_filter_low.png");
-=======
-  /* background-image: url("@/assets/image/지도_배경_사진_필터_low.png");
->>>>>>> develop
   background-repeat: no-repeat;
   background-size: inherit; */
   /* Add the blur effect */
