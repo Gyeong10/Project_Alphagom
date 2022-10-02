@@ -70,7 +70,7 @@ const clickMapItem = name => {
   position: absolute;
   background-image: url("@/assets/image/map_bg_picture_filter_low.png");
   background-repeat: no-repeat;
-  background-size: inherit; */
+  background-size: inherit;
   /* Add the blur effect */
   filter: blur(4px);
   top: 0px;
