@@ -2,6 +2,7 @@
     <div class="common">
         <img v-if="game.imgBody" :src="game.getImgUrl(game.imgBody)" width="50">
         <img v-if="game.faceImg" :src="game.getImgUrl(game.faceImg)" width="50">
+        <img :src="game.getImgUrl(game.textboxImg)" width="500">
         <div class="scriptText">
             <h1>{{ game.script.char }}</h1>
             <p>{{ game.script.line1 }}</p>

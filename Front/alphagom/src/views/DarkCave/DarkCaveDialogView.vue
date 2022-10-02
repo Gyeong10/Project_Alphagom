@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavBar></NavBar>
+    <CommonDialog></CommonDialog>
     <div>
       <h1>Text to Speech</h1>
       <!-- <div v-for="pl in StagePrologue.prologue"
@@ -24,12 +25,17 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 import { reactive } from 'vue'
+import { useGameStore } from "@/stores/game";
+import CommonDialog from "@/components/game/CommonDialog.vue";
 // import StagePrologue from '@/assets/SkyLine.json'
 
 export default {
-  name: 'SkyDialogView',
-  components: { NavBar },
+  name: 'DarkCaveDialogView',
+  components: { NavBar, CommonDialog },
   setup () {
+    const game = useGameStore();
+    game.setStage("darkcave");
+
     const state = reactive({
       lang: "ko-KR",
       speaking: "",

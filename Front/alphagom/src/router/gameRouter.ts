@@ -1,6 +1,7 @@
 // MagicCastle
 import MagicCastleDialogView from "@/views/MagicCastle/MagicCastleDialogView.vue";
 import MagicCastleStartView from "@/views/MagicCastle/MagicCastleStartView.vue";
+import MagicCastleTutorialView from "@/views/MagicCastle/MagicCastleTutorialView.vue";
 // Swamp
 import SwampStartView from "@/views/Swamp/SwampStartView.vue";
 import SwampDialogView from "@/views/Swamp/SwampDialogView.vue";
@@ -30,12 +31,17 @@ export default [
     component: MagicCastleStartView,
   },
   {
+    path: "/stage/magicCastle/tutorial",
+    name: "MagicCastleTutorialView",
+    component: MagicCastleTutorialView,
+  },
+  {
     path: "/stage/swamp/start",
     name: "swampStartView",
     component: SwampStartView,
   },
   {
-    path: "/stage/swamp/dialog/:dialogNum",
+    path: "/stage/swamp/dialog",
     name: "swampDialog",
     component: SwampDialogView,
   },
@@ -50,7 +56,7 @@ export default [
     component: KingCureGameView,
   },
   {
-    path: "/stage/darkCave/dialog/:dialogNum",
+    path: "/stage/darkCave/dialog",
     name: "darkCaveDialogView",
     component: DarkCaveDialogView,
   },
@@ -70,7 +76,7 @@ export default [
     component: SkyStartView,
   },
   {
-    path: "/stage/sky/dialog/:dialogNum",
+    path: "/stage/sky/dialog",
     name: "skyDialogView",
     component: SkyDialogView,
   },
