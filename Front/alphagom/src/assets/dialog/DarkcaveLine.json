@@ -6,298 +6,353 @@
       "line1": "......",
       "line2": "",
       "type": "story",
-      "effect": "black"
+      "effect": "black",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "으.. 으윽.. 여기가 어디지?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
+      
     },
     {
       "char": "",
       "line1": ".....",
       "line2": "",
       "type": "stroy",
-      "effect": "white"
+      "effect": "white",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "동굴...?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_suprise"
     },
     {
       "char": "알파곰",
       "line1": "아까 소용돌이에 휩쓸려 여기까지 왔나보네",
       "line2": "어때, 몸은 괜찮아?",
       "type": "question",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
     },
     {
-      "answer": [
-        {
-          "char": "알파곰",
-          "line1": "휴, 다행이다!",
-          "line2": "그러면 우리 여기 나가는 길을 찾아보자!",
-          "type": "story",
-          "effect": ""
-        },
-        {
-          "char": "알파곰",
-          "line1": "헉, 그럼 얼른 나가는 길을 찾아야겠어!",
-          "line2": "같이 찾으러 가보자!",
-          "type": "story",
-          "effect": ""
-        }
-      ]
+      "char": "알파곰",
+      "line1": "휴, 다행이다!",
+      "line2": "그러면 우리 여기 나가는 길을 찾아보자!",
+      "type": "yes",
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
+    },
+    {
+      "char": "알파곰",
+      "line1": "헉, 그럼 얼른 나가는 길을 찾아야겠어!",
+      "line2": "같이 찾으러 가보자!",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "길을 잃었다~♩♪♫♬♩♪",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "???",
       "line1": "나도 잃었다~ ♩♪♫♬♩♪",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "헉, 방금 이상한 소리 들었어?",
       "line2": "이 동굴 안에 누가 있나 봐!",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_suprise"
     },
     {
       "char": "???",
       "line1": "으아악.. 으아아악!!!!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "저 쪽에서 소리가 들려!",
       "line2": "얼른 가보자!",
       "type": "stroy",
-      "effect": "black"
+      "effect": "black",
+      "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "곰",
       "line1": "훌쩍.. 훌쩍....",
       "line2": "",
       "type": "story",
-      "effect": "white"
+      "effect": "white",
+      "imgFace": "bear_look_cry"
     },
     {
       "char": "알파곰",
       "line1": "어, 곰이잖아?! 나와 같은 친구네!",
       "line2": "친구야, 반갑다!",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "곰",
       "line1": "안...녕... 으아.. 으아악!!!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_cry"
     },
     {
       "char": "알파곰",
       "line1": "무슨 일이야?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_suprise"
     },
     {
       "char": "곰",
       "line1": "마늘.. 마늘이 너무 매워...",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_cry"
     },
     {
       "char": "알파곰",
       "line1": "아니, 생마늘이 한 무더기로 있네!",
       "line2": "이걸 왜 먹고 있는거야?",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_suprise"
     },
     {
       "char": "곰",
       "line1": "여기 있는 쑥과 마늘을 전부 먹어야",
       "line2": "인간이 될 수 있다고 해서...",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_normal"
     },
     {
       "char": "곰",
       "line1": "나는 인간이 되고 싶어.",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_happy"
     },
     {
       "char": "알파곰",
       "line1": "그렇구나, 그래도 마늘을 그냥 먹는 건 힘들 텐데..",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "우리가 도와줄까?!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "곰",
       "line1": "어떻게...?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "마늘의 단맛이 나도록 우리가 구워줄게!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "곰",
       "line1": "하지만 여긴 동굴이라 불도 냄비도 없는걸!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "나 알파곰, 내 몸의 장치를 이용하면 될거야.",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "좋아, 마늘을 구우러 가볼까!",
       "line2": "",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
+    },
+    {
+      "char": "",
+      "line1": "",
+      "line2": "",
       "type": "game",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "어때, 인간이 되고 싶은 곰 친구!",
       "line2": "구운 마늘은 먹을만하지?",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "곰",
       "line1": "맛있어서 눈물이 나...",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_cry"
     },
     {
       "char": "???",
       "line1": "!!!!!",
       "line2": "",
       "type": "stroy",
-      "effect": "motion"
+      "effect": "motion",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "뭐지?!?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "환웅",
       "line1": "곰아, 너는 이제 인간이 될 수 있단다",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "누구세요?!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_suprise"
     },
     {
       "char": "곰",
       "line1": "환웅님이야! 나를 인간으로 만들 수 있는 분이셔!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_happy"
     },
     {
       "char": "환웅",
       "line1": "인간의 생은 결코 쉽지 않을텐데..",
       "line2": "그래도 인간이 되고 싶으냐.",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "곰",
       "line1": "인간이 되고 싶어요..!!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "bear_look_normal"
     },
     {
       "char": "",
       "line1": "...!!",
       "line2": "",
       "type": "story",
-      "effect": "light"
+      "effect": "light",
+      "imgFace": ""
     },
     {
       "char": "웅녀",
       "line1": "내가.. 인간이 되었어!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "환웅",
       "line1": "이제 같이 하늘로 가자꾸나.",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "환웅",
       "line1": "그러고보니, 너희들도 하늘 구경을 할 터이냐?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "오, 좋아요!",
       "line2": "저는 항상 구름 위를 걸어보고 싶었어요!",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "알파곰",
+      "line1": "우리 같이 가자!",
+      "line2": "",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "우리 같이 가자!",
       "line2": "",
       "type": "end",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     }
   ]
 }

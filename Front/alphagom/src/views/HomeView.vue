@@ -14,7 +14,7 @@
             <button class="warning button-custom-home">내 정보</button>
           </router-link>
         </div>
-        <img class="img-hello" src="@/assets/image/알파곰_전신_인사.png" width="150" alt="홈 이미지" />
+        <img class="img-hello" src="@/assets/image/alphagom_hello.png" width="150" alt="홈 이미지" />
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-image: url("@/assets/image/홈_배경_low.jpg");
+  background-image: url("@/assets/image/home_bg_low.jpg");
   background-repeat: no-repeat;
   background-size: inherit;
   /* Add the blur effect */

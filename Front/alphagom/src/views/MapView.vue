@@ -10,8 +10,8 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('magicCastleStartView')"
         >
-          <img class="img-magic-castle" src="@/assets/image/마법의_성.png" alt="마법의 성"/>
-          <text style="marginTop: -30px; marginLeft: -30px; color: black;">마법의 성</text>
+          <img class="img-magic-castle" src="@/assets/image/magic_castle.png" alt="마법의 성"/>
+          <text style="marginTop: -30px; marginLeft: -30px;">마법의 성</text>
         </button>
       </div>
       <div class="dark-cave">
@@ -19,7 +19,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('darkCaveStartView')"
         >
-          <img class="img-dark-cave" src="@/assets/image/어둠의_동굴.png" alt="어둠의 동굴"/>
+          <img class="img-dark-cave" src="@/assets/image/dark_cave.png" alt="어둠의 동굴"/>
           <text style="marginTop: -15px;">어둠의 동굴</text>
         </button>
       </div>
@@ -28,7 +28,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('swampStartView')"
         >
-          <img class="img-swamp" src="@/assets/image/늪.png" alt="늪"/>
+          <img class="img-swamp" src="@/assets/image/swamp.png" alt="늪"/>
           <text style="marginTop: -15px;">늪</text>
         </button>
       </div>
@@ -37,7 +37,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('skyStartView')"
         >
-          <img class="img-sky" src="@/assets/image/하늘.png" alt="하늘"/>
+          <img class="img-sky" src="@/assets/image/sky.png" alt="하늘"/>
           <text style="marginTop: -40px;">하늘</text>
         </button>
       </div>
@@ -68,7 +68,11 @@ const clickMapItem = name => {
 <style scoped>
 .container-bg {
   position: absolute;
+<<<<<<< HEAD
+  background-image: url("@/assets/image/map_bg_picture_filter_low.png");
+=======
   /* background-image: url("@/assets/image/지도_배경_사진_필터_low.png");
+>>>>>>> develop
   background-repeat: no-repeat;
   background-size: inherit; */
   /* Add the blur effect */

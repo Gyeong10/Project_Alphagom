@@ -40,7 +40,6 @@ export default {
     setTimeout(() => {
       router.push({
         name: "MagicCastleDialogView",
-        params: { dialogNum: 0 },
       });
     }, 3000);
 
