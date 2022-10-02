@@ -7,6 +7,7 @@ import { defineStore } from "pinia";
 import DarkcaveLine from "@/assets/dialog/DarkcaveLine.json";
 import SkyLine from "@/assets/dialog/SkyLine.json";
 import SwampLine from "@/assets/dialog/SwampLine.json";
+import MagicCastle from "@/assets/dialog/MagicCastle.json";
 import router from "@/router";
 import { stringLiteral } from "@babel/types";
 
@@ -29,10 +30,12 @@ export const useGameStore = defineStore("game", () => {
     DarkcaveLine,
     SkyLine,
     SwampLine,
+    MagicCastle,
   ]);
   const stageViewDict = ref({
-    // stage view dict
-    darkcave: ["darkCaveStartView"],
+    // stage view dict + 대화창 구분
+    MagicCastle: ["MagicCastleTutorialView"],
+    darkcave: ["TongueTwisterGameView"],
     sky: ["birdProverbGameView"],
     swamp: ["kingCureGameView"],
   });
@@ -46,17 +49,6 @@ export const useGameStore = defineStore("game", () => {
 
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
-  /* computed */
-  // 해당 stage dialog
-  // const dialog = computed(() => {
-  //   // 해당 스테이지의 전체 대화를 가져온다.
-  //   dialogList.value.forEach((element) => {
-  //     if (element.stage == stage.value) {
-  //       return element;
-  //     }
-  //   });
-  // });
-
   // 현재 effect
   const effect = computed(() => script.value.effect);
   // 현재 type
@@ -67,7 +59,6 @@ export const useGameStore = defineStore("game", () => {
   const script = computed(() => dialog.value.script[scriptNum.value]);
   // 현재 표정 이미지 
   const faceImg = computed(() => dialog.value.script[scriptNum.value].imgFace);
-
 
   // 현재 전신 이미지
   const imgBody = computed(() => {
@@ -105,6 +96,22 @@ export const useGameStore = defineStore("game", () => {
         return stageViewDict.value.darkcave;
       case "swamp":
         return stageViewDict.value.swamp;
+      case "MagicCastle":
+        return stageViewDict.value.MagicCastle;
+    }
+  });
+
+  // 현재 stage 에서 진행할 textBox 리스트
+  const textboxImg = computed(() => {
+    switch (stage.value) {
+      case "sky":
+        return "sky_textbox";
+      case "darkcave":
+        return "dark_cave_textbox";
+      case "swamp":
+        return "swamp_textbox";
+      case "MagicCastle":
+        return "magic_castle_textbox";
     }
   });
 
@@ -244,6 +251,7 @@ export const useGameStore = defineStore("game", () => {
     char,
     imgBody,
     faceImg,
+    textboxImg,
 
     //action
     setStage,

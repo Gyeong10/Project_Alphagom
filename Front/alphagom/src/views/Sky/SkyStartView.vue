@@ -37,12 +37,11 @@ export default {
     game.setStage(stage.name);
 
     // 3초 후 다음 뷰로 넘기기
-    // setTimeout(() => {
-    //   router.push({
-    //     name: "skyDialogView",
-    //     params: { dialogNum: 0 },
-    //   });
-    // }, 3000);
+    setTimeout(() => {
+      router.push({
+        name: "skyDialogView",
+      });
+    }, 3000);
 
     return { stage };
   },

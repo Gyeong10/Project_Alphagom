@@ -5,7 +5,7 @@
       "char": "알파곰",
       "line1": "(알 수 없는 외계어를 말하는 중)",
       "line2": "",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
@@ -13,7 +13,7 @@
       "char": "알파곰",
       "line1": "아아, 미안. 나도 모르게 알파어로 말해버렸네.",
       "line2": "한국어로 말하는 건 아직도 어렵단 말이지~!",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     },
@@ -21,7 +21,7 @@
       "char": "알파곰",
       "line1": "",
       "line2": "",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": ""
     },
@@ -29,7 +29,7 @@
       "char": "알파곰",
       "line1": "나는 알파세계의 알파곰!",
       "line2": "어쩌다보니 한국이란 곳에 탐험을 떠나게 됐지 뭐야!",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
@@ -61,7 +61,7 @@
       "char": "알파곰",
       "line1": "그러고보니 넌 이름이 뭐니?",
       "line2": "",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
@@ -69,7 +69,7 @@
       "char": "알파곰",
       "line1": "",
       "line2": "",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": ""
     },
@@ -77,7 +77,7 @@
       "char": "알파곰",
       "line1": "",
       "line2": "",
-      "type": "",
+      "type": "story",
       "effect": "",
       "imgFace": ""
     },
@@ -85,7 +85,7 @@
       "char": "알파곰",
       "line1": "자 그럼, 탐험을 시작해볼까? 앞에 문이 보이지?",
       "line2": "저기에 적힌 마법의 문장을 읽으면 탐험의 문이 열릴거야!",
-      "type": "",
+      "type": "game",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     }   

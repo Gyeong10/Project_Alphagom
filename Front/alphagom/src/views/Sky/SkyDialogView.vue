@@ -1,21 +1,25 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <CommonDialog></CommonDialog>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
-export default {
-  name: 'SkyDialogView',
-  components: { NavBar },
-  setup() {
-      
-  }
+import { useGameStore } from "@/stores/game";
+import CommonDialog from "@/components/game/CommonDialog.vue";
 
-}
+export default {
+  name: "SkyDialogView",
+  components: {
+    CommonDialog,
+  },
+  setup() {
+    const game = useGameStore();
+    game.setStage("sky");
+
+    return {};
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

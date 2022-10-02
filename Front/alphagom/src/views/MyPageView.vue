@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="container-bg"></div>
     <p>내 정보</p>
     <!-- {{ testFunc() }} -->
 
@@ -14,7 +15,7 @@
         <div class="content tab-space">
           <!-- 유저 사진 -->
           <div class="my-avatar">
-            <img src="@/assets/image/알파곰_표정_기본.png" alt="프사" class="myimg">
+            <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg">
           </div>
           <div class="text-box">
             <!-- <div class="update-btn"> -->
@@ -48,15 +49,27 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
 
 import MyPageUpdateModal from '@/views/Modal/MyPageUpdateModal.vue'
 // import { PencilAltIcon } from '@heroicons/vue/solid';
+import { useBgStore } from "@/stores/bg"
+
+// 배경 경로 수정
+onMounted (() => {
+  // store의 bgUrlState 값을 직접 변경
+  bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")'
+  console.log(bgStore.bgUrlState.value)
+})
+const bgStore = useBgStore()
+// state 감시자
+const bgwatching = computed(() => bgStore.bgUrlState)
 
 const store = useAuthStore();
 const updateModalOpen = ref(false)
+
 
 function openUpdateMypage() {
   // if (this.isLoggedIn){
@@ -89,6 +102,15 @@ console.log("userInfoTest:" + userInfo.value.profile)
 
 
 <style scoped>
+.container-bg {
+  position: absolute;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  top: 0px;
+  left: 0px;
+  width: 926px;
+  height: 428px;
+}
 .box {
   position: absolute;
   width: 300px;

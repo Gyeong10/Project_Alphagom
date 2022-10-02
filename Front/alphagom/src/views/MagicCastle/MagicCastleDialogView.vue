@@ -15,7 +15,7 @@ export default {
   },
   setup() {
     const game = useGameStore();
-    game.setStage("darkcave");
+    game.setStage("MagicCastle");
 
     return {};
   },
