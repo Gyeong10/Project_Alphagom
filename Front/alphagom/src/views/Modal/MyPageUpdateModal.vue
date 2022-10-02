@@ -1,5 +1,5 @@
 <template>
-  <div v-if="stageclear" class="score-modal" tabindex="-1">
+  <div v-if="updateModalOpen" class="score-modal" tabindex="-1">
     <div class="modal-content">
       <div class="modal-header">
         <!-- <h5 class="modal-title"></h5> -->
@@ -10,11 +10,11 @@
         <div class="title">별명 수정</div>
         <div>
           <input 
-          type="email"
-          v-model="nick"
-          placeholder="10자 이하로 입력해주세요."
-          @keyup="setNick">
-        <button class="update-btn" @click="updateNick">수정하기</button>
+            type="email"
+            v-model="nick"
+            placeholder="10자 이하로 입력해주세요."
+            @keyup="setNick">
+          <button class="update-btn" @click="updateNick">수정하기</button>
         </div>
       </div>
       <!-- <div class="modal-footer">            
@@ -26,7 +26,7 @@
 
 <script>
 import { reactive } from '@vue/reactivity'
-import { ref, computed } from 'vue';
+// import { ref, computed } from 'vue';
 
 export default {
   name: 'MyPageUpdateModal',
