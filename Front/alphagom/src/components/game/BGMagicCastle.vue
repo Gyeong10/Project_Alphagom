@@ -9,7 +9,7 @@ export default {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-image: url("@/assets/image/용궁_내부_배경_사진_필터_low.png");
+  background-image: url("@/assets/image/seaCastle_in_bg_picture_filter_low.png");
   background-repeat: no-repeat;
   background-size: inherit;
   /* 어둡게 하는 거 */

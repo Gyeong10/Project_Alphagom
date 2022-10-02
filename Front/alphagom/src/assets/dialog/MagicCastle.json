@@ -6,81 +6,88 @@
       "line1": "(알 수 없는 외계어를 말하는 중)",
       "line2": "",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "아아, 미안. 나도 모르게 알파어로 말해버렸네.",
       "line2": "한국어로 말하는 건 아직도 어렵단 말이지~!",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "알파곰",
       "line1": "",
       "line2": "",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "나는 알파세계의 알파곰!",
       "line2": "어쩌다보니 한국이란 곳에 탐험을 떠나게 됐지 뭐야!",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "그런데 한국어가 너무 어려워서 탐험이 어려워.",
       "line2": "혹시 네가 도와주지 않겠니?!",
       "type": "question",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
-      "answer": [
-        {
-          "char": "알파곰",
-          "line1": "오, 잘됐다! 같이 탐험하면서 나에게 한국어를 가르쳐줘!",
-          "line2": "우리 탐험을 떠나보자고!",
-          "type": "story",
-          "effect": ""
-        },
-        {
-          "char": "알파곰",
-          "line1": "에이, 그러지 말고~ 조금만 도와줘! 귀찮게 안할게,",
-          "line2": "우리 재밌는 모험을 떠나보자고!",
-          "type": "story",
-          "effect": ""
-        }
-      ]
+      "char": "알파곰",
+      "line1": "오, 잘됐다! 같이 탐험하면서 나에게 한국어를 가르쳐줘!",
+      "line2": "우리 탐험을 떠나보자고!",
+      "type": "yes",
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "알파곰",
+      "line1": "에이, 그러지 말고~ 조금만 도와줘! 귀찮게 안할게,",
+      "line2": "우리 재밌는 모험을 떠나보자고!",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "알파곰",
       "line1": "그러고보니 넌 이름이 뭐니?",
       "line2": "",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
       "line1": "",
       "line2": "",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "",
       "line2": "",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "자 그럼, 탐험을 시작해볼까? 앞에 문이 보이지?",
       "line2": "저기에 적힌 마법의 문장을 읽으면 탐험의 문이 열릴거야!",
       "type": "",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     }   
   ]
 }

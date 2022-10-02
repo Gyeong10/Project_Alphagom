@@ -6,98 +6,112 @@
       "line1": "동굴에 있다가 탁 트인 곳에 나오니까 좋다! 그치?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "견우",
       "line1": "흑흑... 직녀야...",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "오늘은 왜 이리 우는 소리가 많이 들리지?",
       "line2": "이번엔 누구려나!",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_surpise"
     },
     {
       "char": "알파곰",
       "line1": "거기 친구! 왜 울고 있는거야?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "견우",
       "line1": "직녀를 만나고 싶어.. 흑흑",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "직녀는 누구야?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "견우",
       "line1": "나의 연인이야...",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "견우",
       "line1": "원래는 까치들이 우리를 이어주려 다리를 놔줬는데,",
       "line2": "이번에 알아서 만나라며 가버렸지 뭐야..",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "우리가 도와줄 수 있는 일이 있을까?",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "견우",
       "line1": "다른 새들이 도와줄 수 있다고 했어..!",
       "line2": "너희가 불러줄 수 있겠니?",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "오늘 착한 일 무지하게 많이 하네!",
       "line2": "우리 같이 다리 놓으러 가보자!",
       "type": "game",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     },
     {
       "char": "견우",
       "line1": "직녀야!!!!!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "직녀",
       "line1": "견우야!!!!!",
       "line2": "",
       "type": "story",
-      "effect": ""
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "알파곰",
       "line1": "무사히 만났구나!",
       "line2": "도움이 돼서 기분이 좋네.",
       "type": "end",
-      "effect": ""
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
     }
   ]
 }
