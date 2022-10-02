@@ -88,7 +88,7 @@ export const useGameStore = defineStore("game", () => {
 }
 
   // 현재 stage 에서 진행할 게임 리스트
-  const gameList = computed(() => {
+  const stageGame = computed(() => {
     switch (stage.value) {
       case "sky":
         return stageViewDict.value.sky;
@@ -145,7 +145,7 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.game.yesOrNo(),
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "multipart/form-data"},
       data: payload,
     }).then((response) => {
       Answer.value = response.data;
@@ -183,45 +183,39 @@ export const useGameStore = defineStore("game", () => {
     });
   }
 
+  // 대사 type 에 따라 넘어가는 인덱스 설정
   function plusNum() {
-    scriptNum.value++
-    isActive.value = false;
-
-    if (type.value == "game") {
-      
-      const gameType = gameList.value[0];
-      router.push({name : gameType});
-
-    }
-
-    if (type.value == "question") {
-      // 버튼 실행
-      isActive.value = true;
-      
-      // yes 응답 => pass
-      
-      // no 응답 => scriptNum.value++
-    }
-
     if (type.value == "yes") {
       scriptNum.value++
     }
-
-
+    scriptNum.value++
+    isActive.value = false;
+    if (type.value == "game") {
+      const gameType = stageGame.value[0];
+      router.push({name : gameType});
+    }
+    if (type.value == "question") {
+      isActive.value = true;
+  }}
+  
+  // 응, 아니 대답 후 대화로그 인덱스 지정
+  function checkyesorno() {
+    if (Answer.value === "응") {
+      scriptNum.value++
+      isActive.value = false
+    } else {
+      scriptNum.value = scriptNum.value + 2
+      isActive.value = false
+    }
   }
 
   function skip() {
-
     dialog.value.script.forEach((element: any)=> {
-
-      scriptNum.value++
-      
-      if (element.type == "game") {
-        
-        const gameType = gameList.value[0];
+      scriptNum.value++    
+      if (element.type == "game") {     
+        const gameType = stageGame.value[0];
         router.push({name : gameType});
       }
-
     })
   }
   
@@ -247,7 +241,7 @@ export const useGameStore = defineStore("game", () => {
     script,
     effect,
     type,
-    gameList,
+    stageGame,
     char,
     imgBody,
     faceImg,
@@ -263,5 +257,6 @@ export const useGameStore = defineStore("game", () => {
     getBirdAI,
     getKingGame,
     getBirdGame,
+    checkyesorno,
   };
 });
