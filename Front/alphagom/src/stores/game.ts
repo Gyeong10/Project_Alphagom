@@ -37,6 +37,15 @@ export const useGameStore = defineStore("game", () => {
   });
   const stageGames = ref([""]); // game
 
+  // (주의) 공통 게임 문제들과 답은 스테이지 넘어갈 때마다 초기화 시켜줘야 한다!
+  const GameList = ref(); // 게임 구성 받아오는 state
+  const Answer = ref(); // 게임 플레이어의 답 담는 state
+
+  const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
+  const VoiceFile = ref(); // 녹음된 파일 담는 state
+
+  const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
+
   /* computed */
   // 해당 stage dialog
   // const dialog = computed(() => {
@@ -80,6 +89,59 @@ export const useGameStore = defineStore("game", () => {
       }
     });
   }
+  // Flask 에서 의성어/의태어 플레이어 게임 결과값 갖고 오는 API
+  async function getKingAI(payload: any) {
+    await axios({
+      url: api.game.aiSwampWord(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
+  // Flask 에서 응 아니 check 값 갖고 오는 API
+  async function getCheckAI(payload: any) {
+    await axios({
+      url: api.game.yesOrNo(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
+  // Flask 에서 새 플레이어 게임 결과값 갖고 오는 API
+  async function getBirdAI(payload: any) {
+    await axios({
+      url: api.game.aiSkyBird(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
+
+  // BE 배포되기 전까지 임시
+  // BE 에서 의성어/의태어 게임 구성 요소 (문제, 답) 갖고오는 API
+  async function getKingGame() {
+    await axios({
+      url: api.test.testKingAI(),
+      method: "GET",
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
+
+  async function getBirdGame() {
+    await axios({
+      url: api.test.testBirdAI(),
+      method: "GET",
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
 
   return {
     //state
@@ -91,6 +153,12 @@ export const useGameStore = defineStore("game", () => {
     dialogList,
     stageViewDict,
     stageGames,
+    GameList,
+    Answer,
+    VoiceOnOff,
+    VoiceFile,
+
+    GameEnd,
 
     //computed
     dialog,
@@ -101,5 +169,10 @@ export const useGameStore = defineStore("game", () => {
 
     //action
     setStage,
+    getKingAI,
+    getCheckAI,
+    getBirdAI,
+    getKingGame,
+    getBirdGame,
   };
 });

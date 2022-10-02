@@ -9,7 +9,15 @@ import { defineStore } from "pinia";
 // 이름을 가지는 내보내기를 할 때 보통 이름 앞에 use를 붙여 사용한다.
 export const useAuthStore = defineStore("auth", () => {
   // state
-  const userInfo = ref(null); // 사용자 정보
+  // const userInfo = ref(null); // 사용자 정보
+  const userInfo = ref({ // 더미 데이터~~
+    userId: 7,
+    username: '이미현',
+    userNickname: '이면',
+    email: 'alphagom@ssafy.com',
+    profile: 'https://www.snsboom.co.kr/common/img/default_profile.png',
+    rank: '100',
+  })
   const token = ref(localStorage.getItem("token") || "");
 
   // getters
@@ -20,15 +28,13 @@ export const useAuthStore = defineStore("auth", () => {
   const authHeader = computed(() => token.value ? { Authorization: `Bearer ${token.value}` } : "");
 
   // actions
+  // 토큰 저장
+  function saveToken() {
+    token.value = token.value
+    localStorage.setItem('token', token.value)
+  }
+  // 사용자 정보 가져오기
   function fetchUserInfo() {
-    // console.log('userInfo.value: ' + userInfo.value)
-    // console.log('recentUserInfo.value: ' + recentUserInfo.value)
-    // console.log('recentUserInfo.effect: ' + recentUserInfo.effect.active)
-
-    console.log('prototype: ' + authHeader.value.valueOf.prototype)
-    console.log('toString: ' + authHeader.value.toString)
-    console.log('authHeader: ' + authHeader.value)
-
     axios({
       url: api.user.getUser(userInfo.value.userId),
       // url: "http://localhost:8080/api/be/user/1234",
@@ -44,6 +50,30 @@ export const useAuthStore = defineStore("auth", () => {
       });
   }
 
+  // 사용자 정보 수정 (일단 닉네임 인자만 수정해볼게용)
+  function updateUserInfo(payload: string) {
+    axios({
+      url: api.user.postUserInfo(userInfo.value.userId),
+      method: 'put',
+      // headers: authHeader
+      headers: authHeader.value.valueOf.prototype,
+      data: payload,
+    })
+      .then(res => {
+        userInfo.value.username = res.data.body.data;
+      })
+      .catch(err => {
+        console.error(err.response);
+      });
+  }
+
+  // 로그아웃
+  function logout() {
+    token.value = token.value
+    localStorage.setItem('token', '')
+
+  }
+
   return {
     // state
     userInfo,
@@ -56,6 +86,9 @@ export const useAuthStore = defineStore("auth", () => {
     authHeader,
 
     // actions
+    saveToken,
     fetchUserInfo,
+    updateUserInfo,
+    logout,
   }
 });

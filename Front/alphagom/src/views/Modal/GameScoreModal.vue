@@ -1,4 +1,5 @@
 <template>
+  <div>우와아아 점수다</div>
   <div v-if="stageclear" class="score-modal" tabindex="-1">
     <div class="modal-content">
       <!-- <div class="modal-header">
