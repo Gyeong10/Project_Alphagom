@@ -17,6 +17,7 @@ onMounted (() => {
 const bgStore = useBgStore()
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState)
+
 </script>
 
 <style scoped>
