@@ -18,7 +18,7 @@
           <!-- 유저 사진 -->
           <div class="my-avatar">
             <img :src="userInfo.profile" alt="" class="myphoto">
-            <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
+            <img src="/image/alphagom_look_normal.png" alt="프사" class="myimg">
           </div>
           <div class="text-box">
             <!-- <div class="update-btn"> -->

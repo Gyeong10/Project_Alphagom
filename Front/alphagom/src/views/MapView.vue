@@ -2,7 +2,7 @@
   <div class="container">
     <div class="container-bg"></div>
     <div class="map-road-cont">
-      <img class="img-map-road" src="@/assets/image/map-road.svg" alt="지도 도로" />
+      <img class="img-map-road" src="/image/map-road.svg" alt="지도 도로" />
     </div>
     <div class="map-cont">
       <div class="magic-castle">
@@ -10,7 +10,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('magicCastleStartView')"
         >
-          <img class="img-magic-castle" src="@/assets/image/magic_castle.png" alt="마법의 성"/>
+          <img class="img-magic-castle" src="/image/magic_castle.png" alt="마법의 성"/>
           <text style="marginTop: -30px; marginLeft: -30px;">마법의 성</text>
         </button>
       </div>
@@ -19,7 +19,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('darkCaveStartView')"
         >
-          <img class="img-dark-cave" src="@/assets/image/dark_cave.png" alt="어둠의 동굴"/>
+          <img class="img-dark-cave" src="/image/dark_cave.png" alt="어둠의 동굴"/>
           <text style="marginTop: -15px;">어둠의 동굴</text>
         </button>
       </div>
@@ -28,7 +28,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('swampStartView')"
         >
-          <img class="img-swamp" src="@/assets/image/swamp.png" alt="늪"/>
+          <img class="img-swamp" src="/image/swamp.png" alt="늪"/>
           <text style="marginTop: -15px;">늪</text>
         </button>
       </div>
@@ -37,7 +37,7 @@
           class="btn-style-remove" type="button"
           @click="clickMapItem('skyStartView')"
         >
-          <img class="img-sky" src="@/assets/image/sky.png" alt="하늘"/>
+          <img class="img-sky" src="/image/sky.png" alt="하늘"/>
           <text style="marginTop: -40px;">하늘</text>
         </button>
       </div>

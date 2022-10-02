@@ -9,7 +9,7 @@ export default {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-image: url("@/assets/image/cave_bg_2_picture_filter_low.png");
+  background-image: url("/image/cave_bg_2_picture_filter_low.png");
   background-repeat: no-repeat;
   background-size: inherit;
   /* 어둡게 하는 거 */

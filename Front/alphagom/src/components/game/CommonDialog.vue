@@ -4,6 +4,7 @@
         <img v-if="game.faceImg" :src="game.getImgUrl(game.faceImg)" width="50">
         <img :src="game.getImgUrl(game.textboxImg)" width="500">
         <div class="scriptText">
+            <h1>{{ game.getImgUrl(game.textboxImg) }}</h1>
             <h1>{{ game.script.char }}</h1>
             <p>{{ game.script.line1 }}</p>
             <p>{{ game.script.line2 }}</p>
