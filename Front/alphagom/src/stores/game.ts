@@ -18,11 +18,12 @@ import { stringLiteral } from "@babel/types";
 export const useGameStore = defineStore("game", () => {
   /* state */
   const stage = ref(""); // 해당 스테이지 이름
-  const dialog = ref();
+  const dialog = ref(); // 해당 스테이지 dialog
   const scriptNum = ref(0); // 현재 스크립트 번호
   const SwampScore = ref(5000); // 게임별 점수
   const DarkCaveScore = ref(2500);
   const SkyScore = ref(2500);
+  const isActive = ref(false); // 응아니 버튼
   const dialogList = ref([
     // Dialog list
     DarkcaveLine,
@@ -33,9 +34,17 @@ export const useGameStore = defineStore("game", () => {
     // stage view dict
     darkcave: ["darkCaveStartView"],
     sky: ["birdProverbGameView"],
-    swamp: ["kingCureGameView", "chaseGameView"],
+    swamp: ["kingCureGameView"],
   });
-  const stageGames = ref([""]); // game
+
+  // (주의) 공통 게임 문제들과 답은 스테이지 넘어갈 때마다 초기화 시켜줘야 한다!
+  const GameList = ref(); // 게임 구성 받아오는 state
+  const Answer = ref(); // 게임 플레이어의 답 담는 state
+
+  const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
+  const VoiceFile = ref(); // 녹음된 파일 담는 state
+
+  const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   /* computed */
   // 해당 stage dialog
@@ -48,12 +57,44 @@ export const useGameStore = defineStore("game", () => {
   //   });
   // });
 
-  // 현재 스크립트
-  const script = computed(() => dialog.value.script[scriptNum.value]);
   // 현재 effect
   const effect = computed(() => script.value.effect);
   // 현재 type
   const type = computed(() => script.value.type);
+  // 현재 char
+  const char = computed(() => script.value.char);
+  // 현재 스크립트 
+  const script = computed(() => dialog.value.script[scriptNum.value]);
+  // 현재 표정 이미지 
+  const faceImg = computed(() => dialog.value.script[scriptNum.value].imgFace);
+
+
+  // 현재 전신 이미지
+  const imgBody = computed(() => {
+    switch (char.value) {
+      case "알파곰":
+        return "alphagom_stand";
+      case "곰":
+        return "bear_stand";
+      case "견우":
+        return "gyeonu_stand";
+      case "직녀":
+        return "jiknyeo_side";
+      case "토끼":
+        return "rabbit_stand";
+      case "자라":
+        return "jara_stand";
+      case "용왕":
+        return "dragonKing_stand";
+      default:
+        return ""
+    }
+  });
+
+  // 이미지 url
+  const getImgUrl = (img: String) => {
+    return new URL(`./../assets/image/${img}.png`, import.meta.url).href;
+}
 
   // 현재 stage 에서 진행할 게임 리스트
   const gameList = computed(() => {
@@ -68,6 +109,7 @@ export const useGameStore = defineStore("game", () => {
   });
 
   /* actions */
+  
   // start page에서 stage 이름 초기화
   function setStage(stageStr: string) {
     stage.value = stageStr;
@@ -80,8 +122,104 @@ export const useGameStore = defineStore("game", () => {
       }
     });
   }
+  // Flask 에서 의성어/의태어 플레이어 게임 결과값 갖고 오는 API
+  async function getKingAI(payload: any) {
+    await axios({
+      url: api.game.aiSwampWord(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
+  // Flask 에서 응 아니 check 값 갖고 오는 API
+  async function getCheckAI(payload: any) {
+    await axios({
+      url: api.game.yesOrNo(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
+  // Flask 에서 새 플레이어 게임 결과값 갖고 오는 API
+  async function getBirdAI(payload: any) {
+    await axios({
+      url: api.game.aiSkyBird(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
 
-  return {
+  // BE 배포되기 전까지 임시
+  // BE 에서 의성어/의태어 게임 구성 요소 (문제, 답) 갖고오는 API
+  async function getKingGame() {
+    await axios({
+      url: api.test.testKingAI(),
+      method: "GET",
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
+
+  async function getBirdGame() {
+    await axios({
+      url: api.test.testBirdAI(),
+      method: "GET",
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
+
+  function plusNum() {
+    scriptNum.value++
+    isActive.value = false;
+
+    if (type.value == "game") {
+      
+      const gameType = gameList.value[0];
+      router.push({name : gameType});
+
+    }
+
+    if (type.value == "question") {
+      // 버튼 실행
+      isActive.value = true;
+      
+      // yes 응답 => pass
+      
+      // no 응답 => scriptNum.value++
+    }
+
+    if (type.value == "yes") {
+      scriptNum.value++
+    }
+
+
+  }
+
+  function skip() {
+
+    dialog.value.script.forEach((element: any)=> {
+
+      scriptNum.value++
+      
+      if (element.type == "game") {
+        
+        const gameType = gameList.value[0];
+        router.push({name : gameType});
+      }
+
+    })
+  }
+  
+  return { 
+
     //state
     stage,
     scriptNum,
@@ -90,7 +228,12 @@ export const useGameStore = defineStore("game", () => {
     SkyScore,
     dialogList,
     stageViewDict,
-    stageGames,
+    isActive,
+    GameList,
+    Answer,
+    VoiceOnOff,
+    VoiceFile,
+    GameEnd,
 
     //computed
     dialog,
@@ -98,8 +241,19 @@ export const useGameStore = defineStore("game", () => {
     effect,
     type,
     gameList,
+    char,
+    imgBody,
+    faceImg,
 
     //action
     setStage,
+    plusNum,
+    skip,
+    getImgUrl,
+    getKingAI,
+    getCheckAI,
+    getBirdAI,
+    getKingGame,
+    getBirdGame,
   };
 });
