@@ -1,34 +1,37 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <BGSwamp />
+    <div class="top-title">{{ stage.name }}</div>
     <BackButton class="back-btn" />
-    <div class="game-title">
-      <div class="title">{{ stage.name }}</div>
-      <div class="subTitle">~별주부전~</div>
-    </div>
+    <Score class="bottom-score"></Score>
+    <div class="score--">점</div>
     <div class="bottom-items">
-      <PlayBar></PlayBar>
-      <Score style="margin-top: 3px;"></Score>
+      <PlayBar class="bottom-icons"></PlayBar>
+    </div>
+    <div class="items-cont">
+      <div class="game-title">
+        <!-- <div class="title">{{ stage.name }}</div> -->
+        <div class="title">늪</div>
+        <div class="subTitle">~별주부전~</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import BGSwamp from "@/components/game/BGSwamp.vue";
 import BackButton from "@/components/BackButton.vue";
 import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import { ref, reactive, computed, onMounted } from "vue";
 import { useGameStore } from "@/stores/game";
-import router from "@/router";
 import { useBgStore } from "@/stores/bg"
+import router from "@/router";
 
 
 // 배경 경로 수정
 onMounted (() => {
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/chase_bg_picture_filter_low.png")'
+  bgStore.bgUrlState = 'url("/seaCastle_bg_picture_filter_low.png")'
   console.log(bgStore.bgUrlState.value)
 })
 const bgStore = useBgStore()
@@ -53,32 +56,53 @@ setTimeout(() => {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-color: transparent;
+  background-color:rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
   width: 926px;
   height: 428px;
-} 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  height: 100vh;
+}
+.bottom-score {
+  position: absolute;
+  top: 370px;
+  left: 800px;
+  /* margin: 0; */
+  text-align: end;
+}
+.score-- {
+  position: absolute;
+  top: 370px;
+  left: 878px;
+  color: #FAF4BD;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.top-title {
+  position: absolute;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  top: 8px;
+  left: 425px;
+  white-space: nowrap;
 }
 .game-title {
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  top: 173px;
+  left: 382px;
 }
-
 .title, .subTitle {
   color: #fff;
   font-family: 'Noto Serif KR', serif;
-  font-weight: bold;
+  font-weight: 800;
+  white-space: nowrap;
 }
 .title {
   font-size: 50px;
@@ -86,20 +110,17 @@ setTimeout(() => {
 .subTitle {
   font-size: 32px;
 }
-
 .back-btn {
   position: absolute;
-  color: black;
-  top: 24px;
+  top: 20px;
   left: 884px;
 }
 .bottom-items {
   position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+.bottom-icons {
   width: 95vw;
-  bottom: -20px;
-  margin: 30px;
+  top: 377px;
+  left: 30px;
 }
 </style>

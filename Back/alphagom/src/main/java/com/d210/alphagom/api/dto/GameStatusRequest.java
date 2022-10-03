@@ -1,6 +1,6 @@
 package com.d210.alphagom.api.dto;
 
-import com.d210.alphagom.domain.entity.GameTag;
+import com.d210.alphagom.common.GameTag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

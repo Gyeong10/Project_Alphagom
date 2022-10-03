@@ -1,54 +1,39 @@
 <template>
-  <div class="container">
+  <div class="box-cont">
     <div class="container-bg"></div>
-    <p>내 정보</p>
-    <!-- {{ testFunc() }} -->
-    <div class="container2">
-      <div class="box">
-        <!-- <div class="px-4 py-5 flex-auto"> -->
-        <div class="box-header">
-          <button @click="openUpdateMypage" style="cursor: pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-              <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
-            </svg>
-            수정
-          </button>
+    <text class="top-title">내 정보</text>
+    <div class="box">
+      <div class="box-header">
+        <button class="btn-edit" @click="openUpdateMypage" style="cursor: pointer">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
+          </svg> -->
+          <svg class="btn-edit-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.68476 11.1652L9.68484 5.16509L6.83491 2.31516L0.834833 8.31524C0.752189 8.39789 0.693435 8.50184 0.665026 8.61483L0 12L3.38453 11.335C3.49816 11.3066 3.60211 11.2478 3.68476 11.1652ZM11.6218 3.22812C12.1261 2.72386 12.1261 1.90646 11.6218 1.4022L10.5978 0.378193C10.0935 -0.126064 9.27614 -0.126064 8.77188 0.378193L7.74787 1.4022L10.5978 4.25213L11.6218 3.22812Z" fill="#325AA6"/>
+          </svg>
+          <text class="btn-edit-text">수정</text>
+        </button>
+      </div>
+      <div class="content tab-space">
+        <!-- 유저 사진 -->
+        <div class="my-avatar">
+          <img :src="userInfo.profile" alt="" class="myphoto">
+          <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
         </div>
-        <div class="content tab-space">
-          <!-- 유저 사진 -->
-          <div class="my-avatar">
-            <img :src="userInfo.profile" alt="" class="myphoto">
-            <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
-          </div>
-          <div class="text-box">
-            <!-- <div class="update-btn"> -->
-
-            <!-- </div> -->
-            <!-- <br>
-            <br> -->
-            <div class="card">
-              <div class="card-header">
-                
-              </div>
-              <div class="card-body">
-                <p>닉네임 : {{ userInfo.userNickname }}</p>
-                <p>이메일 : {{ userInfo.email }}</p>
-                <p>순위 : {{ userInfo.rank }}위</p>
-              </div>
-              
+        <div class="text-box">
+          <div class="card">
+            <div class="card-body">
+              <p class="user-nickname">{{ userInfo.userNickname }}</p>
+              <p class="user-email">{{ userInfo.email }}</p>
+              <p class="user-rank">{{ userInfo.rank }}위</p>
             </div>
           </div>
         </div>
-        <!-- <br> -->
-        <button @click="logout" style="cursor: pointer">로그아웃</button>
-        <!-- </div> -->
       </div>
+      <button class="warning btn-logout" @click="logout" style="cursor: pointer">로그아웃</button>
     </div>
 
-    <!-- <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen"/> -->
-    <!-- <transition name="bounce" mode="out-in"> -->
-      <MyPageUpdateModal></MyPageUpdateModal>
-    <!-- </transition> -->
+    <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen"/>
 
   </div>
 </template>
@@ -95,8 +80,6 @@ function openUpdateMypage() {
 
 
 function logout() {
-  
-
 }
 
 // 더미 데이터 잘 나오는지 테스트
@@ -116,61 +99,113 @@ console.log("userInfoTest:" + userInfo.value.profile)
   width: 926px;
   height: 428px;
 }
+.box-cont {
+  display: flex;
+  justify-content: center;
+}
+.top-title {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #483737;
+  top: 8px;
+}
 .box {
   position: absolute;
-  width: 300px;
-  height: 260px;
+  top: 111px;
+  left: 301px;
+  width: 323px;
+  height: 233px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.btn-edit {
+  padding: 0;
   display: flex;
-  flex-flow: column;
   justify-content: center;
   align-items: center;
-
+}
+.btn-edit-svg {
+  margin-right: 5px;
+}
+.btn-edit-text {
+  font-size: 14px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #325AA6;
 }
 
-.box {
-  /* position: absolute; */
-  left: 240px;
-
-  width: 400px;
-  height: 300px;
-  /* display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center; */
-
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.4);
-  /* color:white; */
-
-}
-  
 .myimg {
   width: 6rem;
   height: 6rem;
 }
 
-svg {
-  width: 1rem;
-  height: 1rem;
+/* btn---- */
+.btn-logout {
+  padding: 0;
+  margin: 10px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  position: absolute;
+  top: 170px;
+  left: 106px;
 }
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--button-bg-color);
+  color: var(--button-color);
+  margin: 0;
+  padding: 0.5rem 2rem;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 30px;
+  display: inline-block;
+  width: auto;
+  cursor: pointer;
+  transition: 0.5s;
+}
+button.warning {
+  --button-color: #212529;
+  --button-bg-color: #FFB0B1;
+  --button-hover-bg-color: #FAF4BD;
+  border: 3px solid #FAF4BD;
+  width: 112px;
+  height: 36px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+button:active,
+button:hover,
+button:focus {
+  background: var(--button-hover-bg-color);
+  border: 3px solid #FFB0B1;
+  outline: 0;
+}
+button:disabled {
+  opacity: 0.5;
+}
+/* ----btn */
 
 .content {
   display: flex;
   flex-flow: row;
-  justify-content: center;
-  align-items: center;
-
-}
-
-button {
-  background: rgba(255, 255, 255, 0);
-  border: none;
+  padding-top: 47px;
+  padding-left: 30px;
 }
 
 .box-header {
-  padding: 16px;
-  /* justify-content: end; */
-  /* align-items: flex-end; */
+  position: absolute;
+  padding-top: 25px;
+  padding-left: 258px;
 }
 
 .card-body {
@@ -178,17 +213,42 @@ button {
   flex-flow: column;
   justify-content: center;
   /* align-items: center; */
-
 }
 
 .my-avatar {
-  padding-right: 18px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 25px;
 }
 
 .myphoto {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
+}
 
+.user-nickname {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  font-size: 24px;
+  color: #483737;
+  margin-top: 10px;
+}
+
+.user-email {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-size: 14px;
+  color: #646464;
+  margin-top: -5px;
+}
+.user-rank {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  font-size: 20px;
+  color: #646464;
 }
 
 </style>
