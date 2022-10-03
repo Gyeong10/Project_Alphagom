@@ -1,25 +1,23 @@
 <template>
-  <div class="score">{{ SwampScore }}</div>
+  <div class="score">{{ score }}</div>
 </template>
 
-<script>
-import { mapState } from "pinia";
+<script setup>
 import { useGameStore } from "@/stores/game";
+import { ref } from "vue";
 
-export default {
-  name: "Score",
-  computed: {
-    ...mapState(useGameStore, ["SwampScore"]),
-  },
-};
+const score = ref(5000);
 </script>
 
 <style scoped>
-  .score {
-    color: #FAF4BD;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    white-space: nowrap;
-  }
+.score {
+  color: #faf4bd;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  white-space: nowrap;
+}
 </style>

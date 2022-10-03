@@ -88,7 +88,7 @@ console.log(username);
 const gmstore = useGameStore();
 const audiostate = computed(() => gmstore.AudioState);
 
-gmstore.setBGM("Home");
+// gmstore.setBGM("Home");
 gmstore.AudioState = true;
 </script>
 

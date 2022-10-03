@@ -340,7 +340,7 @@ export const useGameStore = defineStore("game", () => {
     setStage,
     plusNum,
     skip,
-    setBGM,
+    // setBGM,
     getImgUrl,
     getKingAI,
     getCheckAI,

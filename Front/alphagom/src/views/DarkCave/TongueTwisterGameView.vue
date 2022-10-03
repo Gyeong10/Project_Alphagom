@@ -1,20 +1,7 @@
 <template>
-  <div>
-    <NavBar></NavBar>
-  </div>
+  <div></div>
 </template>
 
-<script>
-import NavBar from '@/components/NavBar.vue';
-export default {
-  name: 'TongueTwisterGameView',
-  components: { NavBar },
-  setup() {
-        
-  }
-}
-</script>
+<script setup></script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,23 +1,7 @@
 <template>
-  <div>
-    <NavBar></NavBar>
-  </div>
+  <div></div>
 </template>
 
-<script>
-import NavBar from '@/components/NavBar.vue';
-export default {
-  name: 'StageChangeView',
-  components: {
-    NavBar,
-  },
-  setup() {
-      
-  }
+<script setup></script>
 
-}
-</script>
-
-<style scoped>
-  
-</style>
+<style scoped></style>
