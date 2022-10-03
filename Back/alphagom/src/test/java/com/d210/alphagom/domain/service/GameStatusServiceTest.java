@@ -1,8 +1,8 @@
 //package com.d210.alphagom.domain.service;
 //
 //import com.d210.alphagom.domain.entity.GameStatus;
-//import com.d210.alphagom.common.GameTag;
-//import com.d210.alphagom.common.Role;
+//import com.d210.alphagom.domain.entity.GameTag;
+//import com.d210.alphagom.domain.entity.Role;
 //import com.d210.alphagom.domain.entity.User;
 //import com.d210.alphagom.domain.repository.GameStatusRepository;
 //import com.d210.alphagom.domain.repository.UserRepository;
@@ -15,6 +15,7 @@
 //import javax.persistence.EntityManager;
 //import javax.persistence.PersistenceContext;
 //
+//import java.time.LocalDate;
 //import java.util.Optional;
 //
 //@Transactional
