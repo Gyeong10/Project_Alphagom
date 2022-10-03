@@ -40,7 +40,6 @@ export default {
     setTimeout(() => {
       router.push({
         name: "darkCaveDialogView",
-        params: { dialogNum: 0 },
       });
     }, 3000);
 

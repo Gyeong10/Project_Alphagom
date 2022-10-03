@@ -19,7 +19,7 @@
         </div>
         <img
           class="img-hello"
-          src="@/assets/image/alphagom_hello.png"
+          src="/image/alphagom_hello.png"
           width="150"
           alt="홈 이미지"
         />
@@ -28,20 +28,6 @@
   </div>
 </template>
 
-<<<<<<< Updated upstream
-<script>
-
-export default {
-  name: 'HomeView',
-  components: {
-  },
-  setup() {
-    return {
-      
-    }
-  }
-}
-=======
 <script setup>
 import { useBgStore } from "@/stores/bg";
 import { useGameStore } from "@/stores/game";
@@ -64,17 +50,13 @@ const audiostate = computed(() => gmstore.AudioState);
 
 gmstore.setBGM("Home");
 gmstore.AudioState = true;
->>>>>>> Stashed changes
 </script>
 
 <style scoped>
 .container-bg {
   position: absolute;
-  background-image: url("@/assets/image/home_bg_low.jpg");
-  background-repeat: no-repeat;
-  background-size: inherit;
-  /* Add the blur effect */
-  filter: blur(4px);
+  background-color: transparent;
+  backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
   width: 100vw;

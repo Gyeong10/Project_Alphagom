@@ -1,6 +1,6 @@
 <template>
-
   <div>
+    <div class="container-bg"></div>
     <MicRecord v-if="recordcall" />
     <div v-if="!recordcall && problems">
       점수 : {{ score }}
@@ -10,7 +10,7 @@
       <h2>{{exam}}</h2>
     </div>
     </div>
-    <img class="samgyetang" src="@/assets/image/삼계탕.png" width="200" @click="getRecord()"/>
+    <img class="samgyetang" src="/image/chicken_soup.png" width="200" @click="getRecord()"/>
       
     <div v-if="answer === problems[probidx].answer && answer">
       정답이야!
@@ -31,16 +31,25 @@ import MicRecord from '@/components/game/MicRecord.vue'
 import { reactive, computed, ref, onMounted, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
 import { useRouter, useRoute } from 'vue-router'
+import { useBgStore } from "@/stores/bg"
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
 onMounted (() => {
   store.getKingGame()
+  // 배경 경로 수정
+  // store의 bgUrlState 값을 직접 변경
+  bgStore.bgUrlState = 'url("/chase_bg_picture_filter_low.png")'
+  console.log(bgStore.bgUrlState.value)
 })
+
 // 스토어 가져오기
 const store = useGameStore()
+const bgStore = useBgStore()
+
 // 라우터 사용
 const router = useRouter()
 const route = useRoute()
+
 // 내부 요소들 선언 
 const problems = computed(() => store.GameList) // 의성어/의태어 구성 요소 (문제, 답) 저장
 const recordcall = computed(() => store.VoiceOnOff) // 녹음기능 켜고(true) 끄는(false) 값 저장
@@ -51,6 +60,8 @@ const probidx = ref(0) // BE 에서 받아온 문제들의 인덱스값
 
 // (임시) 끝났을 때 라우트 주기 위한 state
 const nextpage = computed(() => store.GameEnd)
+// state 감시자
+const bgwatching = computed(() => bgStore.bgUrlState)
 
 // true 값이면 녹음기가 켜진다 (MicRecord.Vue)
 const getRecord = () => {
@@ -83,4 +94,13 @@ const getNextPage = () => {
 </script>
 
 <style scoped>
+.container-bg {
+  position: absolute;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  top: 0px;
+  left: 0px;
+  width: 926px;
+  height: 428px;
+} 
 </style>

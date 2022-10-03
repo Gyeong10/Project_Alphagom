@@ -9,26 +9,35 @@
 
 <script setup>
 import NavBar from "./components/NavBar.vue";
+import { useBgStore } from "./stores/bg";
+import { computed } from 'vue'
 
-// Get the root element
-var r = document.querySelector(':root');
-var rs = getComputedStyle(r);
-const bgUrl = 'url("/bg_map.png")'
+/* bgUrl 변경 과정 */
+// const bgUrl = 'url("/bg_map.png")' 이런 식으로 url을 쏠 거에요. public 디렉토리에 접근하면 에러가 안 떠요!!
+const bgStore = useBgStore()
+// store의 state로 bgUrl 값 변경 
+const bgUrl = computed(() => bgStore.bgUrlState)
+
+// bgUrl = bgStore.bgUrlGetters.value
+console.log("bgUrl: " + bgUrl.value)
+console.log("bgStore.bgUrlGetters.value: " + bgStore.bgUrlState)
+
+
+/* css 전역 변수 값 변경 과정 */
+// Get the root element(css)
+let r = document.querySelector(':root');
+let rs = getComputedStyle(r);
 
 // Create a function for getting a variable value
 function myFunction_get() {
   // Get the styles (properties and values) for the root
-  // Alert the value of the --blue variable
   console.log(rs.getPropertyValue('--bg-url'))
 }
-
 // Create a function for setting a variable value
 function myFunction_set() {
   // Set the value of variable --blue to another value (in this case "lightblue")
-  // r.style.setProperty('--bg-url', bgUrl);
-  r.style.setProperty('--bg-url', bgUrl);
+  r.style.setProperty('--bg-url', bgUrl.value);
   console.log(rs.getPropertyValue('--bg-url'))
-  // console.log("경로를 /assets/~~ 로 변경")
 }
 </script>
 
