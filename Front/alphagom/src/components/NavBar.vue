@@ -1,5 +1,6 @@
 <template>
   <div class="navBar">
+    <BackGroundMusic v-if="audiostate" />
     <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
       <!-- sidebar -->
       <!-- <div class="logo">
@@ -64,8 +65,11 @@ import {
   Bars3Icon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import { useGameStore } from "@/stores/game";
+import BackGroundMusic from "@/components/BackGroundMusic.vue";
+// import bgm from "@/assets/music/backgroundmusic/memories_Home.mp3";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 
@@ -80,6 +84,12 @@ const ToggleMenu = () => {
 const store = useAuthStore();
 const username = store.username;
 console.log(username);
+
+const gmstore = useGameStore();
+const audiostate = computed(() => gmstore.AudioState);
+
+gmstore.setBGM("Home");
+gmstore.AudioState = true;
 </script>
 
 <style lang="scss">

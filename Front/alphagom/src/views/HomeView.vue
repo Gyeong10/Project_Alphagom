@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <BackGroundMusic v-if="audiostate" />
     <div class="home">
       <div class="container-bg"></div>
       <div class="item-cont">
@@ -30,10 +29,8 @@
 
 <script setup>
 import { useBgStore } from "@/stores/bg";
-import { useGameStore } from "@/stores/game";
 import { ref, computed, onMounted } from "vue";
-import BackGroundMusic from "@/components/BackGroundMusic.vue";
-// import bgm from "@/assets/music/backgroundmusic/memories_Home.mp3";
+
 // 배경 경로 수정
 onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
@@ -44,12 +41,6 @@ onMounted(() => {
 const bgStore = useBgStore();
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
-
-const gmstore = useGameStore();
-const audiostate = computed(() => gmstore.AudioState);
-
-gmstore.setBGM("Home");
-gmstore.AudioState = true;
 </script>
 
 <style scoped>
