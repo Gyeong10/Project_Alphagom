@@ -32,11 +32,7 @@
     </div>
     <div class="game">
       <div v-if="!recordcall" @click="getRecord()">
-        <img
-          class="samgyetang"
-          src="/assets/image/chicken_soup.png"
-          width="200"
-        />
+        <img class="samgyetang" src="/assets/image/chicken_soup.png" width="200" />
         <div v-show="!answer" class="game-howto">
           음식을 누르고<br />
           보기 중 정답을 골라 말해줘!
@@ -67,7 +63,7 @@ onMounted(() => {
   store.getKingGame();
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/chase_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 
