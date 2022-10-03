@@ -1,7 +1,7 @@
 <template>
-    <MicRecord v-if="recordcall" />
-    <div v-if="!recordcall" class="common">
-        <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
+  <MicRecord v-if="recordcall" />
+  <div v-if="!recordcall" class="common">
+    <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
         <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50"> -->
         <!-- <img class="character-body-img" v-if="store.imgBody" :src="store.imgBody" alt="캐릭터 전신"> -->
         <div class="scriptText">
@@ -19,36 +19,41 @@
         </div>
         <button class="script-btn answer-btn" v-if="store.isActive" @click="getRecord()">대답하기</button>
     </div>
+    <div v-if="!store.isActive">
+      <button @click="store.plusNum()">다음으로!</button>
+      <button @click="store.skip()">건너뛰기</button>
+    </div>
+    <button v-if="store.isActive" @click="getRecord()">대답하기!</button>
+  </div>
 </template>
 
 <script setup>
 // import { defineStore } from 'pinia';
 // import { skyDialog } from '@/assets/dialog/SkyLine.json';
 // import { swampDialog } from '@/assets/dialog/SwampLine.json';
-
-import { useRouter } from 'vue-router';
-import { computed, ref, watch } from 'vue'
-import DarkcaveLine from '@/assets/dialog/DarkcaveLine.json';
+import { useRouter } from "vue-router";
+import { computed, ref, watch } from "vue";
+import DarkcaveLine from "@/assets/dialog/DarkcaveLine.json";
 import { useGameStore } from "@/stores/game";
-import MicRecord from '@/components/game/MicRecord.vue'
+import MicRecord from "@/components/game/MicRecord.vue";
 
 const store = useGameStore();
 
-
-const recordcall = computed(() => store.VoiceOnOff) // 녹음기능 켜고(true) 끄는(false) 값 저장
-const recordfile = computed(() => store.VoiceFile) // 녹음된 파일 들고오기
-const answer = computed(() => store.Answer) // Flask 에서 들고 온 플레이어의 답 저장
+const recordcall = computed(() => store.VoiceOnOff); // 녹음기능 켜고(true) 끄는(false) 값 저장
+const recordfile = computed(() => store.VoiceFile); // 녹음된 파일 들고오기
+const answer = computed(() => store.Answer); // Flask 에서 들고 온 플레이어의 답 저장
 
 // true 값이면 녹음기가 켜진다 (MicRecord.Vue)
 const getRecord = () => {
-    store.VoiceOnOff = true
-}
+  store.VoiceOnOff = true;
+};
 
 // watch 로 녹음 파일 들어오는지 확인 후 바로 API 함수 실행
-watch(recordfile, () => store.getCheckAI(store.VoiceFile))
+watch(recordfile, () => store.getCheckAI(store.VoiceFile));
 // watch 로 answer 들어오는지 확인 후 바로 checkyesorno (대사 넘기기) 함수 실행
-watch(answer, () => store.checkyesorno())
+watch(answer, () => store.checkyesorno());
 
+const game = useGameStore();
 </script>
 
 <style>
