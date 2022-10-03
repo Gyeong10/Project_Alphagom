@@ -57,10 +57,6 @@ import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import BackButton from "@/components/BackButton.vue";
 import PassorFail from "@/components/game/PassorFail.vue";
->>>>>>> develop
-
-import { useRoute } from 'vue-router'
-import { useRouter } from 'vue-router'
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
 onMounted(() => {
@@ -76,16 +72,11 @@ const store = useGameStore();
 const bgStore = useBgStore();
 
 // 라우터 사용
-<<<<<<< HEAD
 const route = useRoute()
 const router = useRouter()
 
 // 진입할 때 모달 창 띄우는 state
 const openmodal = computed(() => store.Modal)
-=======
-const router = useRouter();
-const route = useRoute();
->>>>>>> develop
 
 // 내부 요소들 선언
 const problems = computed(() => store.GameList); // 의성어/의태어 구성 요소 (문제, 답) 저장
