@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container-bg"></div>
+    <KingCureGameModal v-if="openmodal" />
     <PassorFail v-if="passorfail" />
     <BackButton class="back-btn" />
 
@@ -32,7 +33,18 @@
     </div>
     <div class="game">
       <div v-if="!recordcall" @click="getRecord()">
-        <img class="samgyetang" src="/assets/image/chicken_soup.png" width="200" />
+        <img
+          v-if="problems[0].sentance === '물을 ** 끓여 손질된 닭을 넣어요'"
+          class="samgyetang"
+          src="/assets/image/chicken_soup.png"
+          width="200"
+        />
+        <img
+          v-if="problems[0].sentance === '물을 ** 끓여 된장을 넣어요'"
+          class="dwenjangjjigae"
+          src="/assets/image/dwenjangjjigae.png"
+          width="200"
+        />
         <div v-show="!answer" class="game-howto">
           음식을 누르고<br />
           보기 중 정답을 골라 말해줘!
@@ -57,6 +69,7 @@ import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import BackButton from "@/components/BackButton.vue";
 import PassorFail from "@/components/game/PassorFail.vue";
+import KingCureGameModal from "@/views/Modal/HowTo/KingCureGameModal.vue";
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
 onMounted(() => {
@@ -72,11 +85,11 @@ const store = useGameStore();
 const bgStore = useBgStore();
 
 // 라우터 사용
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
 // 진입할 때 모달 창 띄우는 state
-const openmodal = computed(() => store.Modal)
+const openmodal = computed(() => store.Modal);
 
 // 내부 요소들 선언
 const problems = computed(() => store.GameList); // 의성어/의태어 구성 요소 (문제, 답) 저장
@@ -141,10 +154,9 @@ const interval = setInterval(() => {
 
 // 다시 에필로그 페이지로 렌더링 (라우터 재설정 필요! 에필로그 페이지로 렌더링 되도록)
 const getNextPage = () => {
-  router.push("KingCureGame");
+  router.go(-1);
   store.PassFail = null;
 };
-
 </script>
 
 <style scoped>

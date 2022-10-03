@@ -218,6 +218,18 @@ export const useGameStore = defineStore("game", () => {
     }).then((response) => {
       Answer.value = response.data;
     });
+
+  }
+
+  //점수 저장 API
+  async function saveScore(userId: number, payload: any) {
+    await axios({
+      url: api.user.postUserScore(userId),
+      method: "POST",
+      data: payload,
+    }).then((response) => {
+      console.log(response.data);
+    });
   }
 
   // BE api 요청
@@ -329,5 +341,6 @@ export const useGameStore = defineStore("game", () => {
     getBirdGame,
     checkyesorno,
     getTongueGame,
+    saveScore,
   };
 });
