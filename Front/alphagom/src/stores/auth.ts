@@ -10,14 +10,17 @@ import { defineStore } from "pinia";
 export const useAuthStore = defineStore("auth", () => {
   // state
   // const userInfo = ref(null); // 사용자 정보
-  const userInfo = ref({ // 더미 데이터~~
+  const userInfo = ref({
+    // 더미 데이터~~
     userId: 7,
-    username: '이미현',
-    userNickname: '이면',
-    email: 'alphagom@ssafy.com',
-    profile: 'https://www.snsboom.co.kr/common/img/default_profile.png',
-    rank: '100',
-  })
+    username: "이미현",
+    userNickname: "이면",
+    email: "alphagom@ssafy.com",
+    // profile: 'https://www.snsboom.co.kr/common/img/default_profile.png',
+    profile:
+      "https://item.kakaocdn.net/do/862539f7f2171437385154b3b749990f7154249a3890514a43687a85e6b6cc82",
+    rank: "100",
+  });
   const token = ref(localStorage.getItem("token") || "");
 
   // getters
@@ -25,27 +28,29 @@ export const useAuthStore = defineStore("auth", () => {
   const recentToken = computed(() => token);
   // const isLoggedIn = computed(() => !!token.value);
   const isLoggedIn = true;
-  const authHeader = computed(() => token.value ? { Authorization: `Bearer ${token.value}` } : "");
+  const authHeader = computed(() =>
+    token.value ? { Authorization: `Bearer ${token.value}` } : ""
+  );
 
   // actions
   // 토큰 저장
   function saveToken() {
-    token.value = token.value
-    localStorage.setItem("token", token.value)
+    token.value = token.value;
+    localStorage.setItem("token", token.value);
   }
   // 사용자 정보 가져오기
   function fetchUserInfo() {
     axios({
       url: api.user.getUser(userInfo.value.userId),
       // url: "http://localhost:8080/api/be/user/1234",
-      method: 'get',
+      method: "get",
       // headers: authHeader
       headers: authHeader.value.valueOf.prototype,
     })
-      .then(res => {
+      .then((res) => {
         userInfo.value = res.data.body.data;
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err.response);
       });
   }
@@ -54,24 +59,23 @@ export const useAuthStore = defineStore("auth", () => {
   function updateUserInfo(payload: string) {
     axios({
       url: api.user.postUserInfo(userInfo.value.userId),
-      method: 'put',
+      method: "put",
       // headers: authHeader
       headers: authHeader.value.valueOf.prototype,
       data: payload,
     })
-      .then(res => {
+      .then((res) => {
         userInfo.value.username = res.data.body.data;
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err.response);
       });
   }
 
   // 로그아웃
   function logout() {
-    token.value = token.value
-    localStorage.setItem('token', '')
-
+    token.value = token.value;
+    localStorage.setItem("token", "");
   }
 
   return {
@@ -90,5 +94,5 @@ export const useAuthStore = defineStore("auth", () => {
     fetchUserInfo,
     updateUserInfo,
     logout,
-  }
+  };
 });

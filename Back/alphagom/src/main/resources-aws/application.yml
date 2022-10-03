@@ -15,7 +15,9 @@ spring:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 1000
-
+  redis:
+    host: j7d210.p.ssafy.io
+    port: 6379
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher

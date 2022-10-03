@@ -1,7 +1,7 @@
 package com.d210.alphagom.domain.service;
 
 import com.d210.alphagom.domain.entity.Game;
-import com.d210.alphagom.domain.entity.GameTag;
+import com.d210.alphagom.common.GameTag;
 import com.d210.alphagom.domain.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
