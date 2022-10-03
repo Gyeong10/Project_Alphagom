@@ -32,7 +32,11 @@
     </div>
     <div class="game">
       <div v-if="!recordcall" @click="getRecord()">
-        <img class="samgyetang" src="/image/chicken_soup.png" width="200" />
+        <img
+          class="samgyetang"
+          src="/assets/image/chicken_soup.png"
+          width="200"
+        />
         <div v-show="!answer" class="game-howto">
           음식을 누르고<br />
           보기 중 정답을 골라 말해줘!
