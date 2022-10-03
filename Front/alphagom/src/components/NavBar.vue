@@ -10,11 +10,11 @@
         <div class="user-info">
           <img
             class="user-img"
-            src="/assets/image/jara_look_openly.png"
+            :src="userInfo.profile"
             alt="프로필 사진"
             height="20"
           />
-          <text class="user-name">{{ username }} 님</text>
+          <text class="user-name">{{ userInfo.userNickname }} 님</text>
         </div>
         <button
           class="menu-toggle"
@@ -66,6 +66,7 @@ import {
 } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import { storeToRefs } from "pinia";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 
@@ -78,8 +79,8 @@ const ToggleMenu = () => {
 };
 
 const store = useAuthStore();
-const username = store.username;
-console.log(username);
+const { userInfo } = storeToRefs(store)
+console.log(userInfo.userNickname)
 </script>
 
 <style lang="scss">
@@ -170,6 +171,7 @@ aside {
 
       padding: 0, 5rem 1rem;
       transition: 0.2s ease-out;
+      pointer-events: none;
 
       .material-icons {
         font-size: 2rem;
@@ -178,6 +180,7 @@ aside {
         transition: 0.2s ease-out;
         margin: 0.25rem;
         margin-left: 1rem;
+        
       }
       .text {
         color: var(--dark-red);
@@ -218,8 +221,10 @@ aside {
         top: 0px;
 
         .user-img {
-          margin-top: 2px;
+          margin-top: 6px;
           margin-right: 6px;
+          border-radius: 50%;
+          overflow: cover;
         }
         .user-name {
           font-size: 0.75rem;
@@ -242,6 +247,7 @@ aside {
       opacity: 1;
     }
     .button {
+      pointer-events: auto;
       .material-icons {
         margin-right: 1rem;
       }
