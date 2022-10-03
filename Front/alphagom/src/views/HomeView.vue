@@ -14,7 +14,7 @@
             <button class="warning button-custom-home">내 정보</button>
           </router-link>
         </div>
-        <img class="img-hello" src="@/assets/image/alphagom_hello.png" width="150" alt="홈 이미지" />
+        <img class="img-hello" src="/image/alphagom_hello.png" width="150" alt="홈 이미지" />
       </div>
     </div>
   </div>

@@ -84,7 +84,7 @@ export const useGameStore = defineStore("game", () => {
 
   // 이미지 url
   const getImgUrl = (img: String) => {
-    return new URL(`./../assets/image/${img}.png`, import.meta.url).href;
+    return new URL(`/image/${img}.png`, import.meta.url).href;
 }
 
   // 현재 stage 에서 진행할 게임 리스트

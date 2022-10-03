@@ -5,10 +5,11 @@
         <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50">
         <img :src="store.getImgUrl(store.textboxImg)" width="500">
         <div class="scriptText">
+            <h1>{{ store.getImgUrl(game.textboxImg) }}</h1>
             <h1>{{ store.script.char }}</h1>
             <p>{{ store.script.line1 }}</p>
             <p>{{ store.script.line2 }}</p>
-        </div>
+            </div>
         <div v-if="!store.isActive">
         <button @click="store.plusNum()">다음으로!</button>
         <button @click="store.skip()">건너뛰기</button>
