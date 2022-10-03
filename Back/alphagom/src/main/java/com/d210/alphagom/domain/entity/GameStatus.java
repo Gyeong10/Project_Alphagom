@@ -1,5 +1,6 @@
 package com.d210.alphagom.domain.entity;
 
+import com.d210.alphagom.common.GameTag;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
