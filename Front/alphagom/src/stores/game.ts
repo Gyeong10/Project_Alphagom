@@ -79,6 +79,7 @@ export const useGameStore = defineStore("game", () => {
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
+  // BE API 요청 성공할 때까지 잰말놀이 데이터 (임시)
 
   // 현재 effect
   const effect = computed(() => script.value.effect);
