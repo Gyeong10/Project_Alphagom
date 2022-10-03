@@ -1,4 +1,4 @@
-package com.d210.alphagom.api.dto.oauth;
+package com.d210.alphagom.security.oauth;
 
 import com.d210.alphagom.domain.entity.User;
 

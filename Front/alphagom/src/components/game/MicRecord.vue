@@ -1,7 +1,7 @@
 <template>
     <div>
     <div v-if="!record.state">
-        <h1>정답을 생각하고 말해줘!</h1>
+        <h1>답을 생각하고 말해줘!</h1>
         <h1 v-if="timer > 0">{{ timercount }} 초 남았어!</h1>
     </div>
     <h1 v-if="record.state">지금 말하면 돼~!</h1>
