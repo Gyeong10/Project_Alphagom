@@ -146,8 +146,8 @@ export const useGameStore = defineStore("game", () => {
     }
   });
 
-  // 현재 script 에서 진행할 image 리스트
-  const standImg = computed(() => {
+  // 현재 script 에서 진행할 image 표정 리스트
+  const imgFace = computed(() => {
     switch (faceImg.value) {
       case "alphagom_look_happy":
         return alphagom_look_happy;
@@ -164,25 +164,7 @@ export const useGameStore = defineStore("game", () => {
       case "bear_look_normal":
         return bear_look_normal;
       case "jara_look_openly":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
-      case "alphagom_look_flustered":
-        return alphagom_look_flustered;
+        return jara_look_openly;
       default:
         return "";
     }
@@ -319,7 +301,7 @@ export const useGameStore = defineStore("game", () => {
     imgBody,
     faceImg,
     textboxImg,
-    standImg,
+    imgFace,
 
     //action
     setStage,

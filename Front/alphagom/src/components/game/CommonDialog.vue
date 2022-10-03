@@ -5,6 +5,7 @@
         <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50"> -->
         <img :src="store.textboxImg" width="500">
         <img v-if="store.imgBody" :src="store.imgBody" width="50">
+        <img v-if="store.imgFace" :src="store.imgFace" width="50">
         <div class="scriptText">
             <!-- <h1>{{ store.getImgUrl(game.textboxImg) }}</h1> -->
             <h1>{{ store.script.char }}</h1>
