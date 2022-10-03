@@ -72,8 +72,11 @@ const store = useGameStore();
 const bgStore = useBgStore();
 
 // 라우터 사용
-const router = useRouter();
-const route = useRoute();
+const route = useRoute()
+const router = useRouter()
+
+// 진입할 때 모달 창 띄우는 state
+const openmodal = computed(() => store.Modal)
 
 // 내부 요소들 선언
 const problems = computed(() => store.GameList); // 의성어/의태어 구성 요소 (문제, 답) 저장
@@ -86,6 +89,7 @@ const probidx = ref(0); // BE 에서 받아온 문제들의 인덱스값
 
 // (임시) 끝났을 때 라우트 주기 위한 state
 const nextpage = computed(() => store.GameEnd);
+
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
 
@@ -140,6 +144,7 @@ const getNextPage = () => {
   router.push("KingCureGame");
   store.PassFail = null;
 };
+
 </script>
 
 <style scoped>
