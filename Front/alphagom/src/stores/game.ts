@@ -11,6 +11,37 @@ import MagicCastle from "@/assets/dialog/MagicCastle.json";
 import router from "@/router";
 import { stringLiteral } from "@babel/types";
 
+// image import
+// alphagom
+import alphagom_stand from "/assets/image/alphagom_stand.png";
+import alphagom_hello from "/assets/image/alphagom_hello.png";
+import alphagom_look_happy from "/assets/image/alphagom_look_happy.png";
+import alphagom_look_normal from "/assets/image/alphagom_look_normal.png";
+import alphagom_look_suprise from "/assets/image/alphagom_look_suprise.png";
+import alphagom_look_flustered from "/assets/image/alphagom_look_flustered.png";
+// bear
+import bear_stand from "/assets/image/bear_stand.png";
+import bear_look_cry from "/assets/image/bear_look_cry.png";
+import bear_look_happy from "/assets/image/bear_look_happy.png";
+import bear_look_normal from "/assets/image/bear_look_normal.png";
+// jara
+import jara_stand from "/assets/image/jara_stand.png";
+import jara_look_openly from "/assets/image/jara_look_openly.png";
+// rabbit
+import rabbit_stand from "/assets/image/rabbit_stand.png";
+// dragonKing
+import dragonKing_stand from "/assets/image/dragonKing_stand.png";
+// gyeonu
+import gyeonu_stand from "/assets/image/gyeonu_stand.png";
+import gyeonu_side from "/assets/image/gyeonu_side.png";
+// jiknyeo
+import jiknyeo_side from "/assets/image/jiknyeo_side.png";
+// textbox
+import dark_cave_textbox from "/assets/image/dark_cave_textbox.png";
+import swamp_textbox from "/assets/image/swamp_textbox.png";
+import magic_castle_textbox from "/assets/image/magic_castle_textbox.png";
+import sky_textbox from "/assets/image/sky_textbox.png";
+
 // vuex 를 사용할 대는 store/index.js 파일이 필요했지만,
 // pinia는 index.js 없이 모듈화 된 파일만 있으면 된다.
 
@@ -64,19 +95,19 @@ export const useGameStore = defineStore("game", () => {
   const imgBody = computed(() => {
     switch (char.value) {
       case "알파곰":
-        return "alphagom_stand";
+        return alphagom_stand;
       case "곰":
-        return "bear_stand";
+        return bear_stand;
       case "견우":
-        return "gyeonu_stand";
+        return gyeonu_stand;
       case "직녀":
-        return "jiknyeo_side";
+        return jiknyeo_side;
       case "토끼":
-        return "rabbit_stand";
+        return rabbit_stand;
       case "자라":
-        return "jara_stand";
+        return jara_stand;
       case "용왕":
-        return "dragonKing_stand";
+        return dragonKing_stand;
       default:
         return ""
     }
@@ -105,13 +136,55 @@ export const useGameStore = defineStore("game", () => {
   const textboxImg = computed(() => {
     switch (stage.value) {
       case "sky":
-        return "sky_textbox";
+        return sky_textbox;
       case "darkcave":
-        return "dark_cave_textbox";
+        return dark_cave_textbox;
       case "swamp":
-        return "swamp_textbox";
+        return swamp_textbox;
       case "MagicCastle":
-        return "magic_castle_textbox";
+        return magic_castle_textbox;
+    }
+  });
+
+  // 현재 script 에서 진행할 image 리스트
+  const standImg = computed(() => {
+    switch (faceImg.value) {
+      case "alphagom_look_happy":
+        return alphagom_look_happy;
+      case "alphagom_look_normal":
+        return alphagom_look_normal;
+      case "alphagom_look_suprise":
+        return alphagom_look_suprise;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "bear_look_cry":
+        return bear_look_cry;
+      case "bear_look_happy":
+        return bear_look_happy;
+      case "bear_look_normal":
+        return bear_look_normal;
+      case "jara_look_openly":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      default:
+        return "";
     }
   });
 
@@ -246,6 +319,7 @@ export const useGameStore = defineStore("game", () => {
     imgBody,
     faceImg,
     textboxImg,
+    standImg,
 
     //action
     setStage,

@@ -1,11 +1,12 @@
 <template>
     <MicRecord v-if="recordcall" />
     <div v-if="!recordcall" class="common">
-        <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
-        <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50">
-        <img :src="store.getImgUrl(store.textboxImg)" width="500">
+        <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
+        <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50"> -->
+        <img :src="store.textboxImg" width="500">
+        <img v-if="store.imgBody" :src="store.imgBody" width="50">
         <div class="scriptText">
-            <h1>{{ store.getImgUrl(game.textboxImg) }}</h1>
+            <!-- <h1>{{ store.getImgUrl(game.textboxImg) }}</h1> -->
             <h1>{{ store.script.char }}</h1>
             <p>{{ store.script.line1 }}</p>
             <p>{{ store.script.line2 }}</p>
@@ -30,6 +31,7 @@ import { useGameStore } from "@/stores/game";
 import MicRecord from '@/components/game/MicRecord.vue'
 
 const store = useGameStore();
+
 
 const recordcall = computed(() => store.VoiceOnOff) // 녹음기능 켜고(true) 끄는(false) 값 저장
 const recordfile = computed(() => store.VoiceFile) // 녹음된 파일 들고오기
