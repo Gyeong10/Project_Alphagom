@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="container-bg"></div>
+    <KingCureGameModal v-if="openmodal"/>
     <MicRecord v-if="recordcall" />
-    <div v-if="!recordcall && problems">
-      점수 : {{ score }}
+    <div v-if="!recordcall && problems && !openmodal">
+      점수 : {{ score }}  
       <div>
       <h2>{{problems[probidx].sentance}}</h2>
       <div v-for="(exam, idx) in problems[probidx].example" :key="idx">
@@ -11,6 +12,9 @@
     </div>
     </div>
     <img class="samgyetang" src="/image/chicken_soup.png" width="200" @click="getRecord()"/>
+    
+    <!--그냥 넘어가는 디버그용 버튼-->
+    <button @click="getNextPage()">그냥 넘어가!</button>
       
     <div v-if="answer === problems[probidx].answer && answer">
       정답이야!
@@ -22,16 +26,19 @@
       </div>
       </div>
     </div>
-
 </template>
 
 <script setup>
 
 import MicRecord from '@/components/game/MicRecord.vue'
+import KingCureGameModal from '@/views/Modal/Howto/KingCureGameModal.vue'
 import { reactive, computed, ref, onMounted, watch } from 'vue'
 import { useGameStore } from '@/stores/game'
-import { useRouter, useRoute } from 'vue-router'
+// import router from "@/router/gameRouter"
 import { useBgStore } from "@/stores/bg"
+
+import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
 onMounted (() => {
@@ -47,8 +54,11 @@ const store = useGameStore()
 const bgStore = useBgStore()
 
 // 라우터 사용
-const router = useRouter()
 const route = useRoute()
+const router = useRouter()
+
+// 진입할 때 모달 창 띄우는 state
+const openmodal = computed(() => store.Modal)
 
 // 내부 요소들 선언 
 const problems = computed(() => store.GameList) // 의성어/의태어 구성 요소 (문제, 답) 저장
@@ -60,6 +70,7 @@ const probidx = ref(0) // BE 에서 받아온 문제들의 인덱스값
 
 // (임시) 끝났을 때 라우트 주기 위한 state
 const nextpage = computed(() => store.GameEnd)
+
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState)
 
@@ -89,7 +100,7 @@ const interval = setInterval(() => {
 
 // 다시 에필로그 페이지로 렌더링 (라우터 재설정 필요! 에필로그 페이지로 렌더링 되도록)
 const getNextPage = () => {
-  router.push('KingCureGame')
+  router.replace('/stage/swamp/dialog')
 }
 </script>
 

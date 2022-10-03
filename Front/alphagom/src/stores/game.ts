@@ -47,7 +47,9 @@ export const useGameStore = defineStore("game", () => {
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
-  const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
+  const Modal = ref(true); // 게임 시작할 때, 게임 끝났을 때 모달 창 (키는 것 true)
+
+  const GameEnd = ref(false); // 게임 끝났을 때 state (임시)
 
   // 현재 effect
   const effect = computed(() => script.value.effect);
@@ -165,9 +167,28 @@ export const useGameStore = defineStore("game", () => {
 
   // BE 배포되기 전까지 임시
   // BE 에서 의성어/의태어 게임 구성 요소 (문제, 답) 갖고오는 API
+  // async function getKingGame() {
+  //   await axios({
+  //     url: api.test.testKingAI(),
+  //     method: "GET",
+  //   }).then((response) => {
+  //     GameList.value = response.data;
+  //   });
+  // }
+
+  // async function getBirdGame() {
+  //   await axios({
+  //     url: api.test.testBirdAI(),
+  //     method: "GET",
+  //   }).then((response) => {
+  //     GameList.value = response.data;
+  //   });
+  // }
+  
+  // BE 배포 테스트
   async function getKingGame() {
     await axios({
-      url: api.test.testKingAI(),
+      url: api.game.getSwampWord(),
       method: "GET",
     }).then((response) => {
       GameList.value = response.data;
@@ -176,8 +197,9 @@ export const useGameStore = defineStore("game", () => {
 
   async function getBirdGame() {
     await axios({
-      url: api.test.testBirdAI(),
+      url: api.game.getSkyBird(),
       method: "GET",
+
     }).then((response) => {
       GameList.value = response.data;
     });
@@ -234,6 +256,7 @@ export const useGameStore = defineStore("game", () => {
     Answer,
     VoiceOnOff,
     VoiceFile,
+    Modal,
     GameEnd,
 
     //computed
