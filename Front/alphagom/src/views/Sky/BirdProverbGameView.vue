@@ -11,7 +11,7 @@
     </div>
     </div>
     <!-- 참새 이미지 때문에 정답이 안보여서 div 태그 정리 후 사용 예정-->
-    <!-- <img class="chansae" src="/image/sparrow_2.png" width="200" @click="getRecord()"/> -->
+    <!-- <img class="chansae" src="/assets/image/sparrow_2.png" width="200" @click="getRecord()"/> -->
     <!--그때까지 임시 버튼-->
     <button @click="getRecord()">녹음 버튼을 옆으로 밀기 귀찮으니까 일단 길게!</button>
     <div v-if="answer === problems[probidx].answer && answer">

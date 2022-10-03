@@ -1,7 +1,7 @@
 package com.d210.alphagom.domain.service;
 
 import com.d210.alphagom.domain.entity.GameStatus;
-import com.d210.alphagom.domain.entity.GameTag;
+import com.d210.alphagom.common.GameTag;
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.domain.repository.GameStatusRepository;
 import lombok.RequiredArgsConstructor;

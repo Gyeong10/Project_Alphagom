@@ -1,5 +1,7 @@
 package com.d210.alphagom.domain.entity;
 
+import com.d210.alphagom.common.AuthProvider;
+import com.d210.alphagom.common.Role;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,12 +42,18 @@ public class User extends BaseTimeEntity {
 
     private LocalDate birth;
 
+    @Enumerated(EnumType.STRING)
+    private AuthProvider authProvider;
+
+    private String refreshToken;
+
     @Builder
-    public User(String name, String email, String picture, Role role){
+    public User(String name, String email, String picture, Role role, AuthProvider authProvider){
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
+        this.authProvider = authProvider;
     }
 
     public void setNickname(String nickname) {

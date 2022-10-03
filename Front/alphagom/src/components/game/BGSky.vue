@@ -9,7 +9,7 @@ export default {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-image: url("/image/sky_bg_picture_filter_low.png");
+  background-image: url("/assets/image/sky_bg_picture_filter_low.png");
   background-repeat: no-repeat;
   background-size: inherit;
   /* 어둡게 하는 거 */
