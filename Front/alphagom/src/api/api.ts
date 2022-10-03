@@ -1,6 +1,5 @@
 // 배포 전까지 임시 로컬 호스트
-const HOST = "http://localhost:8080/api/";
-const HOSTAI = "http://j7d210.p.ssafy.io:5678/api/"
+const HOST = "https://j7d210.p.ssafy.io/api/";
 
 const BE = "be/";
 const AI = "ai/";
@@ -46,11 +45,11 @@ export default {
     getSkyBird: () => HOST + BE + GAME + `sky/` + `bird`,
 
     // 응, 아니 인식
-    yesOrNo: () => HOSTAI + AI + `check`,
+    yesOrNo: () => HOST + AI + `check`,
     // 의성어 / 의태어 인식
-    aiSwampWord: () => HOSTAI + AI + `swamp/` + `word`,
+    aiSwampWord: () => HOST + AI + `swamp/` + `word`,
     // 새 이름 인식
-    aiSkyBird: () => HOSTAI + AI + `sky/` + `bird`,
+    aiSkyBird: () => HOST + AI + `sky/` + `bird`,
   },
   rank: {
     // 전체 유저 랭크 조회
@@ -61,7 +60,7 @@ export default {
   },
   test: {
     testApi: () => `http://localhost:8080/api/v1/` + `test`,
-    testKingAI: () => HOSTAI + AI + `king`,
-    testBirdAI: () => HOSTAI + AI + `bird`,
+    testKingAI: () => HOST + AI + `king`,
+    testBirdAI: () => HOST + AI + `bird`,
   },
 };

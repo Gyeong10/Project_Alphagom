@@ -4,12 +4,26 @@
     <text class="top-title">내 정보</text>
     <div class="box">
       <div class="box-header">
-        <button class="btn-edit" @click="openUpdateMypage" style="cursor: pointer">
+        <button
+          class="btn-edit"
+          @click="openUpdateMypage"
+          style="cursor: pointer"
+        >
           <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
             <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
           </svg> -->
-          <svg class="btn-edit-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.68476 11.1652L9.68484 5.16509L6.83491 2.31516L0.834833 8.31524C0.752189 8.39789 0.693435 8.50184 0.665026 8.61483L0 12L3.38453 11.335C3.49816 11.3066 3.60211 11.2478 3.68476 11.1652ZM11.6218 3.22812C12.1261 2.72386 12.1261 1.90646 11.6218 1.4022L10.5978 0.378193C10.0935 -0.126064 9.27614 -0.126064 8.77188 0.378193L7.74787 1.4022L10.5978 4.25213L11.6218 3.22812Z" fill="#325AA6"/>
+          <svg
+            class="btn-edit-svg"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.68476 11.1652L9.68484 5.16509L6.83491 2.31516L0.834833 8.31524C0.752189 8.39789 0.693435 8.50184 0.665026 8.61483L0 12L3.38453 11.335C3.49816 11.3066 3.60211 11.2478 3.68476 11.1652ZM11.6218 3.22812C12.1261 2.72386 12.1261 1.90646 11.6218 1.4022L10.5978 0.378193C10.0935 -0.126064 9.27614 -0.126064 8.77188 0.378193L7.74787 1.4022L10.5978 4.25213L11.6218 3.22812Z"
+              fill="#325AA6"
+            />
           </svg>
           <text class="btn-edit-text">수정</text>
         </button>
@@ -17,7 +31,7 @@
       <div class="content tab-space">
         <!-- 유저 사진 -->
         <div class="my-avatar">
-          <img :src="userInfo.profile" alt="" class="myphoto">
+          <img :src="userInfo.profile" alt="" class="myphoto" />
           <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
         </div>
         <div class="text-box">
@@ -30,11 +44,16 @@
           </div>
         </div>
       </div>
-      <button class="warning btn-logout" @click="logout" style="cursor: pointer">로그아웃</button>
+      <button
+        class="warning btn-logout"
+        @click="logout"
+        style="cursor: pointer"
+      >
+        로그아웃
+      </button>
     </div>
 
-    <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen"/>
-
+    <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen" />
   </div>
 </template>
 
@@ -43,23 +62,22 @@ import { ref, computed, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import { storeToRefs } from "pinia";
 
-import MyPageUpdateModal from '@/views/Modal/MyPageUpdateModal.vue'
+import MyPageUpdateModal from "@/views/Modal/MyPageUpdateModal.vue";
 // import { PencilAltIcon } from '@heroicons/vue/solid';
-import { useBgStore } from "@/stores/bg"
+import { useBgStore } from "@/stores/bg";
 
 // 배경 경로 수정
-onMounted (() => {
+onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")'
-  console.log(bgStore.bgUrlState.value)
-})
-const bgStore = useBgStore()
+  bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")';
+  console.log(bgStore.bgUrlState.value);
+});
+const bgStore = useBgStore();
 // state 감시자
-const bgwatching = computed(() => bgStore.bgUrlState)
+const bgwatching = computed(() => bgStore.bgUrlState);
 
 const store = useAuthStore();
-const updateModalOpen = ref(false)
-
+const updateModalOpen = ref(false);
 
 function openUpdateMypage() {
   // if (this.isLoggedIn){
@@ -69,8 +87,7 @@ function openUpdateMypage() {
   //   alert('로그인이 필요합니다.')
   //   this.$router.push({ name: 'LoginView'})
   // }
-  return (updateModalOpen.value = true)
-
+  return (updateModalOpen.value = true);
 }
 
 // function testFunc() {
@@ -78,16 +95,12 @@ function openUpdateMypage() {
 //   console.log('testFunc 잘 가져왔나요?')
 // }
 
-
-function logout() {
-}
+function logout() {}
 
 // 더미 데이터 잘 나오는지 테스트
-const { userInfo } = storeToRefs(store)
-console.log("userInfoTest:" + userInfo.value.profile)
-
+const { userInfo } = storeToRefs(store);
+console.log("userInfoTest:" + userInfo.value.profile);
 </script>
-
 
 <style scoped>
 .container-bg {
@@ -104,7 +117,10 @@ console.log("userInfoTest:" + userInfo.value.profile)
   justify-content: center;
 }
 .top-title {
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 24px;
   font-weight: 800;
   color: #483737;
@@ -130,10 +146,13 @@ console.log("userInfoTest:" + userInfo.value.profile)
 }
 .btn-edit-text {
   font-size: 14px;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #325AA6;
+  color: #325aa6;
 }
 
 .myimg {
@@ -145,7 +164,10 @@ console.log("userInfoTest:" + userInfo.value.profile)
 .btn-logout {
   padding: 0;
   margin: 10px;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 700;
   position: absolute;
@@ -160,7 +182,10 @@ button {
   color: var(--button-color);
   margin: 0;
   padding: 0.5rem 2rem;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
@@ -174,12 +199,15 @@ button {
 }
 button.warning {
   --button-color: #212529;
-  --button-bg-color: #FFB0B1;
-  --button-hover-bg-color: #FAF4BD;
-  border: 3px solid #FAF4BD;
+  --button-bg-color: #ffb0b1;
+  --button-hover-bg-color: #faf4bd;
+  border: 3px solid #faf4bd;
   width: 112px;
   height: 36px;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 700;
 }
@@ -187,7 +215,7 @@ button:active,
 button:hover,
 button:focus {
   background: var(--button-hover-bg-color);
-  border: 3px solid #FFB0B1;
+  border: 3px solid #ffb0b1;
   outline: 0;
 }
 button:disabled {
@@ -226,10 +254,14 @@ button:disabled {
 .myphoto {
   width: 100px;
   height: 100px;
+  object-fit: cover;
 }
 
 .user-nickname {
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 800;
   font-size: 24px;
@@ -238,17 +270,22 @@ button:disabled {
 }
 
 .user-email {
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-size: 14px;
   color: #646464;
   margin-top: -5px;
 }
 .user-rank {
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-size: 20px;
   color: #646464;
 }
-
 </style>

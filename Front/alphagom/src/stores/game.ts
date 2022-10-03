@@ -78,6 +78,8 @@ export const useGameStore = defineStore("game", () => {
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
+  const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
+
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   // 현재 effect
@@ -86,9 +88,9 @@ export const useGameStore = defineStore("game", () => {
   const type = computed(() => script.value.type);
   // 현재 char
   const char = computed(() => script.value.char);
-  // 현재 스크립트 
+  // 현재 스크립트
   const script = computed(() => dialog.value.script[scriptNum.value]);
-  // 현재 표정 이미지 
+  // 현재 표정 이미지
   const faceImg = computed(() => dialog.value.script[scriptNum.value].imgFace);
 
   // 현재 전신 이미지
@@ -109,14 +111,14 @@ export const useGameStore = defineStore("game", () => {
       case "용왕":
         return dragonKing_stand;
       default:
-        return ""
+        return "";
     }
   });
 
   // 이미지 url
   const getImgUrl = (img: String) => {
     return new URL(`../../assets/image/${img}.png`, import.meta.url).href;
-}
+  };
 
   // 현재 stage 에서 진행할 게임 리스트
   const stageGame = computed(() => {
@@ -171,7 +173,7 @@ export const useGameStore = defineStore("game", () => {
   });
 
   /* actions */
-  
+
   // start page에서 stage 이름 초기화
   function setStage(stageStr: string) {
     stage.value = stageStr;
@@ -200,7 +202,7 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.game.yesOrNo(),
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data"},
+      headers: { "Content-Type": "multipart/form-data" },
       data: payload,
     }).then((response) => {
       Answer.value = response.data;
@@ -241,44 +243,45 @@ export const useGameStore = defineStore("game", () => {
   // 대사 type 에 따라 넘어가는 인덱스 설정
   function plusNum() {
     if (type.value == "yes") {
-      scriptNum.value++
+      scriptNum.value++;
     }
-    scriptNum.value++
+    scriptNum.value++;
     isActive.value = false;
     if (type.value == "game") {
       const gameType = stageGame.value[0];
-      router.push({name : gameType});
+      router.push({ name: gameType });
     }
     if (type.value == "question") {
       isActive.value = true;
-  }}
-  
+    }
+  }
+
   // 응, 아니 대답 후 대화로그 인덱스 지정
   function checkyesorno() {
     if (Answer.value === "응") {
-      scriptNum.value++
-      isActive.value = false
+      scriptNum.value++;
+      isActive.value = false;
     } else {
-      scriptNum.value = scriptNum.value + 2
-      isActive.value = false
+      scriptNum.value = scriptNum.value + 2;
+      isActive.value = false;
     }
   }
 
   function skip() {
-    dialog.value.script.forEach((element: any)=> {
-      scriptNum.value++    
-      if (element.type == "game") {     
+    dialog.value.script.forEach((element: any) => {
+      scriptNum.value++;
+      if (element.type == "game") {
         const gameType = stageGame.value[0];
-        router.push({name : gameType});
+        router.push({ name: gameType });
       }
-    })
+    });
   }
-  
-  return { 
 
+  return {
     //state
     stage,
     scriptNum,
+    PassFail,
     SwampScore,
     DarkCaveScore,
     SkyScore,
