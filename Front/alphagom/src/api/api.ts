@@ -1,6 +1,6 @@
 // 배포 전까지 임시 로컬 호스트
 const HOST = "http://localhost:8080/api/";
-const HOSTAI = "http://127.0.0.1:5678/api/"
+const HOSTAI = "http://j7d210.p.ssafy.io:5678/api/"
 
 const BE = "be/";
 const AI = "ai/";
