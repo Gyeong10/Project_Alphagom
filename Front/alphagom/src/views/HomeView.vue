@@ -18,7 +18,7 @@
         </div>
         <img
           class="img-hello"
-          src="/image/alphagom_hello.png"
+          src="/assets/image/alphagom_hello.png"
           width="150"
           alt="홈 이미지"
         />
@@ -78,12 +78,7 @@ const bgwatching = computed(() => bgStore.bgUrlState);
   top: 66px;
   left: 511px;
 }
-
-:root {
-  --button-color: #ffffff;
-  --button-bg-color: #0d6efd;
-  --button-hover-bg-color: #025ce2;
-}
+/* btn---- */
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -101,22 +96,13 @@ button {
   border-radius: 30px;
   display: inline-block;
   width: auto;
-  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); */
   cursor: pointer;
   transition: 0.5s;
-}
-button.success {
-  --button-bg-color: #28a745;
-  --button-hover-bg-color: #218838;
-}
-button.error {
-  --button-bg-color: #dc3545;
-  --button-hover-bg-color: #c82333;
 }
 button.warning {
   --button-color: #212529;
   --button-bg-color: #faf4bd;
-  --button-hover-bg-color: #e0a800;
+  --button-hover-bg-color: #fff170;
   border: 4px solid #fff170;
   width: 150px;
 }
@@ -124,9 +110,11 @@ button:active,
 button:hover,
 button:focus {
   background: var(--button-hover-bg-color);
+  border: 4px solid #faf4bd;
   outline: 0;
 }
 button:disabled {
   opacity: 0.5;
 }
+/* ----btn */
 </style>

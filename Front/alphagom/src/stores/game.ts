@@ -19,6 +19,37 @@ import EndingBgm from "@/assets/music/backgroundmusic/onceagain_Ending.mp3";
 import router from "@/router";
 import { stringLiteral } from "@babel/types";
 
+// image import
+// alphagom
+import alphagom_stand from "/assets/image/alphagom_stand.png";
+// import alphagom_hello from "/assets/image/alphagom_hello.png";
+import alphagom_look_happy from "/assets/image/alphagom_look_happy.png";
+import alphagom_look_normal from "/assets/image/alphagom_look_normal.png";
+import alphagom_look_suprise from "/assets/image/alphagom_look_suprise.png";
+import alphagom_look_flustered from "/assets/image/alphagom_look_flustered.png";
+// bear
+import bear_stand from "/assets/image/bear_stand.png";
+import bear_look_cry from "/assets/image/bear_look_cry.png";
+import bear_look_happy from "/assets/image/bear_look_happy.png";
+import bear_look_normal from "/assets/image/bear_look_normal.png";
+// jara
+import jara_stand from "/assets/image/jara_stand.png";
+import jara_look_openly from "/assets/image/jara_look_openly.png";
+// rabbit
+import rabbit_stand from "/assets/image/rabbit_stand.png";
+// dragonKing
+import dragonKing_stand from "/assets/image/dragonKing_stand.png";
+// gyeonu
+import gyeonu_stand from "/assets/image/gyeonu_stand.png";
+import gyeonu_side from "/assets/image/gyeonu_side.png";
+// jiknyeo
+import Jiknyeo_side from "/assets/image/Jiknyeo_side.png";
+// textbox
+import dark_cave_textbox from "/assets/image/dark_cave_textbox.png";
+import swamp_textbox from "/assets/image/swamp_textbox.png";
+import magic_castle_textbox from "/assets/image/magic_castle_textbox.png";
+import sky_textbox from "/assets/image/sky_textbox.png";
+
 // vuex 를 사용할 대는 store/index.js 파일이 필요했지만,
 // pinia는 index.js 없이 모듈화 된 파일만 있으면 된다.
 
@@ -67,6 +98,8 @@ export const useGameStore = defineStore("game", () => {
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
+  const Modal = ref(true); // 게임 시작할 때, 게임 끝났을 때 모달 창 (키는 것 true)
+  const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   // 현재 effect
@@ -84,19 +117,19 @@ export const useGameStore = defineStore("game", () => {
   const imgBody = computed(() => {
     switch (char.value) {
       case "알파곰":
-        return "alphagom_stand";
+        return alphagom_stand;
       case "곰":
-        return "bear_stand";
+        return bear_stand;
       case "견우":
-        return "gyeonu_stand";
+        return gyeonu_stand;
       case "직녀":
-        return "jiknyeo_side";
+        return Jiknyeo_side;
       case "토끼":
-        return "rabbit_stand";
+        return rabbit_stand;
       case "자라":
-        return "jara_stand";
+        return jara_stand;
       case "용왕":
-        return "dragonKing_stand";
+        return dragonKing_stand;
       default:
         return "";
     }
@@ -104,11 +137,11 @@ export const useGameStore = defineStore("game", () => {
 
   // 이미지 url
   const getImgUrl = (img: String) => {
-    return new URL(`/image/${img}.png`, import.meta.url).href;
+    return new URL(`../../assets/image/${img}.png`, import.meta.url).href;
   };
 
   // 현재 stage 에서 진행할 게임 리스트
-  const gameList = computed(() => {
+  const stageGame = computed(() => {
     switch (stage.value) {
       case "sky":
         return stageViewDict.value.sky;
@@ -125,42 +158,41 @@ export const useGameStore = defineStore("game", () => {
   const textboxImg = computed(() => {
     switch (stage.value) {
       case "sky":
-        return "sky_textbox";
+        return sky_textbox;
       case "darkcave":
-        return "dark_cave_textbox";
+        return dark_cave_textbox;
       case "swamp":
-        return "swamp_textbox";
+        return swamp_textbox;
       case "MagicCastle":
-        return "magic_castle_textbox";
+        return magic_castle_textbox;
     }
   });
-  // 현재 stage 에서 재생할 bgm
-  const stageBgm = computed(() => {
-    switch (bgm.value) {
-      case "Home":
-        return bgmList.value[0];
-      case "sky":
-        return bgmList.value[4];
-      case "darkcave":
-        return bgmList.value[3];
-      case "swamp":
-        return bgmList.value[2];
-      case "MagicCastle":
-        return bgmList.value[1];
-      case "Ending":
-        return bgmList.value[5];
+
+  // 현재 script 에서 진행할 image 표정 리스트
+  const imgFace = computed(() => {
+    switch (faceImg.value) {
+      case "alphagom_look_happy":
+        return alphagom_look_happy;
+      case "alphagom_look_normal":
+        return alphagom_look_normal;
+      case "alphagom_look_suprise":
+        return alphagom_look_suprise;
+      case "alphagom_look_flustered":
+        return alphagom_look_flustered;
+      case "bear_look_cry":
+        return bear_look_cry;
+      case "bear_look_happy":
+        return bear_look_happy;
+      case "bear_look_normal":
+        return bear_look_normal;
+      case "jara_look_openly":
+        return jara_look_openly;
+      default:
+        return "";
     }
   });
 
   /* actions */
-
-  function setBGM(stageStr: string) {
-    if (bgm.value) {
-      bgm.value = stageStr;
-    } else {
-      bgm.value = stageStr;
-    }
-  }
 
   // start page에서 stage 이름 초기화
   function setStage(stageStr: string) {
@@ -208,11 +240,10 @@ export const useGameStore = defineStore("game", () => {
     });
   }
 
-  // BE 배포되기 전까지 임시
-  // BE 에서 의성어/의태어 게임 구성 요소 (문제, 답) 갖고오는 API
+  // BE api 요청
   async function getKingGame() {
     await axios({
-      url: api.test.testKingAI(),
+      url: api.game.getSwampWord(),
       method: "GET",
     }).then((response) => {
       GameList.value = response.data;
@@ -221,42 +252,54 @@ export const useGameStore = defineStore("game", () => {
 
   async function getBirdGame() {
     await axios({
-      url: api.test.testBirdAI(),
+      url: api.game.getSkyBird(),
       method: "GET",
     }).then((response) => {
       GameList.value = response.data;
     });
   }
 
+  async function getTongueGame() {
+    await axios({
+      url: api.game.getCaveTongue(),
+      method: "GET",
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
+
+  // 대사 type 에 따라 넘어가는 인덱스 설정
   function plusNum() {
-    scriptNum.value++;
-    isActive.value = false;
-
-    if (type.value == "game") {
-      const gameType = gameList.value[0];
-      router.push({ name: gameType });
-    }
-
-    if (type.value == "question") {
-      // 버튼 실행
-      isActive.value = true;
-
-      // yes 응답 => pass
-
-      // no 응답 => scriptNum.value++
-    }
-
     if (type.value == "yes") {
       scriptNum.value++;
+    }
+    scriptNum.value++;
+    isActive.value = false;
+    if (type.value == "game") {
+      const gameType = stageGame.value[0];
+      router.push({ name: gameType });
+    }
+    if (type.value == "question") {
+      isActive.value = true;
+    }
+  }
+
+  // 응, 아니 대답 후 대화로그 인덱스 지정
+  function checkyesorno() {
+    if (Answer.value === "응") {
+      scriptNum.value++;
+      isActive.value = false;
+    } else {
+      scriptNum.value = scriptNum.value + 2;
+      isActive.value = false;
     }
   }
 
   function skip() {
     dialog.value.script.forEach((element: any) => {
       scriptNum.value++;
-
       if (element.type == "game") {
-        const gameType = gameList.value[0];
+        const gameType = stageGame.value[0];
         router.push({ name: gameType });
       }
     });
@@ -266,7 +309,7 @@ export const useGameStore = defineStore("game", () => {
     //state
     stage,
     scriptNum,
-    bgm,
+    PassFail,
     SwampScore,
     DarkCaveScore,
     SkyScore,
@@ -278,6 +321,7 @@ export const useGameStore = defineStore("game", () => {
     Answer,
     VoiceOnOff,
     VoiceFile,
+    Modal,
     GameEnd,
 
     //computed
@@ -285,12 +329,12 @@ export const useGameStore = defineStore("game", () => {
     script,
     effect,
     type,
-    gameList,
+    stageGame,
     char,
     imgBody,
     faceImg,
     textboxImg,
-    stageBgm,
+    imgFace,
 
     //action
     setStage,
@@ -303,5 +347,7 @@ export const useGameStore = defineStore("game", () => {
     getBirdAI,
     getKingGame,
     getBirdGame,
+    checkyesorno,
+    getTongueGame,
   };
 });
