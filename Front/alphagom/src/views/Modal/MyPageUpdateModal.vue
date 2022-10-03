@@ -1,5 +1,5 @@
 <template>
-  <div v-if="updateModalOpen" class="score-modal" tabindex="-1">
+  <div v-if="updateModalOpen" class="mypage-update-modal" tabindex="-1">
     <div class="modal-content">
       <div class="modal-header">
         <!-- <h5 class="modal-title"></h5> -->
@@ -31,8 +31,8 @@ import { reactive } from '@vue/reactivity'
 export default {
   name: 'MyPageUpdateModal',
   components: {  },
-  props :{
-    updateModalOpen : Boolean,
+  props:{
+    updateModalOpen: Boolean,
   },
   setup() {
     const state = reactive({
@@ -65,12 +65,13 @@ export default {
 </script>
 
 <style scoped>
-.score-modal {
-  width: 60vw;
-  height: 70vh;
+.mypage-update-modal {
+  width: 400px;
+  height: 300px;
   border-radius: 18px;
   border: 18px dashed #94C178;
   background-color: #FAF4BD;
+  z-index: 90;
 
   display: flex;
   justify-content: center;

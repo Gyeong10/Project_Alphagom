@@ -31,7 +31,7 @@ export const useAuthStore = defineStore("auth", () => {
   // 토큰 저장
   function saveToken() {
     token.value = token.value
-    localStorage.setItem('token', token.value)
+    localStorage.setItem("token", token.value)
   }
   // 사용자 정보 가져오기
   function fetchUserInfo() {

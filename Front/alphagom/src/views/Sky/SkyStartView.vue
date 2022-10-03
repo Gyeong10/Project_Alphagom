@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="container-bg"></div>
     <BGSky />
     <BackButton class="back-btn" />
     <div class="game-title">
@@ -13,42 +14,50 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BGSky from "@/components/game/BGSky.vue";
 import BackButton from "@/components/BackButton.vue";
 import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
-import { ref, reactive } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import { useGameStore } from "@/stores/game";
 import router from "@/router";
+import { useBgStore } from "@/stores/bg"
 
-export default {
-  name: "SkyStartView",
-  components: {
-    BGSky,
-    BackButton,
-    Score,
-    PlayBar,
-  },
-  setup() {
-    const game = useGameStore();
-    const stage = reactive({ name: "sky" });
-    //reactive : 객체의 반응형 복사본을 반환합니다.
-    game.setStage(stage.name);
+// 배경 경로 수정
+onMounted (() => {
+  // store의 bgUrlState 값을 직접 변경
+  bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")'
+  console.log(bgStore.bgUrlState.value)
+})
+const bgStore = useBgStore()
+// state 감시자
+const bgwatching = computed(() => bgStore.bgUrlState)
 
-    // 3초 후 다음 뷰로 넘기기
-    setTimeout(() => {
-      router.push({
-        name: "skyDialogView",
-      });
-    }, 3000);
+const game = useGameStore();
+const stage = reactive({ name: "sky" });
+//reactive : 객체의 반응형 복사본을 반환합니다.
+game.setStage(stage.name);
 
-    return { stage };
-  },
-};
+// 3초 후 다음 뷰로 넘기기
+setTimeout(() => {
+  router.push({
+    name: "skyDialogView",
+  });
+}, 3000);
+
 </script>
 
 <style scoped>
+.container-bg {
+  position: absolute;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  top: 0px;
+  left: 0px;
+  width: 926px;
+  height: 428px;
+} 
 .container {
   display: flex;
   justify-content: center;
