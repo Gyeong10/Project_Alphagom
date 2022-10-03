@@ -7,6 +7,18 @@ import { defineStore } from "pinia";
 import DarkcaveLine from "@/assets/dialog/DarkcaveLine.json";
 import SkyLine from "@/assets/dialog/SkyLine.json";
 import SwampLine from "@/assets/dialog/SwampLine.json";
+<<<<<<< Updated upstream
+=======
+import MagicCastle from "@/assets/dialog/MagicCastle.json";
+
+import HomeBgm from "@/assets/music/backgroundmusic/memories_Home.mp3";
+import MagiccastleBgm from "@/assets/music/backgroundmusic/anewbeginning_Magiccastle.mp3";
+import SwampBgm from "@/assets/music/backgroundmusic/inspire_Seaking.mp3";
+import CaveBgm from "@/assets/music/backgroundmusic/littleidea_Cave.mp3";
+import SkyBgm from "@/assets/music/backgroundmusic/adventure_Skymain.mp3";
+import EndingBgm from "@/assets/music/backgroundmusic/onceagain_Ending.mp3";
+
+>>>>>>> Stashed changes
 import router from "@/router";
 import { stringLiteral } from "@babel/types";
 
@@ -19,17 +31,29 @@ export const useGameStore = defineStore("game", () => {
   /* state */
   const stage = ref(""); // 해당 스테이지 이름
   const dialog = ref(); // 해당 스테이지 dialog
+  const bgm = ref(""); // 스테이지에 bgm 넣기
   const scriptNum = ref(0); // 현재 스크립트 번호
   const SwampScore = ref(5000); // 게임별 점수
   const DarkCaveScore = ref(2500);
   const SkyScore = ref(2500);
   const isActive = ref(false); // 응아니 버튼
+  const AudioState = ref(false);
   const dialogList = ref([
     // Dialog list
     DarkcaveLine,
     SkyLine,
     SwampLine,
   ]);
+
+  const bgmList = ref([
+    HomeBgm,
+    MagiccastleBgm,
+    SwampBgm,
+    CaveBgm,
+    SkyBgm,
+    EndingBgm,
+  ]);
+
   const stageViewDict = ref({
     // stage view dict
     darkcave: ["darkCaveStartView"],
@@ -63,9 +87,9 @@ export const useGameStore = defineStore("game", () => {
   const type = computed(() => script.value.type);
   // 현재 char
   const char = computed(() => script.value.char);
-  // 현재 스크립트 
+  // 현재 스크립트
   const script = computed(() => dialog.value.script[scriptNum.value]);
-  // 현재 표정 이미지 
+  // 현재 표정 이미지
   const faceImg = computed(() => dialog.value.script[scriptNum.value].imgFace);
 
 
@@ -87,14 +111,14 @@ export const useGameStore = defineStore("game", () => {
       case "용왕":
         return "dragonKing_stand";
       default:
-        return ""
+        return "";
     }
   });
 
   // 이미지 url
   const getImgUrl = (img: String) => {
     return new URL(`./../assets/image/${img}.png`, import.meta.url).href;
-}
+  };
 
   // 현재 stage 에서 진행할 게임 리스트
   const gameList = computed(() => {
@@ -107,13 +131,37 @@ export const useGameStore = defineStore("game", () => {
         return stageViewDict.value.swamp;
     }
   });
+  // 현재 stage 에서 재생할 bgm
+  const stageBgm = computed(() => {
+    switch (bgm.value) {
+      case "Home":
+        return bgmList.value[0];
+      case "sky":
+        return bgmList.value[4];
+      case "darkcave":
+        return bgmList.value[3];
+      case "swamp":
+        return bgmList.value[2];
+      case "MagicCastle":
+        return bgmList.value[1];
+      case "Ending":
+        return bgmList.value[5];
+    }
+  });
 
   /* actions */
-  
+
+  function setBGM(stageStr: string) {
+    if (bgm.value) {
+      bgm.value = stageStr
+    } else {
+      bgm.value = stageStr;
+    }
+  }
+
   // start page에서 stage 이름 초기화
   function setStage(stageStr: string) {
     stage.value = stageStr;
-
     // 해당 스테이지의 전체 대화를 가져온다.
     dialogList.value.forEach((element) => {
       if (element.stage == stage.value) {
@@ -122,6 +170,7 @@ export const useGameStore = defineStore("game", () => {
       }
     });
   }
+
   // Flask 에서 의성어/의태어 플레이어 게임 결과값 갖고 오는 API
   async function getKingAI(payload: any) {
     await axios({
@@ -177,57 +226,50 @@ export const useGameStore = defineStore("game", () => {
   }
 
   function plusNum() {
-    scriptNum.value++
+    scriptNum.value++;
     isActive.value = false;
 
     if (type.value == "game") {
-      
       const gameType = gameList.value[0];
-      router.push({name : gameType});
-
+      router.push({ name: gameType });
     }
 
     if (type.value == "question") {
       // 버튼 실행
       isActive.value = true;
-      
+
       // yes 응답 => pass
-      
+
       // no 응답 => scriptNum.value++
     }
 
     if (type.value == "yes") {
-      scriptNum.value++
+      scriptNum.value++;
     }
-
-
   }
 
   function skip() {
+    dialog.value.script.forEach((element: any) => {
+      scriptNum.value++;
 
-    dialog.value.script.forEach((element: any)=> {
-
-      scriptNum.value++
-      
       if (element.type == "game") {
-        
         const gameType = gameList.value[0];
-        router.push({name : gameType});
+        router.push({ name: gameType });
       }
-
-    })
+    });
   }
-  
-  return { 
 
+  return {
     //state
     stage,
     scriptNum,
+    bgm,
     SwampScore,
     DarkCaveScore,
     SkyScore,
     dialogList,
     stageViewDict,
+    AudioState,
     isActive,
     GameList,
     Answer,
@@ -244,11 +286,17 @@ export const useGameStore = defineStore("game", () => {
     char,
     imgBody,
     faceImg,
+<<<<<<< Updated upstream
+=======
+    textboxImg,
+    stageBgm,
+>>>>>>> Stashed changes
 
     //action
     setStage,
     plusNum,
     skip,
+    setBGM,
     getImgUrl,
     getKingAI,
     getCheckAI,
