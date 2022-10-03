@@ -47,6 +47,8 @@ export const useGameStore = defineStore("game", () => {
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
+  const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
+
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   // 현재 effect
@@ -55,9 +57,9 @@ export const useGameStore = defineStore("game", () => {
   const type = computed(() => script.value.type);
   // 현재 char
   const char = computed(() => script.value.char);
-  // 현재 스크립트 
+  // 현재 스크립트
   const script = computed(() => dialog.value.script[scriptNum.value]);
-  // 현재 표정 이미지 
+  // 현재 표정 이미지
   const faceImg = computed(() => dialog.value.script[scriptNum.value].imgFace);
 
   // 현재 전신 이미지
@@ -78,14 +80,14 @@ export const useGameStore = defineStore("game", () => {
       case "용왕":
         return "dragonKing_stand";
       default:
-        return ""
+        return "";
     }
   });
 
   // 이미지 url
   const getImgUrl = (img: String) => {
     return new URL(`/image/${img}.png`, import.meta.url).href;
-}
+  };
 
   // 현재 stage 에서 진행할 게임 리스트
   const gameList = computed(() => {
@@ -116,7 +118,7 @@ export const useGameStore = defineStore("game", () => {
   });
 
   /* actions */
-  
+
   // start page에서 stage 이름 초기화
   function setStage(stageStr: string) {
     stage.value = stageStr;
@@ -184,52 +186,44 @@ export const useGameStore = defineStore("game", () => {
   }
 
   function plusNum() {
-    scriptNum.value++
+    scriptNum.value++;
     isActive.value = false;
 
     if (type.value == "game") {
-      
       const gameType = gameList.value[0];
-      router.push({name : gameType});
-
+      router.push({ name: gameType });
     }
 
     if (type.value == "question") {
       // 버튼 실행
       isActive.value = true;
-      
+
       // yes 응답 => pass
-      
+
       // no 응답 => scriptNum.value++
     }
 
     if (type.value == "yes") {
-      scriptNum.value++
+      scriptNum.value++;
     }
-
-
   }
 
   function skip() {
+    dialog.value.script.forEach((element: any) => {
+      scriptNum.value++;
 
-    dialog.value.script.forEach((element: any)=> {
-
-      scriptNum.value++
-      
       if (element.type == "game") {
-        
         const gameType = gameList.value[0];
-        router.push({name : gameType});
+        router.push({ name: gameType });
       }
-
-    })
+    });
   }
-  
-  return { 
 
+  return {
     //state
     stage,
     scriptNum,
+    PassFail,
     SwampScore,
     DarkCaveScore,
     SkyScore,
