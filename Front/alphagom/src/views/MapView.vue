@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <text class="title">탐험하기</text>
+    <div class="title">탐험하기</div>
+    <BackButton class="back-btn" />
     <div class="map-road-cont">
       <img class="img-map-road" src="/assets/image/map-road.svg" alt="지도 도로" />
     </div>
@@ -47,6 +48,7 @@
   </div>
 </template>
 <script setup>
+import BackButton from "@/components/BackButton.vue";
 import { useRouter, useRoute } from 'vue-router';
 import { useBgStore } from "@/stores/bg"
 import { computed, onMounted } from 'vue'
@@ -79,10 +81,6 @@ const clickMapItem = name => {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  justify-content: center;
-}
 .container-bg {
   position: absolute;
   background-color: transparent;
@@ -99,6 +97,13 @@ const clickMapItem = name => {
   font-weight: 800;
   color: #483737;
   top: 8px;
+  left: 418px;
+  white-space: nowrap;
+}
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 884px;
 }
 .map-road-cont {
   position: absolute;
@@ -118,7 +123,7 @@ const clickMapItem = name => {
 }
 .map-cont {
   position: absolute;
-  left: 12px;
+  left: 0;
 }
 /* 이미지 크기 */
 .img-magic-castle {

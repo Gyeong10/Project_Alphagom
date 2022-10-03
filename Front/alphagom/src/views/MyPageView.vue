@@ -1,7 +1,7 @@
 <template>
   <div class="box-cont">
     <div class="container-bg"></div>
-    <text class="title">내 정보</text>
+    <text class="top-title">내 정보</text>
     <div class="box">
       <div class="box-header">
         <button class="btn-edit" @click="openUpdateMypage" style="cursor: pointer">
@@ -103,7 +103,7 @@ console.log("userInfoTest:" + userInfo.value.profile)
   display: flex;
   justify-content: center;
 }
-.title {
+.top-title {
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-size: 24px;
   font-weight: 800;
