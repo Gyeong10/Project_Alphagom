@@ -78,8 +78,8 @@ export const useGameStore = defineStore("game", () => {
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
 
+  const Modal = ref(true); // 게임 시작할 때, 게임 끝났을 때 모달 창 (키는 것 true)
   const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
-
   const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   // 현재 effect
@@ -202,7 +202,7 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.game.yesOrNo(),
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "multipart/form-data"},
       data: payload,
     }).then((response) => {
       Answer.value = response.data;
@@ -220,11 +220,10 @@ export const useGameStore = defineStore("game", () => {
     });
   }
 
-  // BE 배포되기 전까지 임시
-  // BE 에서 의성어/의태어 게임 구성 요소 (문제, 답) 갖고오는 API
+  // BE api 요청
   async function getKingGame() {
     await axios({
-      url: api.test.testKingAI(),
+      url: api.game.getSwampWord(),
       method: "GET",
     }).then((response) => {
       GameList.value = response.data;
@@ -233,8 +232,19 @@ export const useGameStore = defineStore("game", () => {
 
   async function getBirdGame() {
     await axios({
-      url: api.test.testBirdAI(),
+      url: api.game.getSkyBird(),
       method: "GET",
+
+    }).then((response) => {
+      GameList.value = response.data;
+    });
+  }
+
+  async function getTongueGame() {
+    await axios({
+      url: api.game.getCaveTongue(),
+      method: "GET",
+
     }).then((response) => {
       GameList.value = response.data;
     });
@@ -292,6 +302,7 @@ export const useGameStore = defineStore("game", () => {
     Answer,
     VoiceOnOff,
     VoiceFile,
+    Modal,
     GameEnd,
 
     //computed
@@ -317,5 +328,6 @@ export const useGameStore = defineStore("game", () => {
     getKingGame,
     getBirdGame,
     checkyesorno,
+    getTongueGame,
   };
 });

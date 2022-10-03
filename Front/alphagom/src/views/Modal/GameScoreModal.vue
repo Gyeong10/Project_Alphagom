@@ -1,11 +1,6 @@
 <template>
-  <div>우와아아 점수다</div>
   <div v-if="stageclear" class="score-modal" tabindex="-1">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h5 class="modal-title"></h5>
-        <button @click="$emit('update:stageclear', !stageclear)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
       <br>
       <div class="modal-body">
         <ul>
@@ -15,38 +10,20 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <span @click="$emit('update:stageclear', !stageclear)" type="button" class="next-btn" data-bs-dismiss="modal">다음 탐험으로</span>        
+        <span type="button" class="next-btn" data-bs-dismiss="modal">다음 탐험으로</span>        
       </div>
     </div>
   </div>
 
 </template>
 
-<script>
+<script setup>
 // import { reactive } from '@vue/reactivity'
-export default {
-  name: 'GameScoreModal',
-  components: {  },
-  props :{
-    stageclear : Boolean,
-  },
-  setup() {
-    // const state = reactive({
-    // })
 
-    const ScoreModalClose = () => {
-      console.log(this.stageclear)
-      this.$emit('update:stageclear', false)
-        
-    }
-
-    return {
-      ScoreModalClose,
-      // state
-
-    }
-  }
+const ScoreModalClose = () => {
+  // stageclear 가 false   
 }
+
 </script>
 
 <style scoped>
@@ -76,6 +53,5 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 
 </style>

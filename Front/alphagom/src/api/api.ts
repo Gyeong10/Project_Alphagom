@@ -1,5 +1,5 @@
-// 배포 전까지 임시 로컬 호스트
 const HOST = "https://j7d210.p.ssafy.io/api/";
+
 
 const BE = "be/";
 const AI = "ai/";
