@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
+    <text class="title">탐험하기</text>
     <div class="map-road-cont">
       <img class="img-map-road" src="/image/map-road.svg" alt="지도 도로" />
     </div>
@@ -78,6 +79,10 @@ const clickMapItem = name => {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+}
 .container-bg {
   position: absolute;
   background-color: transparent;
@@ -86,6 +91,14 @@ const clickMapItem = name => {
   left: 0px;
   width: 926px;
   height: 428px;
+}
+.title {
+  position: absolute;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #483737;
+  top: 8px;
 }
 .map-road-cont {
   position: absolute;
@@ -104,7 +117,8 @@ const clickMapItem = name => {
   align-items: center;
 }
 .map-cont {
-  position: relative;
+  position: absolute;
+  left: 12px;
 }
 /* 이미지 크기 */
 .img-magic-castle {
@@ -123,7 +137,7 @@ const clickMapItem = name => {
   width: 285px;
   height: 128px;
 }
-/* 컨테이너 크기 */
+/* 컨테이너 위치 */
 .magic-castle {
   position: absolute;
   top: 79px;
@@ -146,7 +160,9 @@ const clickMapItem = name => {
 }
 text {
   position: relative;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-size: 24px;
-  font-weight: bolder;
+  font-weight: 800;
+  color: #483737;
 }
 </style>

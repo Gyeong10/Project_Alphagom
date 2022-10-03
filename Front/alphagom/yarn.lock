@@ -2460,6 +2460,11 @@
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.1.2.tgz"
   "version" "1.1.2"
 
+"pretendard@^1.3.5":
+  "integrity" "sha512-psAofzXXOI9nAxNljTgTR27LDkjt9w1wzuuD2QCrlZQ4ppgdUwRbmMHZtbTNsvcLeyUn7nqYwFbeCL++QKV6iA=="
+  "resolved" "https://registry.npmjs.org/pretendard/-/pretendard-1.3.5.tgz"
+  "version" "1.3.5"
+
 "prettier-linter-helpers@^1.0.0":
   "integrity" "sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w=="
   "resolved" "https://registry.npmjs.org/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz"
