@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container-bg"></div>
+    <KingCureGameModal v-if="openmodal"/>
     <PassorFail v-if="passorfail" />
     <BackButton class="back-btn" />
 
@@ -13,36 +14,37 @@
         <button v-else @click="getNextPage()">전부 통과! 축하해!</button>
       </div>
       <div v-if="passorfail === 'failbutton'">
-        <button @click="getRecord()">다시 해보자dkkdkkkkkk!</button>
+        <button @click="getRecord()">다시 해보자!</button>
       </div>
     </div>
-  </div>
+  
 
-  <!--문제 템플릿-->
-  <div v-if="problems">
-    <div class="game-sentence">
-      <h2>{{ problems[probidx].sentance }}</h2>
-    </div>
-    <div
-      class="game"
-      v-for="(exam, idx) in problems[probidx].example"
-      :key="idx"
-    >
-      <h3>{{ exam }}</h3>
-    </div>
-    <div class="game">
-      <div v-if="!recordcall" @click="getRecord()">
-        <img class="samgyetang" src="/assets/image/chicken_soup.png" width="200" />
-        <div v-show="!answer" class="game-howto">
-          음식을 누르고<br />
-          보기 중 정답을 골라 말해줘!
-        </div>
+    <!--문제 템플릿-->
+    <div v-if="problems">
+      <div class="game-sentence">
+        <h2>{{ problems[probidx].sentance }}</h2>
       </div>
-      <MicRecord class="game-count" v-if="recordcall" />
-    </div>
-    <div class="bottom-items">
-      <PlayBar></PlayBar>
-      <Score style="margin-top: 3px"></Score>
+      <div
+        class="game"
+        v-for="(exam, idx) in problems[probidx].example"
+        :key="idx"
+      >
+        <h3>{{ exam }}</h3>
+      </div>
+      <div class="game">
+        <div v-if="!recordcall" @click="getRecord()">
+          <img class="samgyetang" src="/assets/image/chicken_soup.png" width="200" />
+          <div v-show="!answer" class="game-howto">
+            음식을 누르고<br />
+            보기 중 정답을 골라 말해줘!
+          </div>
+        </div>
+        <MicRecord class="game-count" v-if="recordcall" />
+      </div>
+      <div class="bottom-items">
+        <PlayBar></PlayBar>
+        <Score style="margin-top: 3px"></Score>
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +58,7 @@ import { useBgStore } from "@/stores/bg";
 import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import BackButton from "@/components/BackButton.vue";
+import KingCureGameModal from "@/views/Modal/HowTo/KingCureGameModal.vue"
 import PassorFail from "@/components/game/PassorFail.vue";
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
