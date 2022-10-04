@@ -1,20 +1,20 @@
 <template>
   <div>
     <div class="container-bg"></div>
-    <KingCureGameModal v-if="openmodal"/>
+    <KingCureGameModal v-if="Modal" />
     <PassorFail v-if="PassFail" />
     <BackButton class="back-btn" />
 
     <!--버튼-->
     <div>
       <div v-if="PassFail === 'passbutton'">
-        <button v-if="!GameEnd" @click="getProb()">
+        <button v-if="!nextpage" @click="getProb()">
           다음 문제로 가보자구!
         </button>
         <button v-else @click="getNextPage()">전부 통과! 축하해!</button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button @click="getRecord()">다시 해보자!</button>
+        <button @click="getRecord()">다시 해보자dkkdkkkkkk!</button>
       </div>
     </div>
   </div>
@@ -33,13 +33,24 @@
     </div>
     <div class="game">
       <div v-if="!VoiceOnOff" @click="getRecord()">
-        <img class="samgyetang" src="/assets/image/chicken_soup.png" width="200" />
+        <img
+          v-if="GameList[0].sentance === '물을 ** 끓여 손질된 닭을 넣어요'"
+          class="samgyetang"
+          src="/assets/image/chicken_soup.png"
+          width="200"
+        />
+        <img
+          v-if="GameList[0].sentance === '물을 ** 끓여 된장을 넣어요'"
+          class="dwenjangjjigae"
+          src="/assets/image/dwenjangjjigae.png"
+          width="200"
+        />
         <div v-show="!Answer" class="game-howto">
           음식을 누르고<br />
           보기 중 정답을 골라 말해줘!
         </div>
       </div>
-      <MicRecord class="game-count" v-if="VoiceOnOff" />
+      <MicRecord class="game-count" v-if="recordcall" />
     </div>
     <div class="bottom-items">
       <PlayBar></PlayBar>
@@ -78,7 +89,7 @@ const route = useRoute()
 const router = useRouter()
 
 // 진입할 때 모달 창 띄우는 state
-const openmodal = computed(() => store.Modal)
+const Modal = computed(() => store.Modal)
 
 // 내부 요소들 선언
 const GameList = computed(() => store.GameList); // 의성어/의태어 구성 요소 (문제, 답) 저장
