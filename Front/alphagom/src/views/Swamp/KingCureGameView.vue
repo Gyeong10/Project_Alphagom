@@ -154,7 +154,11 @@ const interval = setInterval(() => {
 
 // 다시 에필로그 페이지로 렌더링 (라우터 재설정 필요! 에필로그 페이지로 렌더링 되도록)
 const getNextPage = () => {
-  router.go(-1);
+  console.log(this.scriptNum);
+  router.push({
+    name: "swampDialog",
+    params: { scriptNum: store.scriptNum },
+  });
   store.PassFail = null;
 };
 </script>
