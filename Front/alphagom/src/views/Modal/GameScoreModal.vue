@@ -18,7 +18,6 @@
 </template>
 
 <script setup>
-// import { reactive } from '@vue/reactivity'
 
 const ScoreModalClose = () => {
   // stageclear 가 false   

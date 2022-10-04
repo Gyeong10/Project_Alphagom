@@ -61,22 +61,30 @@
       "char": "알파곰",
       "line1": "그러고보니 넌 이름이 뭐니?",
       "line2": "",
-      "type": "story",
+      "type": "nickname",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
-      "line1": "",
-      "line2": "",
-      "type": "story",
+      "line1": "!!",
+      "line2": "이게 네 이름이 맞아?",
+      "type": "check",
       "effect": "",
       "imgFace": ""
     },
     {
       "char": "알파곰",
-      "line1": "",
+      "line1": "앗, 아니구나! 그러면 다시 이야기해줘!",
       "line2": "",
+      "type": "nicknameAgain",
+      "effect": "",
+      "imgFace": ""
+    },
+    {
+      "char": "알파곰",
+      "line1": "좋아! 이제 이름도 알았네!",
+      "line2": "반가워!",
       "type": "story",
       "effect": "",
       "imgFace": ""
@@ -85,7 +93,7 @@
       "char": "알파곰",
       "line1": "자 그럼, 탐험을 시작해볼까? 앞에 문이 보이지?",
       "line2": "저기에 적힌 마법의 문장을 읽으면 탐험의 문이 열릴거야!",
-      "type": "game",
+      "type": "sentance",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     }   

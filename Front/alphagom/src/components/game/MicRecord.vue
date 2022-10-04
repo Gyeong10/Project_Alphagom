@@ -14,10 +14,12 @@ import { useGameStore } from "@/stores/game";
 import { ref, reactive, computed } from "vue";
 
 const store = useGameStore();
-const recordfile = computed(() => store.VoiceFile);
-const recordcall = computed(() => store.VoiceOnOff); // 녹음기능 켜기 (true)와 끄기 (false)
+const VoiceFile = computed(() => store.VoiceFile);
+const VoiceOnOff = computed(() => store.VoiceOnOff); // 녹음기능 켜기 (true)와 끄기 (false)
+const RecordTime = computed(() => store.RecordTime); // 녹음기능 시간 주기
 const record = reactive({ state: false });
 const audioPlayer = ref();
+
 let timer = ref(3); // 3초 뒤 녹음 시작하기 위한 timer
 const timercount = computed(() => timer); // timer 변화를 담을 state (3 -> 2 -> 1)
 
@@ -31,14 +33,19 @@ let data = new FormData(); // 녹음된 음성을 담을 데이터
 const changecall = () => {
   store.VoiceOnOff = false;
 };
-// 녹음기능 시작하며 setTimeout으로 1초만 녹음 하도록 해뒀다
-// 여기에 1초를 나타낼 상태바 필요할 듯
+
+// 녹음기능 시작하며 setTimeout으로 지정 시간만 녹음 하도록 해뒀다
+// 여기에 지정시간을 나타낼 상태바 필요할 듯
+
+// nickname, yesorno 같은 경우 이미 store 에서 녹음 시간을 지정해뒀다
+// 하지만 게임 view 에서는 미리 녹음 시간 state 줘야 한다
+
 const startRecording = () => {
   record.state = true;
   recorder.start();
   setTimeout(() => {
     recorder.stop();
-  }, 1000);
+  }, store.RecordTime );
 };
 // 녹음 시작 전 3 초간 타이머
 const interval = setInterval(() => {

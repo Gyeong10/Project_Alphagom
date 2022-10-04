@@ -9,6 +9,8 @@
     <div class="scriptText">
       <!-- <h1>{{ store.getImgUrl(game.textboxImg) }}</h1> -->
       <h1>{{ store.script.char }}</h1>
+      <!-- 조건 줘서 name 필요할 때만 불러야함!-->
+      <p>{{ name }}</p>
       <p>{{ store.script.line1 }}</p>
       <p>{{ store.script.line2 }}</p>
     </div>
@@ -35,6 +37,7 @@ const store = useGameStore();
 const recordcall = computed(() => store.VoiceOnOff); // 녹음기능 켜고(true) 끄는(false) 값 저장
 const recordfile = computed(() => store.VoiceFile); // 녹음된 파일 들고오기
 const answer = computed(() => store.Answer); // Flask 에서 들고 온 플레이어의 답 저장
+const name = computed(() => store.Nickname) // 별명 store 에 저장
 
 // true 값이면 녹음기가 켜진다 (MicRecord.Vue)
 const getRecord = () => {
@@ -42,9 +45,9 @@ const getRecord = () => {
 };
 
 // watch 로 녹음 파일 들어오는지 확인 후 바로 API 함수 실행
-watch(recordfile, () => store.getCheckAI(store.VoiceFile));
-// watch 로 answer 들어오는지 확인 후 바로 checkyesorno (대사 넘기기) 함수 실행
-watch(answer, () => store.checkyesorno());
+watch(recordfile, () => store.sendAIAPI(store.VoiceFile));
+// watch 로 answer 들어오는지 확인 후 바로 대사 넘기기 함수 실행
+watch(answer, () => store.checkindex());
 
 const game = useGameStore();
 </script>

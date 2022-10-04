@@ -1,4 +1,6 @@
 const HOST = "https://j7d210.p.ssafy.io/api/";
+// 닉네임 테스트 호스트
+const TESTHOST = "http://127.0.0.1:5678/api/"
 
 
 const BE = "be/";
@@ -50,6 +52,8 @@ export default {
     aiSwampWord: () => HOST + AI + `swamp/` + `word`,
     // 새 이름 인식
     aiSkyBird: () => HOST + AI + `sky/` + `bird`,
+    // stt 
+    aiStt: () => HOST + AI + `stt`,
   },
   rank: {
     // 전체 유저 랭크 조회
@@ -58,9 +62,8 @@ export default {
     getUserRank: (userId: number, tag: string) =>
       HOST + BE + RANK + `user/` + `${userId}` + `${tag}`,
   },
+  // 닉네임 테스트
   test: {
-    testApi: () => `http://localhost:8080/api/v1/` + `test`,
-    testKingAI: () => HOST + AI + `king`,
-    testBirdAI: () => HOST + AI + `bird`,
+    testNicknameAI: () => TESTHOST + AI + `stt`,
   },
 };
