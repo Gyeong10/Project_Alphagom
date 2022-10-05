@@ -8,11 +8,11 @@ import { defineStore } from "pinia";
 
 // 이름을 가지는 내보내기를 할 때 보통 이름 앞에 use를 붙여 사용한다.
 export const useBgStore = defineStore("bg", () => {
-    // state
-    const bgUrlState = ref("")
+  // state
+  const bgUrlState = ref("");
 
-    return {
-        // state
-        bgUrlState,
-    }
+  return {
+    // state
+    bgUrlState,
+  };
 });

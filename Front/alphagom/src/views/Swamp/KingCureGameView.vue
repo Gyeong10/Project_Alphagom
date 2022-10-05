@@ -164,7 +164,6 @@ watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
-  console.log(store.Answer);
   if (store.Answer) {
     if (
       store.GameList[probidx.value].answer === store.Answer.answer &&
