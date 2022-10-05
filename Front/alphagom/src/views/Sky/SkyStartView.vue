@@ -24,18 +24,23 @@ import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import { ref, reactive, computed, onMounted } from "vue";
 import { useGameStore } from "@/stores/game";
-import { useBgStore } from "@/stores/bg"
+import { useBgStore } from "@/stores/bg";
+import { useSettingStore } from "@/stores/setting";
 import router from "@/router";
 
 // 배경 경로 수정
-onMounted (() => {
+onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")'
-  console.log(bgStore.bgUrlState.value)
-})
-const bgStore = useBgStore()
+  bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")';
+  console.log(bgStore.bgUrlState.value);
+
+  const bgmTitle = computed(() => settingStore.bgmTitle);
+  settingStore.setBGM("SKY");
+});
+const bgStore = useBgStore();
+const settingStore = useSettingStore();
 // state 감시자
-const bgwatching = computed(() => bgStore.bgUrlState)
+const bgwatching = computed(() => bgStore.bgUrlState);
 
 const game = useGameStore();
 const stage = reactive({ name: "sky" });
@@ -48,13 +53,12 @@ setTimeout(() => {
     name: "skyDialogView",
   });
 }, 3000);
-
 </script>
 
 <style scoped>
 .container-bg {
   position: absolute;
-  background-color:rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -72,15 +76,21 @@ setTimeout(() => {
   position: absolute;
   top: 370px;
   left: 878px;
-  color: #FAF4BD;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color: #faf4bd;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 24px;
   font-weight: 800;
   white-space: nowrap;
 }
 .top-title {
   position: absolute;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 24px;
   font-weight: 800;
   color: #fff;
@@ -96,9 +106,10 @@ setTimeout(() => {
   top: 173px;
   left: 362px;
 }
-.title, .subTitle {
+.title,
+.subTitle {
   color: #fff;
-  font-family: 'Noto Serif KR', serif;
+  font-family: "Noto Serif KR", serif;
   font-weight: 800;
   white-space: nowrap;
 }
