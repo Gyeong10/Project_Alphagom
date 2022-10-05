@@ -1,5 +1,6 @@
 <template>
   <div class="navBar">
+    <BackGroundMusic />
     <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
       <!-- sidebar -->
       <!-- <div class="logo">
@@ -66,6 +67,7 @@ import {
 } from "@heroicons/vue/24/outline";
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import BackGroundMusic from "@/components/BackGroundMusic.vue";
 import { storeToRefs } from "pinia";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
@@ -79,8 +81,8 @@ const ToggleMenu = () => {
 };
 
 const store = useAuthStore();
-const { userInfo } = storeToRefs(store)
-console.log(userInfo.userNickname)
+const { userInfo } = storeToRefs(store);
+console.log(userInfo.userNickname);
 </script>
 
 <style lang="scss">
@@ -180,7 +182,6 @@ aside {
         transition: 0.2s ease-out;
         margin: 0.25rem;
         margin-left: 1rem;
-        
       }
       .text {
         color: var(--dark-red);

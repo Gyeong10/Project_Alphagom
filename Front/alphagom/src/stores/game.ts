@@ -51,6 +51,7 @@ export const useGameStore = defineStore("game", () => {
   /* state */
   const stage = ref(""); // 해당 스테이지 이름
   const dialog = ref(); // 해당 스테이지 dialog
+  const bgm = ref(""); // 스테이지에 bgm 넣기
   const scriptNum = ref(0); // 현재 스크립트 번호
   const score = ref(3000); // 게임별 점수
   const isActive = ref(false); //  Dialog 에서 '대답하기!' 버튼 활성화 (true)
@@ -182,7 +183,6 @@ export const useGameStore = defineStore("game", () => {
    */
   function setStage(stageStr: string) {
     stage.value = stageStr;
-
     // 해당 스테이지의 전체 대화를 가져온다.
     dialogList.value.forEach((element) => {
       if (element.stage == stage.value) {
@@ -466,6 +466,7 @@ export const useGameStore = defineStore("game", () => {
     setStage,
     plusNum,
     skip,
+    // setBGM,
     getImgUrl,
     getKingAI,
     getCheckAI,
@@ -476,5 +477,6 @@ export const useGameStore = defineStore("game", () => {
     getTongueGame,
     getSTTAI,
     sendAIAPI,
+    updateModal,
   };
 });
