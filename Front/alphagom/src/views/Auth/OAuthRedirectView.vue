@@ -1,29 +1,11 @@
 <template>
-  <div>
-    <div class="userInfo">
-      <h3>이름</h3>
-      <input 
-        type="text"
-        v-model="form.name"
-        required
-        >
-      <h3>이메일</h3>
-      <input 
-        type="text"
-        v-text="form.email"
-        v-model="form.email"
-        required
-        disabled
-        >
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <script setup>
 import { useAuthStore } from "@/stores/auth";
 import { useRoute, useRouter } from "vue-router";
-import { ref } from "vue";
-
+import { ref, computed } from "vue";
 
 import axios from "axios";
 
@@ -32,33 +14,25 @@ const route = useRoute();
 const router = useRouter();
 
 const codes = route.query.code;
-const form = ref({
-  password: "",
-  email: "",
-  name: "",
-});
+// const accessToken = store.token;
+// const refreshToken = computed(() => store.refreshToken);
 
 function getToken() {
-  console.log("code : " + codes)
+  console.log("code : " + codes);
   axios
     .get("http://localhost:8080/api/be/klogin?authorize_code=" + codes)
     .then((res) => {
       console.log(res.data);
-      form.value.email = res.data.email;
-      form.value.password = res.data.id;
-      if (form.value.password == undefined) {
-        alert("잘못된 접근");
-        router.replace("/");
-      } else {
-        alert("성공");
-      }
-    })
+      store.userInfo.userId = res.data.id;
+      store.saveToken(res.data.accessToken, res.data.refreshToken);
+      store.fetchUserInfo();
+      router.replace("/");
+    });
 }
 
 if (codes) {
   getToken(codes);
 }
-
 
 // if (token) {
 //   store.saveToken(token);

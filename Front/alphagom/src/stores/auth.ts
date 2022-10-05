@@ -1,6 +1,6 @@
 import api from "@/api/api";
 import axios from "axios";
-import { ref, computed } from "vue";
+import { ref, reactive, computed } from "vue";
 import { defineStore } from "pinia";
 
 // vuex 를 사용할 대는 store/index.js 파일이 필요했지만,
@@ -10,18 +10,18 @@ import { defineStore } from "pinia";
 export const useAuthStore = defineStore("auth", () => {
   // state
   // const userInfo = ref(null); // 사용자 정보
-  const userInfo = ref({
+  const userInfo = reactive({
     // 더미 데이터~~
-    userId: 7,
-    username: "이미현",
-    userNickname: "이면",
-    email: "alphagom@ssafy.com",
-    // profile: 'https://www.snsboom.co.kr/common/img/default_profile.png',
+    userId: 0,
+    username: "",
+    userNickname: "",
+    email: "",
     profile:
       "https://item.kakaocdn.net/do/862539f7f2171437385154b3b749990f7154249a3890514a43687a85e6b6cc82",
-    rank: "100",
+    rank: 0,
   });
   const token = ref(localStorage.getItem("token") || "");
+  const refreshToken = ref("");
 
   // getters
   const recentUserInfo = computed(() => userInfo);
@@ -34,21 +34,23 @@ export const useAuthStore = defineStore("auth", () => {
 
   // actions
   // 토큰 저장
-  function saveToken() {
-    token.value = token.value;
+  function saveToken(mytoken: string, myefreshToken: string) {
+    token.value = mytoken;
+    refreshToken.value = myefreshToken;
     localStorage.setItem("token", token.value);
   }
   // 사용자 정보 가져오기
   function fetchUserInfo() {
     axios({
-      url: api.user.getUser(userInfo.value.userId),
-      // url: "http://localhost:8080/api/be/user/1234",
+      // url: api.user.getUser(userInfo.userId),
+      url: "http://localhost:8080/api/be/user/" + `${userInfo.userId}`,
       method: "get",
       // headers: authHeader
       headers: authHeader.value.valueOf.prototype,
     })
       .then((res) => {
-        userInfo.value = res.data.body.data;
+        console.log(res.data);
+        // userInfo = res.data;
       })
       .catch((err) => {
         console.error(err.response);
@@ -82,6 +84,7 @@ export const useAuthStore = defineStore("auth", () => {
     // state
     userInfo,
     token,
+    refreshToken,
 
     // getters
     recentUserInfo,

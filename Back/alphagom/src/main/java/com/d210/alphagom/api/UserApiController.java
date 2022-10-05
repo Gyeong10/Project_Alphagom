@@ -44,7 +44,7 @@ public class UserApiController {
 
         log.info("{}번 유저 정보 조회", userId);
         User user = userService.findUser(userId);
-        return ResponseEntity.ok(new UserResponse(user.getName()));
+        return ResponseEntity.ok(new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getPicture(), user.getNickname()));
     }
 
     @Operation(summary = "유저 닉네임 저장", description = "유저 닉네임 저장 api 입니다.")
@@ -66,7 +66,8 @@ public class UserApiController {
     }
 
     @GetMapping("/klogin")
-    public HashMap<String, String> klogin(@RequestParam String authorize_code) {
+//    public HashMap<String, String> klogin(@RequestParam String authorize_code) {
+    public ResponseEntity<?> klogin(@RequestParam String authorize_code) {
         log.info("카카오 로그인");
         String access_token = kakaoLogin.getAccessToken(authorize_code);
         HashMap<String, String> userinfo = kakaoLogin.getUserInfo(access_token);
@@ -91,8 +92,8 @@ public class UserApiController {
         log.info("로그인 요청");
         String refreshToken = authService.createRefreshToken(user.getId());
         String accessToken = tokenProvider.createAccessToken(user);
-        return userinfo;
-//        return ResponseEntity.ok().body(new LoginResponse("로그인되었습니다.", accessToken, refreshToken));
+//        return userinfo;
+        return ResponseEntity.ok().body(new LoginResponse("로그인되었습니다.", user.getId(), accessToken, refreshToken));
     }
 
     @PostMapping("/signup")
