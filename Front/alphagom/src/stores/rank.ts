@@ -69,6 +69,7 @@ export const useRankStore = defineStore("rank", () => {
       method: "GET",
     }).then((response) => {
       AllRankList.value = response.data;
+      console.log('response.data: ' + response.data)
     });
     console.log("들어왔다!", AllRankList.value)
   }
@@ -81,6 +82,8 @@ export const useRankStore = defineStore("rank", () => {
       method: "GET",
     }).then((response) => {
       AllMyRank.value = response.data;
+      console.log('response.data: ' + response.data)
+
     });
   }
 

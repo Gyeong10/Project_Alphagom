@@ -4,10 +4,10 @@
     <text class="top-title">내 정보</text>
     <div class="box">
       <div class="box-header">
-        <button @click="setTabstage('all')">전체 순위---------</button>
-        <button @click="setTabstage('swamp')">늪 순위</button>
-        <button @click="setTabstage('cave')">동굴 순위</button>
-        <button @click="setTabstage('sky')">하늘 순위</button>
+        <button class="tab-btn tab-all" @click="setTabstage('all')">전체 순위</button>
+        <button class="tab-btn tab-swamp" @click="setTabstage('swamp')">늪 순위</button>
+        <button class="tab-btn tab-cave" @click="setTabstage('cave')">동굴 순위</button>
+        <button class="tab-btn tab-sky" @click="setTabstage('sky')">하늘 순위</button>
         <div class="box-body">
           <div class="box-body-left">
             <!-- 유저 사진 -->
@@ -17,9 +17,9 @@
             </div>
             <!-- 유저 랭크 -->
             <div class="my-rank">
-              <span>{{ user.userInfo.userNickname }}</span>
-              <span>님의 순위는</span>
-              <p>{{ AllMyRank.rank }}위입니다.</p>
+              <div class="my-rank-text"><span class="my-rank-text-bold">{{ user.userInfo.userNickname }}</span>
+              님의 순위는</div>
+              <div class="my-rank-text"><span class="my-rank-text-bold">{{ AllMyRank.rank }}</span>위입니다.</div>
             </div>
           </div>
           <div class="box-body-right">
@@ -75,6 +75,7 @@ const bgStore = useBgStore();
 
 // 전체 랭크 저장
 const AllRankList = computed(() => rank.AllRankList);
+console.log('AllRankList' + AllRankList.value)
 // 나의 랭크
 const AllMyRank = computed(() => rank.AllMyRank);
 
@@ -125,5 +126,79 @@ function setTabstage(data) {
   left: 0px;
   width: 926px;
   height: 428px;
-} 
+}
+.top-title {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #483737;
+  white-space: nowrap;
+  position: absolute;
+  top: 8px;
+  left: 427px;
+}
+.box {
+  position: absolute;
+  top: 81px;
+  left: 138px;
+  width: 651px;
+  height: 281px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.tab-btn {
+  width: 112px;
+  height: 36px;
+  /* margin-left: 19px; */
+
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  outline: 0;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tab-btn:hover, .tab-btn:active, .tab-btn:focus {
+  border: 3px solid #FAF4BD;
+}
+.tab-all {
+  position: absolute;
+  top: 9px;
+  left: 87px;
+  background-color: #94C178;
+  color: #484E23;
+}
+.tab-swamp {
+  position: absolute;
+  top: 9px;
+  left: 208px;
+  background-color: #78C1AB;
+  color: #34435A;
+}
+.tab-cave {
+  position: absolute;
+  top: 9px;
+  left: 329px;
+  background-color: #7888C1;
+  color: #34385A;
+}
+.tab-sky {
+  position: absolute;
+  top: 9px;
+  left: 450px;
+  background-color: #BC78C1;
+  color: #55345A;
+}
+.my-rank-text {}
+.my-rank-text-bold {}
 </style>
