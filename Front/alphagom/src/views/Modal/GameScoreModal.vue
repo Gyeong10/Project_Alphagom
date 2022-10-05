@@ -30,11 +30,13 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/stores/auth";
 import { useGameStore } from "@/stores/game";
 import { useRouter, useRoute } from "vue-router";
 
 // store 사용
 const store = useGameStore();
+const authStore = useAuthStore();
 
 // 점수 불러오기
 const score = store.score;
@@ -46,6 +48,7 @@ const router = useRouter();
 // 다음 스테이지로 넘어가기
 // BE 에 점수 저장하는 API 호출
 const getNextStage = () => {
+  store.saveScore(authStore.userInfo.userId, score, store.stage);
   console.log(store.stage);
   if (store.stage === "swamp") {
     // Swamp 점수 저장
