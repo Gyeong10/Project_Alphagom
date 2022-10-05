@@ -1,21 +1,10 @@
 <template>
-  <div>
-    <NavBar></NavBar>
-  </div>
+  <GameScoreModal />
 </template>
 
-<script>
-import NavBar from '@/components/NavBar.vue';
-export default {
-  name: 'StageChangeView',
-  components: {
-    NavBar,
-  },
-  setup() {
-      
-  }
+<script setup>
+import GameScoreModal from '@/views/Modal/GameScoreModal.vue'
 
-}
 </script>
 
 <style scoped>

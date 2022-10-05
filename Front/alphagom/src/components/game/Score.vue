@@ -1,17 +1,21 @@
 <template>
-  <div class="score">{{ SwampScore }}</div>
+  <div class="score">{{ score }}</div>
 </template>
 
-<script>
-import { mapState } from "pinia";
+<script setup>
 import { useGameStore } from "@/stores/game";
+import { computed } from "vue";
 
-export default {
-  name: "Score",
-  computed: {
-    ...mapState(useGameStore, ["SwampScore"]),
-  },
-};
+const store = useGameStore()
+const score = computed(() => store.score)
+
+// 점수 1초당 10점씩 깎기
+// 게임 진행 시에만 깎도록 조정해야 한다
+const interval = setInterval(() => {
+  if (store.score === 0) clearInterval(interval);
+  else store.score = store.score - 10;
+}, 1000);
+
 </script>
 
 <style scoped>

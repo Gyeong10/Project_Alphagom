@@ -52,10 +52,9 @@ export const useGameStore = defineStore("game", () => {
   const stage = ref(""); // 해당 스테이지 이름
   const dialog = ref(); // 해당 스테이지 dialog
   const scriptNum = ref(0); // 현재 스크립트 번호
-  const SwampScore = ref(5000); // 게임별 점수
-  const DarkCaveScore = ref(2500);
-  const SkyScore = ref(2500);
-  const isActive = ref(false); // 응아니 버튼
+  const score = ref(3000); // 게임별 점수
+  const isActive = ref(false); //  Dialog 에서 '대답하기!' 버튼 활성화 (true)
+  const Nickname = ref(); // user 가 magiccastle 에서 설정한 닉네임 (초기화 시켜야하나?) 
   const dialogList = ref([
     // Dialog list
     DarkcaveLine,
@@ -63,6 +62,7 @@ export const useGameStore = defineStore("game", () => {
     SwampLine,
     MagicCastle,
   ]);
+
   const stageViewDict = ref({
     // stage view dict + 대화창 구분
     MagicCastle: ["MagicCastleTutorialView"],
@@ -70,17 +70,6 @@ export const useGameStore = defineStore("game", () => {
     sky: ["birdProverbGameView"],
     swamp: ["kingCureGameView"],
   });
-
-  // (주의) 공통 게임 문제들과 답은 스테이지 넘어갈 때마다 초기화 시켜줘야 한다!
-  const GameList = ref(); // 게임 구성 받아오는 state
-  const Answer = ref(); // 게임 플레이어의 답 담는 state
-
-  const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
-  const VoiceFile = ref(); // 녹음된 파일 담는 state
-
-  const Modal = ref(true); // 게임 시작할 때, 게임 끝났을 때 모달 창 (키는 것 true)
-  const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
-  const GameEnd = ref(false); // 게임 끝났을 때 점수 창 (임시)
 
   // 현재 effect
   const effect = computed(() => script.value.effect);
@@ -100,21 +89,21 @@ export const useGameStore = defineStore("game", () => {
         return alphagom_stand;
       case "곰":
         return bear_stand;
-      case "견우":
+        case "견우":
         return gyeonu_stand;
       case "직녀":
         return Jiknyeo_side;
-      case "토끼":
-        return rabbit_stand;
-      case "자라":
+        case "토끼":
+          return rabbit_stand;
+          case "자라":
         return jara_stand;
       case "용왕":
         return dragonKing_stand;
-      default:
-        return "";
-    }
-  });
-
+        default:
+          return "";
+        }
+      });
+      
   // 이미지 url
   const getImgUrl = (img: String) => {
     return new URL(`../../assets/image/${img}.png`, import.meta.url).href;
@@ -127,25 +116,25 @@ export const useGameStore = defineStore("game", () => {
         return stageViewDict.value.sky;
       case "darkcave":
         return stageViewDict.value.darkcave;
-      case "swamp":
-        return stageViewDict.value.swamp;
+        case "swamp":
+          return stageViewDict.value.swamp;
       case "MagicCastle":
         return stageViewDict.value.MagicCastle;
-    }
-  });
+      }
+    });
 
   // 현재 stage 에서 진행할 textBox 리스트
   const textboxImg = computed(() => {
     switch (stage.value) {
       case "sky":
         return sky_textbox;
-      case "darkcave":
-        return dark_cave_textbox;
+        case "darkcave":
+          return dark_cave_textbox;
       case "swamp":
         return swamp_textbox;
       case "MagicCastle":
         return magic_castle_textbox;
-    }
+      }
   });
 
   // 현재 script 에서 진행할 image 표정 리스트
@@ -153,9 +142,9 @@ export const useGameStore = defineStore("game", () => {
     switch (faceImg.value) {
       case "alphagom_look_happy":
         return alphagom_look_happy;
-      case "alphagom_look_normal":
-        return alphagom_look_normal;
-      case "alphagom_look_suprise":
+        case "alphagom_look_normal":
+          return alphagom_look_normal;
+          case "alphagom_look_suprise":
         return alphagom_look_suprise;
       case "alphagom_look_flustered":
         return alphagom_look_flustered;
@@ -167,14 +156,30 @@ export const useGameStore = defineStore("game", () => {
         return bear_look_normal;
       case "jara_look_openly":
         return jara_look_openly;
-      default:
+        default:
         return "";
     }
   });
 
-  /* actions */
+  // == stage 별 게임 관련 state ===============================================
+  // (주의) 공통 게임 문제들과 답은 스테이지 넘어갈 때마다 초기화 시켜줘야 한다!
+  const GameList = ref(); // 게임 구성 받아오는 state
+  const Answer = ref(); // 게임 플레이어의 답 담는 state
 
-  // start page에서 stage 이름 초기화
+  const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
+  const VoiceFile = ref(); // 녹음된 파일 담는 state
+
+  const Modal = ref(true); // 게임 시작할 때, 게임 끝났을 때 모달 창 (키는 것 true) (views/Modal의 모달들 모두 사용 가능)
+  const PassFail = ref(null); // 정답, 오답 구분 짓는 state, 항상 초기화
+  const GameEnd = ref(false); // 게임 끝났을 때 라우트 (임시)
+
+  // 녹음하는 스테이지 마다 시간 조절하는 state
+  const RecordTime = ref()
+  
+  // == actions ===============================================================
+  /* 
+   *start page에서 stage 이름 초기화 
+   */
   function setStage(stageStr: string) {
     stage.value = stageStr;
 
@@ -186,7 +191,147 @@ export const useGameStore = defineStore("game", () => {
       }
     });
   }
-  // Flask 에서 의성어/의태어 플레이어 게임 결과값 갖고 오는 API
+  
+  /*
+   * 스테이지에 따라 녹음 시간 조절해서 Flask API 요청 함수 조정
+   */
+  function sendAIAPI (payload: any) {
+    if (stage.value === 'MagicCastle' &&
+    (type.value == scriptType.QUESTION || 
+      type.value == scriptType.CHECK))
+    {
+      getCheckAI(payload);
+    }
+    else if (stage.value === 'MagicCastle' &&
+    (type.value == scriptType.NICKNAME ||
+      type.value == scriptType.SENTANCE ||
+      type.value == scriptType.NICKNAMEAGAIN ))
+    {
+      getSTTAI(payload);
+    }
+    else if (stage.value === 'sky')
+    {
+      getBirdAI(payload);
+    }
+    else if (stage.value === 'swamp')
+    {
+      getKingAI(payload);
+    }
+    else if (stage.value === 'darkcave')
+    {
+      getSTTAI(payload);
+    }
+  }
+  
+  // json 파일의 type 종류 : 다음 script가 어떤 동작을 할건지
+  const scriptType = {
+    STORY: "story",
+    YES: "yes",
+    GAME: "game",
+    QUESTION: "question",
+    NICKNAME: "nickname",
+    SENTANCE: "sentance",
+    CHECK: "check",
+    NICKNAMEAGAIN: "nicknameAgain",
+  };
+  Object.freeze(scriptType); // 한번 선언된 객체의 값 변경 못하도록 고정 => enum 처럼 사용
+  
+  // 대사 type 에 따라 넘어가는 인덱스 설정
+  // 그리고 AI 서버에 보낼 녹음 파일 녹음 시간 설정
+
+  function plusNum() {
+    if (type.value == scriptType.YES) {
+      scriptNum.value++;
+    }
+    scriptNum.value++;
+    isActive.value = false;
+    if (type.value == scriptType.GAME) {
+      const gameType = stageGame.value[0];
+      router.push({ name: gameType });
+    }
+    if (type.value == scriptType.QUESTION) {
+      isActive.value = true;
+      RecordTime.value = 1000;
+    }
+    if (type.value == scriptType.NICKNAME) {
+      isActive.value = true;
+      RecordTime.value = 3000;
+    }
+    if (type.value == scriptType.SENTANCE) {
+      isActive.value = true;
+      RecordTime.value = 5000;
+    }
+  }
+
+  // Dialog 에서 API 요청 후 대화로그 인덱스 지정
+  function checkindex() {
+    if (type.value == scriptType.GAME) {
+      const gameType = stageGame.value[0];
+      router.push({ name: gameType });
+    }
+    else if (type.value == scriptType.QUESTION) {
+      if (Answer.value === "응") {
+        scriptNum.value++;
+        isActive.value = false;
+      } else {
+        scriptNum.value = scriptNum.value + 2;
+        isActive.value = false;
+      }
+    }
+    else if (type.value == scriptType.NICKNAME) {
+      Nickname.value = Answer.value
+      scriptNum.value++
+      RecordTime.value = 1000
+    }
+    // nickname 응아니 체크
+    else if (type.value == scriptType.CHECK) {
+      if (Answer.value === "응") {
+        scriptNum.value = scriptNum.value + 2;
+        isActive.value = false;
+      } else {
+        scriptNum.value++;
+        isActive.value = true;
+        RecordTime.value =3000
+      }
+    }
+    else if (type.value == scriptType.NICKNAMEAGAIN) {
+      Nickname.value = Answer.value
+      scriptNum.value--
+    }
+    else if (type.value == scriptType.SENTANCE) {
+      if (Answer.value == "이제 나의 손을 잡아 보아요"
+      || Answer.value == "안녕은 영원한 헤어짐은 아니겠지요") {
+        PassFail.value = false
+        const gameType = stageGame.value[0];
+        router.push({ name: gameType });
+      } else {
+        PassFail.value = true
+      }
+    }  
+  }
+
+  // Dialog 끝나고 게임으로 넘어갈 때와 점수 창으로 넘어갈 때 route 함수
+  // forEach 기능은 break가 따로 없어서 throw error 로 해결
+  function skip() {
+    const length = dialog.value.script.length
+    try {
+      dialog.value.script.slice(scriptNum.value, length + 1).forEach((element: any) => {
+      scriptNum.value++;
+      if (element.type === "game") {
+        const gameType = stageGame.value[0];
+        router.push({ name: gameType });
+        throw new Error("End Loop!")}
+      else if (element.type === "end") {
+        router.push({name: "stageChangeView" })
+        throw new Error("End Loop!")}
+    });
+  } catch(e) {
+  }};
+  
+  /* 
+   * AI api 요청
+   */
+  // Flask 에서 의성어/의태어 플레이어 게임 결과값 갖고 오는 API  
   async function getKingAI(payload: any) {
     await axios({
       url: api.game.aiSwampWord(),
@@ -197,6 +342,7 @@ export const useGameStore = defineStore("game", () => {
       Answer.value = response.data;
     });
   }
+
   // Flask 에서 응 아니 check 값 갖고 오는 API
   async function getCheckAI(payload: any) {
     await axios({
@@ -208,6 +354,7 @@ export const useGameStore = defineStore("game", () => {
       Answer.value = response.data;
     });
   }
+
   // Flask 에서 새 플레이어 게임 결과값 갖고 오는 API
   async function getBirdAI(payload: any) {
     await axios({
@@ -219,8 +366,23 @@ export const useGameStore = defineStore("game", () => {
       Answer.value = response.data;
     });
   }
+  
+  // Flask 에서 STT 결과값 갖고 오는 API
+  async function getSTTAI(payload: any) {
+    await axios({
+      url: api.game.aiStt(),
+      // url: api.game.aiStt(),
+      method: "POST",
+      headers: { "Content-Type": "multipart/form-data" },
+      data: payload,
+    }).then((response) => {
+      Answer.value = response.data;
+    });
+  }
 
-  // BE api 요청
+  /* 
+   * BE api 요청
+   */
   async function getKingGame() {
     await axios({
       url: api.game.getSwampWord(),
@@ -234,7 +396,6 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.game.getSkyBird(),
       method: "GET",
-
     }).then((response) => {
       GameList.value = response.data;
     });
@@ -244,57 +405,30 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.game.getCaveTongue(),
       method: "GET",
-
     }).then((response) => {
       GameList.value = response.data;
     });
   }
 
-  // 대사 type 에 따라 넘어가는 인덱스 설정
-  function plusNum() {
-    if (type.value == "yes") {
-      scriptNum.value++;
-    }
-    scriptNum.value++;
-    isActive.value = false;
-    if (type.value == "game") {
-      const gameType = stageGame.value[0];
-      router.push({ name: gameType });
-    }
-    if (type.value == "question") {
-      isActive.value = true;
-    }
-  }
 
-  // 응, 아니 대답 후 대화로그 인덱스 지정
-  function checkyesorno() {
-    if (Answer.value === "응") {
-      scriptNum.value++;
-      isActive.value = false;
-    } else {
-      scriptNum.value = scriptNum.value + 2;
-      isActive.value = false;
+  // modal 상태 변경 함수
+  function updateModal() {
+    if (Modal.value) {
+      Modal.value = false;
+      console.log('modal false로 바꿈: ' + Modal.value);
+    } else if (!Modal.value) {
+      Modal.value = true;
+      console.log('modal true로 바꿈: ' + Modal.value);
     }
-  }
-
-  function skip() {
-    dialog.value.script.forEach((element: any) => {
-      scriptNum.value++;
-      if (element.type == "game") {
-        const gameType = stageGame.value[0];
-        router.push({ name: gameType });
-      }
-    });
   }
 
   return {
     //state
     stage,
     scriptNum,
+    Nickname,
     PassFail,
-    SwampScore,
-    DarkCaveScore,
-    SkyScore,
+    score,
     dialogList,
     stageViewDict,
     isActive,
@@ -304,6 +438,7 @@ export const useGameStore = defineStore("game", () => {
     VoiceFile,
     Modal,
     GameEnd,
+    RecordTime,
 
     //computed
     dialog,
@@ -327,7 +462,9 @@ export const useGameStore = defineStore("game", () => {
     getBirdAI,
     getKingGame,
     getBirdGame,
-    checkyesorno,
+    checkindex,
     getTongueGame,
+    getSTTAI,
+    sendAIAPI,
   };
 });

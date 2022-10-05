@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <div class="top-title">{{ stage.name }}</div>
+    <!-- <div class="top-title">{{ stage.name }}</div> -->
+    <div class="top-title">늪</div>
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
@@ -87,7 +88,7 @@ setTimeout(() => {
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 425px;
+  left: 452px;
   white-space: nowrap;
 }
 .game-title {

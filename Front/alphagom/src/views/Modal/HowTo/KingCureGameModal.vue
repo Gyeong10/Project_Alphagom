@@ -5,7 +5,6 @@
     <div class="modal-body">
         <ul>
         <li>게임 방법을 알아볼까?</li>
-        <!-- 점수 받아와야 됨 -->
         <li>의성어 의태어가 나올거야! 답을 버튼을 누르고 읽으면 돼~</li>
         </ul>
     </div>
@@ -31,8 +30,7 @@ const gotoGame = () => {
   
 <style scoped>
 .score-modal {
-width: 60vw;
-height: 70vh;
+height: 50vh;
 border-radius: 18px;
 border: 18px dashed #FAF4BD;
 background-color: #94C178;
