@@ -388,12 +388,12 @@ export const useGameStore = defineStore("game", () => {
     }).then((response) => {
       Answer.value = response.data;
     });
-    console.log("STT 답", Answer.value.answer);
   }
 
   /*
    * BE api 요청
    */
+  // 의성어 / 의태어 게임 목록 요청하는 함수
   async function getKingGame() {
     await axios({
       url: api.game.getSwampWord(),
@@ -402,7 +402,7 @@ export const useGameStore = defineStore("game", () => {
       GameList.value = response.data;
     });
   }
-
+  // 새 속담 게임 목록 요청하는 함수
   async function getBirdGame() {
     await axios({
       url: api.game.getSkyBird(),
@@ -411,7 +411,7 @@ export const useGameStore = defineStore("game", () => {
       GameList.value = response.data;
     });
   }
-
+  // 잰말놀이 게임 목록 요청하는 함수
   async function getTongueGame() {
     await axios({
       url: api.game.getCaveTongue(),
@@ -431,6 +431,7 @@ export const useGameStore = defineStore("game", () => {
       console.log("modal true로 바꿈: " + Modal.value);
     }
   }
+  // 닉네임 저장 시키는 함수 axios 요청 보내기
 
   return {
     //state
