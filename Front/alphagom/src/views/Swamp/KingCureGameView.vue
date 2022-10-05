@@ -121,22 +121,25 @@ const getRecord = () => {
 };
 // watch 로 녹음 파일 들어오는지 확인 후 바로 API 함수 실행
 // Answer 값이 들어왔을 때 비교해서 정답 확인 함수 (view 내부에 작성) 실행
-watch(VoiceFile, () => store.getKingAI(store.VoiceFile));
+watch(VoiceFile, () => store.sendAIAPI(store.VoiceFile));
 watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
-  console.log(store.Answer);
-  console.log(store.GameList[probidx.value].answer);
-  if (store.GameList[probidx.value].answer === store.Answer && store.Answer) {
-    store.PassFail = "pass";
-  } else if (
-    store.GameList[probidx.value].answer !== store.Answer &&
-    store.Answer
-  ) {
-    store.PassFail = "fail";
-  } else {
-    store.PassFail = null;
+  if (store.Answer) {
+    if (
+      store.GameList[probidx.value].answer === store.Answer.answer &&
+      store.Answer
+    ) {
+      store.PassFail = "pass";
+    } else if (
+      store.GameList[probidx.value].answer !== store.Answer.answer &&
+      store.Answer
+    ) {
+      store.PassFail = "fail";
+    } else {
+      store.PassFail = null;
+    }
   }
 };
 

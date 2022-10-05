@@ -56,6 +56,7 @@ export const useGameStore = defineStore("game", () => {
   const score = ref(3000); // 게임별 점수
   const isActive = ref(false); //  Dialog 에서 '대답하기!' 버튼 활성화 (true)
   const Nickname = ref(); // user 가 magiccastle 에서 설정한 닉네임 (초기화 시켜야하나?)
+  const userId = ref();
   const dialogList = ref([
     // Dialog list
     DarkcaveLine,
@@ -165,7 +166,7 @@ export const useGameStore = defineStore("game", () => {
   // == stage 별 게임 관련 state ===============================================
   // (주의) 공통 게임 문제들과 답은 스테이지 넘어갈 때마다 초기화 시켜줘야 한다!
   const GameList = ref(); // 게임 구성 받아오는 state
-  const Answer = ref(); // 게임 플레이어의 답 담는 state
+  const Answer = ref(null); // 게임 플레이어의 답 담는 state
 
   const VoiceOnOff = ref(false); // 녹음기능 켜고 끄는 state
   const VoiceFile = ref(); // 녹음된 파일 담는 state
@@ -408,6 +409,7 @@ export const useGameStore = defineStore("game", () => {
       url: api.game.getSkyBird(),
       method: "GET",
     }).then((response) => {
+      console.log(GameList);
       GameList.value = response.data;
     });
   }
@@ -436,9 +438,9 @@ export const useGameStore = defineStore("game", () => {
     await axios({
       url: api.user.postUserNickname(userId, nickname),
       method: "POST",
-      data: Nickname,
+      data: nickname,
     }).then((response) => {
-      
+      console.log(response.data);
     });
   }
 
@@ -488,5 +490,6 @@ export const useGameStore = defineStore("game", () => {
     getSTTAI,
     sendAIAPI,
     updateModal,
+    saveNickname,
   };
 });
