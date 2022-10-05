@@ -29,6 +29,7 @@
 
 <script setup>
 import { useBgStore } from "@/stores/bg";
+import { useSettingStore } from "@/stores/setting";
 import { ref, computed, onMounted } from "vue";
 
 // 배경 경로 수정
@@ -36,9 +37,13 @@ onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/home_bg_low.jpg")';
   console.log(bgStore.bgUrlState.value);
+
+  const bgmTitle = computed(() => settingStore.bgmTitle);
+  settingStore.setBGM("HOME");
 });
 
 const bgStore = useBgStore();
+const settingStore = useSettingStore();
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
 </script>

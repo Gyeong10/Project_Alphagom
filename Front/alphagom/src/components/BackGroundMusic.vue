@@ -1,26 +1,14 @@
 <template>
-  <button v-if="!playing" @click="audioStart">BGM PLAYyyyyyyyyyyyyyyyy</button>
-  <button v-if="playing" @click="audioStop">BGM STOPpppppppppppppppp</button>
+  <div></div>
 </template>
 
 <script setup>
-import { useGameStore } from "@/stores/game";
-import { ref } from "vue";
+import { useSettingStore } from "@/stores/setting";
 
-const store = useGameStore();
-const playing = ref(false);
+const store = useSettingStore();
+const sound = store.sound;
 
-const audio = new Audio(store.stageBgm);
-
-function audioStart() {
-  playing.value = true;
-  audio.play();
-}
-
-function audioStop() {
-  audio.pause();
-  playing.value = false;
-}
+sound.play();
 </script>
 
 <style scoped></style>
