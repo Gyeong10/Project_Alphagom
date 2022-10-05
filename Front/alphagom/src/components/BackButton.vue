@@ -3,18 +3,15 @@
     <ChevronLeftIcon @click="moveBackView()" class="backicon text-blue-500" />
   </div>
 </template>
-<script>
+<script setup>
 import { ChevronLeftIcon } from "@heroicons/vue/24/solid";
+import { useRouter } from "vue-router";
 
-export default {
-  name: "BackButtonView",
-  components: {
-    ChevronLeftIcon,
-  },
-  setup() {
-    //
-  },
-};
+const router = useRouter();
+
+function moveBackView() {
+  router.go(-1);
+}
 </script>
 <style scoped>
 .backicon {

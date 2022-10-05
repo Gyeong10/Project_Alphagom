@@ -106,11 +106,6 @@ export const useGameStore = defineStore("game", () => {
     }
   });
 
-  // 이미지 url
-  const getImgUrl = (img: String) => {
-    return new URL(`../../assets/image/${img}.png`, import.meta.url).href;
-  };
-
   // 현재 stage 에서 진행할 게임 리스트
   const stageGame = computed(() => {
     switch (stage.value) {
@@ -188,7 +183,12 @@ export const useGameStore = defineStore("game", () => {
     dialogList.value.forEach((element) => {
       if (element.stage == stage.value) {
         dialog.value = element;
-        console.log(dialog.value);
+
+        // isActive, scriptNum, VoiceOnOff 초기화
+        isActive.value = false;
+        scriptNum.value = 0;
+        VoiceOnOff.value = false;
+        score.value = 3000;
       }
     });
   }
@@ -490,7 +490,6 @@ export const useGameStore = defineStore("game", () => {
     plusNum,
     skip,
     // setBGM,
-    getImgUrl,
     getKingAI,
     getCheckAI,
     getBirdAI,
