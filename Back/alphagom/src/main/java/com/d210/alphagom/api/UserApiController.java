@@ -4,12 +4,15 @@ import com.d210.alphagom.api.dto.ResponseDTO;
 import com.d210.alphagom.api.dto.UserResponse;
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.domain.service.UserService;
+import com.d210.alphagom.security.oauth.user.KakaoLogin;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @Tag(name = "User", description = "User api 입니다.")
 @Slf4j
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserApiController {
 
     private final UserService userService;
+
+    private final KakaoLogin kakaoLogin;
 
     @Operation(summary = "유저 정보 조회", description = "유저 정보 조회 api 입니다.")
     @GetMapping("/user/{userId}")
@@ -45,5 +50,14 @@ public class UserApiController {
         log.info("{}번 유저 튜토리얼 통과", userId);
         userService.checkIsCastle(userId);
         return ResponseEntity.ok(new ResponseDTO("튜토리얼을 통과하였습니다."));
+    }
+
+    @GetMapping("/klogin")
+    public HashMap<String, String> klogin(@RequestParam String authorize_code) {
+        log.info("카카오 로그인");
+        String access_token = kakaoLogin.getAccessToken(authorize_code);
+        HashMap<String, String> userinfo = kakaoLogin.getUserInfo(access_token);
+        System.out.println("userInfo : " + userinfo);
+        return userinfo;
     }
 }
