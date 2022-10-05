@@ -49,7 +49,7 @@ export default {
     aiSwampWord: () => HOST + AI + `swamp/` + `word`,
     // 새 이름 인식
     aiSkyBird: () => HOST + AI + `sky/` + `bird`,
-    // stt 
+    // stt
     aiStt: () => HOST + AI + `stt`,
   },
   rank: {

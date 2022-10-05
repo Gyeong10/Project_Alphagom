@@ -11,7 +11,9 @@
         <button v-if="!GameEnd" @click="getProb()">
           다음 문제로 가보자구!
         </button>
-        <button v-if="GameEnd" @click="getNextPage()">전부 통과! 축하해!</button>
+        <button v-if="GameEnd" @click="getNextPage()">
+          전부 통과! 축하해!
+        </button>
       </div>
       <div v-if="PassFail === 'failbutton'">
         <button @click="getRecord()">다시 해보자!</button>
@@ -71,7 +73,7 @@ import { useBgStore } from "@/stores/bg";
 import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 import BackButton from "@/components/BackButton.vue";
-import KingCureGameModal from "@/views/Modal/HowTo/KingCureGameModal.vue"
+import KingCureGameModal from "@/views/Modal/HowTo/KingCureGameModal.vue";
 import PassorFail from "@/components/game/PassorFail.vue";
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
@@ -87,11 +89,11 @@ const store = useGameStore();
 const bgStore = useBgStore();
 
 // 라우터 사용
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 
 // 진입할 때 모달 창 띄우는 state
-const Modal = computed(() => store.Modal)
+const Modal = computed(() => store.Modal);
 
 // 내부 요소들 선언
 const GameList = computed(() => store.GameList); // 의성어/의태어 구성 요소 (문제, 답) 저장
@@ -124,8 +126,8 @@ watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
-  console.log(store.Answer)
-  console.log(store.GameList[probidx.value].answer)
+  console.log(store.Answer);
+  console.log(store.GameList[probidx.value].answer);
   if (store.GameList[probidx.value].answer === store.Answer && store.Answer) {
     store.PassFail = "pass";
   } else if (
@@ -152,14 +154,14 @@ const getProb = () => {
   }
 };
 
-// 다시 에필로그 페이지로 렌더링 
+// 다시 에필로그 페이지로 렌더링
 const getNextPage = () => {
   store.PassFail = null;
   router.push({
     name: "swampDialog",
     params: { scriptNum: store.scriptNum },
-  })
-}
+  });
+};
 </script>
 
 <style scoped>
