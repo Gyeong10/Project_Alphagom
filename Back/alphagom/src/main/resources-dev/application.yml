@@ -52,3 +52,6 @@ logging:
     org.springframework.web: debug
     #    org.hibernate.type: trace
     com.ssafy.alpagom: debug
+
+jwt:
+  secretKey: ssafygumi2class3teamfightingkdhpgypje
