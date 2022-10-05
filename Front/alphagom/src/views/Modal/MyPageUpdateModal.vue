@@ -2,11 +2,12 @@
   <transition name="modal" appear>
     <section class="modal" tabindex="-1" appear>
       <div class="modal__modal-content">
+        <!-- 모달 박스 -->
         <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#FDF8E2" stroke="#94C178" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
         </svg>
+        <!-- 창닫기 버튼 -->
         <div class="modal__modal-header">
-          <!-- <h5 class="modal-title"></h5> -->
           <button
             @click="gameStore.updateModal()" 
             class="modal__btn-close" data-bs-dismiss="modal"
@@ -17,6 +18,7 @@
           </button>
         </div>
         <br>
+        <!-- 모달 내용 -->
         <div class="modal__modal-body">
           <div class="modal__update-title">별명 수정</div>
           <div class="modal__update-input-cont">
@@ -113,8 +115,6 @@ const updateNick = () => {
   &__modal-body {
     display: flex;
     flex-flow: column;
-    /* justify-content: center;
-    align-items: center; */
     position: absolute;
   }
   &__update-title {
@@ -131,9 +131,7 @@ const updateNick = () => {
     top: -231px;
     left: 215px;
   }
-  /* .update-input-cont {
-    position: absolute;
-  } */
+
   input {
     position: absolute;
     top: -150px;

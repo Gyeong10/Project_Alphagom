@@ -9,7 +9,9 @@
       <div class="item-cont">
         <div class="btn-cont">
           <router-link to="/map">
-            <button class="warning button-custom-home btn-go-map">탐험하기</button>
+            <button class="warning button-custom-home btn-go-map">
+              탐험하기
+            </button>
           </router-link>
           <router-link to="/rank">
             <button class="warning button-custom-home">순위보기</button>
@@ -21,34 +23,44 @@
             <button class="warning button-custom-home">로그아웃</button>
           </router-link>
         </div>
-        <img class="img-hello" src="/assets/image/alphagom_hello.png" width="150" alt="홈 이미지" />
+        <img
+          class="img-hello"
+          src="/assets/image/alphagom_hello.png"
+          width="150"
+          alt="홈 이미지"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useBgStore } from "@/stores/bg"
-import { computed, onMounted } from 'vue'
+import { useBgStore } from "@/stores/bg";
+import { useSettingStore } from "@/stores/setting";
+import { ref, computed, onMounted } from "vue";
 
 // 배경 경로 수정
-onMounted (() => {
+onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/home_bg_low.jpg")'
-  console.log(bgStore.bgUrlState.value)
-})
-const bgStore = useBgStore()
+  bgStore.bgUrlState = 'url("/home_bg_low.jpg")';
+  console.log(bgStore.bgUrlState.value);
+
+  const bgmTitle = computed(() => settingStore.bgmTitle);
+  settingStore.setBGM("HOME");
+});
+
+const bgStore = useBgStore();
+const settingStore = useSettingStore();
 // state 감시자
-const bgwatching = computed(() => bgStore.bgUrlState)
-
-
-
+const bgwatching = computed(() => bgStore.bgUrlState);
 </script>
 
 <style scoped>
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -99,7 +111,7 @@ button {
   color: var(--button-color);
   margin: 0;
   padding: 0.5rem 2rem;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
@@ -113,23 +125,20 @@ button {
 }
 button.warning {
   --button-color: #212529;
-  --button-bg-color: #FAF4BD;
-  --button-hover-bg-color: #FFF170;
-  border: 4px solid #FFF170;
+  --button-bg-color: #faf4bd;
+  --button-hover-bg-color: #fff170;
+  border: 4px solid #fff170;
   width: 150px;
 }
 button:active,
 button:hover,
 button:focus {
   background: var(--button-hover-bg-color);
-  border: 4px solid #FAF4BD;
+  border: 4px solid #faf4bd;
   outline: 0;
 }
 button:disabled {
   opacity: 0.5;
 }
 /* ----btn */
-
 </style>
-
-
