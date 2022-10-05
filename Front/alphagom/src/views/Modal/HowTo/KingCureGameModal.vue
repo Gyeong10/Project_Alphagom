@@ -55,9 +55,10 @@ const gotoGame = () => {
 
     background-color: black;
     opacity: 0.5;
+    z-index: 1;
   }
   &__modal-content {
-    z-index: 1;
+    z-index: 2;
   }
   &__modal-body {
     display: flex;

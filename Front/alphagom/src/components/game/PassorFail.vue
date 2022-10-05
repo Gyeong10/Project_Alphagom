@@ -1,10 +1,12 @@
 <template>
   <div>
     <div v-if="check === 'pass' || check === 'passbutton'">
-      <div class="text pass">정답이야!</div>
+      <div class="text-box pass-box"></div>
+      <div class="text pass">정답!</div>
     </div>
     <div v-if="check === 'fail' || check === 'failbutton'">
-      <div class="text fail">오답이야!</div>
+      <div class="text-box fail-box"></div>
+      <div class="text fail">오답!</div>
     </div>
   </div>
 </template>
@@ -26,20 +28,37 @@ setTimeout(() => {
 </script>
 
 <style scoped>
+.text-box {
+  position: absolute;
+  top: 183px;
+  left: 351px;
+  width: 224px;
+  height: 133px;
+  border-radius: 20px;
+  background-color: #FFE1E2;
+  opacity: 90%;
+}
+.pass-box {
+  background-color: #EDFFD8;
+}
 .text {
   position: absolute;
-  top: 240px;
-  left: 420px;
+  top: 205px;
+  left: 405px;
 
-  font-size: 128px;
+  font-size: 60px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
   "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
   "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
   sans-serif;
   font-weight: 800;
   white-space: nowrap;
-  color: #F48196;
   text-align: center;
-  line-height: 29px;
+}
+.pass {
+  color: #159D64;
+}
+.fail {
+  color: #DD2E44;
 }
 </style>
