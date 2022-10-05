@@ -14,15 +14,28 @@
 <script setup>
 import { useGameStore } from "@/stores/game";
 import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const store = useGameStore();
 const check = computed(() => store.PassFail);
 
+// 라우터 사용
+const route = useRoute();
+const router = useRouter();
+
 setTimeout(() => {
-  if (store.PassFail === "pass") {
-    store.PassFail = "passbutton";
+  if (store.stage == 'MagicCastle') {
+    if (store.PassFail == "pass") {
+      router.push({ name: 'MagicCastleTutorialView'})
+    } else {
+      store.PassFail = null
+    }
   } else {
-    store.PassFail = "failbutton";
+    if (store.PassFail === "pass") {
+      store.PassFail = "passbutton";
+    } else {
+      store.PassFail = "failbutton";
+    }
   }
   
 }, 1500);

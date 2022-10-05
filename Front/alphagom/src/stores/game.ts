@@ -106,11 +106,6 @@ export const useGameStore = defineStore("game", () => {
     }
   });
 
-  // 이미지 url
-  const getImgUrl = (img: String) => {
-    return new URL(`../../assets/image/${img}.png`, import.meta.url).href;
-  };
-
   // 현재 stage 에서 진행할 게임 리스트
   const stageGame = computed(() => {
     switch (stage.value) {
@@ -188,7 +183,12 @@ export const useGameStore = defineStore("game", () => {
     dialogList.value.forEach((element) => {
       if (element.stage == stage.value) {
         dialog.value = element;
-        console.log(dialog.value);
+
+        // isActive, scriptNum, VoiceOnOff 초기화
+        isActive.value = false;
+        scriptNum.value = 0;
+        VoiceOnOff.value = false;
+        score.value = 3000;
       }
     });
   }
@@ -309,11 +309,11 @@ export const useGameStore = defineStore("game", () => {
         Answer.value.answer == "이제 나의 손을 잡아 보아요" ||
         Answer.value.answer == "안녕은 영원한 헤어짐은 아니겠지요"
       ) {
-        PassFail.value = false;
-        const gameType = stageGame.value[0];
-        router.push({ name: gameType });
+        PassFail.value = "pass";
+        // const gameType = stageGame.value[0];
+        // router.push({ name: gameType });
       } else {
-        PassFail.value = true;
+        PassFail.value = "fail";
       }
     }
   }
@@ -433,6 +433,7 @@ export const useGameStore = defineStore("game", () => {
       console.log("modal true로 바꿈: " + Modal.value);
     }
   }
+  
   // 닉네임 저장 시키는 함수 axios 요청 보내기
   async function saveNickname(userId: number, nickname: string) {
     await axios({
@@ -490,7 +491,6 @@ export const useGameStore = defineStore("game", () => {
     plusNum,
     skip,
     // setBGM,
-    getImgUrl,
     getKingAI,
     getCheckAI,
     getBirdAI,
