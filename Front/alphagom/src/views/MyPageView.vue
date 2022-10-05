@@ -6,12 +6,9 @@
       <div class="box-header">
         <button
           class="btn-edit"
-          @click="openUpdateMypage"
+          @click="gameStore.updateModal()"
           style="cursor: pointer"
         >
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z" />
-          </svg> -->
           <svg
             class="btn-edit-svg"
             width="12"
@@ -32,7 +29,6 @@
         <!-- 유저 사진 -->
         <div class="my-avatar">
           <img :src="userInfo.profile" alt="" class="myphoto" />
-          <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
         </div>
         <div class="text-box">
           <div class="card">
@@ -53,13 +49,15 @@
       </button>
     </div>
 
-    <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen" />
+    <!-- <MyPageUpdateModal v-model:updateModalOpen="updateModalOpen" /> -->
+    <MyPageUpdateModal v-if="gameStore.Modal" />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";
 
 import MyPageUpdateModal from "@/views/Modal/MyPageUpdateModal.vue";
@@ -71,13 +69,21 @@ onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
+  gameStore.updateModal()
 });
+
+// store 가져오기
 const bgStore = useBgStore();
+const gameStore = useGameStore();
+const store = useAuthStore();
+
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
 
-const store = useAuthStore();
-const updateModalOpen = ref(false);
+// modal 띄우는 state
+// const updateModalOpen = ref(false);
+// console.log('오픈 전: updateModalOpen.value: ' + updateModalOpen.value)
+// const Modal = computed(() => gameStore.Modal)
 
 function openUpdateMypage() {
   // if (this.isLoggedIn){
@@ -88,6 +94,8 @@ function openUpdateMypage() {
   //   this.$router.push({ name: 'LoginView'})
   // }
   return (updateModalOpen.value = true);
+  console.log('오픈 후: updateModalOpen.value: ' + updateModalOpen.value)
+
 }
 
 // function testFunc() {
@@ -124,7 +132,10 @@ console.log("userInfoTest:" + userInfo.value.profile);
   font-size: 24px;
   font-weight: 800;
   color: #483737;
+  white-space: nowrap;
+  position: absolute;
   top: 8px;
+  left: 427px;
 }
 .box {
   position: absolute;
@@ -141,6 +152,10 @@ console.log("userInfoTest:" + userInfo.value.profile);
   justify-content: center;
   align-items: center;
 }
+.btn-edit:hover, .btn-edit:active, .btn-edit:focus {
+  border: 0 solid transparent;
+  outline: 0;
+}
 .btn-edit-svg {
   margin-right: 5px;
 }
@@ -153,6 +168,7 @@ console.log("userInfoTest:" + userInfo.value.profile);
   font-size: 1rem;
   font-weight: 700;
   color: #325aa6;
+  white-space: nowrap;
 }
 
 .myimg {
@@ -170,6 +186,7 @@ console.log("userInfoTest:" + userInfo.value.profile);
     sans-serif;
   font-size: 1rem;
   font-weight: 700;
+  white-space: nowrap;
   position: absolute;
   top: 170px;
   left: 106px;
@@ -210,6 +227,7 @@ button.warning {
     sans-serif;
   font-size: 1rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 button:active,
 button:hover,
@@ -226,8 +244,9 @@ button:disabled {
 .content {
   display: flex;
   flex-flow: row;
-  padding-top: 47px;
+  /* padding-top: 47px; */
   padding-left: 30px;
+  top: 47px;
 }
 
 .box-header {
@@ -265,6 +284,7 @@ button:disabled {
   font-size: 1rem;
   font-weight: 800;
   font-size: 24px;
+  white-space: nowrap;
   color: #483737;
   margin-top: 10px;
 }
@@ -276,6 +296,7 @@ button:disabled {
     sans-serif;
   font-size: 1rem;
   font-size: 14px;
+  white-space: nowrap;
   color: #646464;
   margin-top: -5px;
 }
@@ -286,6 +307,7 @@ button:disabled {
     sans-serif;
   font-size: 1rem;
   font-size: 20px;
+  white-space: nowrap;
   color: #646464;
 }
 </style>
