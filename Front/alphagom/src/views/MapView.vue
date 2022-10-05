@@ -107,8 +107,8 @@ const clickMapItem = name => {
 }
 .map-road-cont {
   position: absolute;
-  top: 170px;
-  left: 231px;
+  top: 154px;
+  left: 242px;
 }
 .img-map-road {
   width: 455.5px;
