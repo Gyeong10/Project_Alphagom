@@ -12,7 +12,7 @@ export const useAuthStore = defineStore("auth", () => {
   // const userInfo = ref(null); // 사용자 정보
   const userInfo = ref({
     // 더미 데이터~~
-    userId: 7,
+    userId: 6,
     username: "이미현",
     userNickname: "이면",
     email: "alphagom@ssafy.com",

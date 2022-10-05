@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from '@vue/reactivity'
+import { reactive, ref } from "@vue/reactivity";
 import { useAuthStore } from "@/stores/auth";
 import { useGameStore } from "@/stores/game";
 import { storeToRefs } from "pinia";

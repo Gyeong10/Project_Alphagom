@@ -1,7 +1,7 @@
 <template>
   <div class="score-modal" tabindex="-1">
     <div class="modal-content">
-      <br />
+      <br>
       <div class="modal-body">
         <ul>
           <li>축하합니다!</li>

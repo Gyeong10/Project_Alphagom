@@ -40,10 +40,15 @@
           <UserIcon class="material-icons" />
           <span class="text">내 정보</span>
         </router-link>
-        <router-link to="/setting" class="button">
+        <!-- <router-link to="/setting" class="button">
           <Cog6ToothIcon class="material-icons" />
           <span class="text">설정하기</span>
-        </router-link>
+        </router-link> -->
+        <div class="button" @click="modalStore.updateModal()"
+          style="cursor: pointer">
+          <Cog6ToothIcon class="material-icons" />
+          <span class="text">설정하기</span>
+        </div>
 
         <!-- 유저 정보 들어오면 수정하세용 -->
 
@@ -53,6 +58,7 @@
         </router-link> -->
       </div>
     </aside>
+    <SettingModal v-if="modalStore.Modal" />
   </div>
 </template>
 
@@ -65,10 +71,15 @@ import {
   Bars3Icon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useAuthStore } from "@/stores/auth";
+import { useModalStore } from "@/stores/modal";
 import BackGroundMusic from "@/components/BackGroundMusic.vue";
 import { storeToRefs } from "pinia";
+import SettingModal from "@/views/Modal/SettingModal.vue";
+
+// store 가져오기
+const modalStore = useModalStore();
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 
