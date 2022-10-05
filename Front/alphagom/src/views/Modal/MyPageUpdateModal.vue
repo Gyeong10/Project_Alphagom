@@ -10,7 +10,7 @@
         <div class="title">별명 수정</div>
         <div>
           <input 
-            type="email"
+            type="text"
             v-model="nick"
             placeholder="10자 이하로 입력해주세요."
             @keyup="setNick">

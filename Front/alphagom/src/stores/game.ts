@@ -237,6 +237,7 @@ export const useGameStore = defineStore("game", () => {
       method: "GET",
 
     }).then((response) => {
+      console.log(GameList)
       GameList.value = response.data;
     });
   }

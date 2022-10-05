@@ -31,7 +31,7 @@ const ScoreModalClose = () => {
   width: 60vw;
   height: 70vh;
   border-radius: 18px;
-  border: 18px dashed #FAF4BD;
+  border: 8px dashed #FAF4BD;
   background-color: #94C178;
 
   display: flex;
