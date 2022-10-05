@@ -432,6 +432,15 @@ export const useGameStore = defineStore("game", () => {
     }
   }
   // 닉네임 저장 시키는 함수 axios 요청 보내기
+  async function saveNickname(userId: number, nickname: string) {
+    await axios({
+      url: api.user.postUserNickname(userId, nickname),
+      method: "POST",
+      data: Nickname,
+    }).then((response) => {
+      
+    });
+  }
 
   return {
     //state

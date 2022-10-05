@@ -68,6 +68,7 @@ const gotoGame = () => {
   store.scriptNum = 0;
   router.push({ name: "swampStartView" });
   // 닉네임 저장 axios 함수 호출
+  store.saveNickname();
 };
 </script>
 
