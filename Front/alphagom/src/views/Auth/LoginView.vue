@@ -8,22 +8,6 @@
             <img :src="kakao_login_medium_wide" />
           </a>
         </li>
-        <!-- <li>
-          <a :href="socialLoginUrl('naver')">
-            <div class="icon-box">
-              <img src="/social/naver-icon.png" />
-            </div>
-            <p>네이버 계정으로 로그인</p>
-          </a>
-        </li>
-        <li>
-          <a :href="socialLoginUrl('google')">
-            <div class="icon-box">
-              <img src="/social/google-icon.svg" />
-            </div>
-            <p>구글 계정으로 로그인</p>
-          </a>
-        </li> -->
       </ul>
     </div>
   </div>
@@ -50,7 +34,6 @@ const socialLoginUrl = (socialType) => {
   console.log(socialType);
   return $.getSocialLoginUrl(socialType);
 };
-
 </script>
 
 <style scoped>

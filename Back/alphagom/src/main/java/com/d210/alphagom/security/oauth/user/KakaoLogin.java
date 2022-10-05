@@ -92,12 +92,31 @@ public class KakaoLogin {
             JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
             System.out.println("kakao_account : " + kakao_account);
             String id = element.getAsJsonObject().get("id").getAsString();
+
             String email = null;
             if (kakao_account.getAsJsonObject().get("email") != null) {
                 email = kakao_account.getAsJsonObject().get("email").getAsString();
                 userInfo.put("id", id);
                 userInfo.put("email", email);
             }
+
+            if (kakao_account.getAsJsonObject().get("profile") != null) {
+                JsonObject profile = kakao_account.getAsJsonObject().get("profile").getAsJsonObject();
+                System.out.println("profile : " + profile);
+
+                String picture = null;
+                if (profile.getAsJsonObject().get("profile_image_url") != null) {
+                    picture = profile.getAsJsonObject().get("profile_image_url").getAsString();
+                    userInfo.put("picture", picture);
+                }
+
+                String nickname = null;
+                if (profile.getAsJsonObject().get("nickname") != null) {
+                    nickname = profile.getAsJsonObject().get("nickname").getAsString();
+                    userInfo.put("nickname", nickname);
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
