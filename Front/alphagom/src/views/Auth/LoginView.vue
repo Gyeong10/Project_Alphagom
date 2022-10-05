@@ -5,34 +5,32 @@
       <ul>
         <li>
           <a :href="socialLoginUrl('kakao')">
-            <!-- <div class="icon-box">
-              <img src="/social/kakao-icon.svg" />
-            </div> -->
-            <p>카카오톡 계정으로 로그인</p>
+            <img :src="kakao_login_medium_wide" />
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a :href="socialLoginUrl('naver')">
-            <!-- <div class="icon-box">
+            <div class="icon-box">
               <img src="/social/naver-icon.png" />
-            </div> -->
+            </div>
             <p>네이버 계정으로 로그인</p>
           </a>
         </li>
         <li>
           <a :href="socialLoginUrl('google')">
-            <!-- <div class="icon-box">
+            <div class="icon-box">
               <img src="/social/google-icon.svg" />
-            </div> -->
+            </div>
             <p>구글 계정으로 로그인</p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
 </template>
 
 <script setup>
+import kakao_login_medium_wide from "/assets/image/kakao_login_medium_wide.png";
 import { useBgStore } from "@/stores/bg";
 import { computed, onMounted } from "vue";
 import $ from "@/utils";
@@ -47,10 +45,12 @@ const bgStore = useBgStore();
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
 
+// 소셜로그인
 const socialLoginUrl = (socialType) => {
   console.log(socialType);
   return $.getSocialLoginUrl(socialType);
 };
+
 </script>
 
 <style scoped>
