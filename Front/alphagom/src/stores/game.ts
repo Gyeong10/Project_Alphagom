@@ -309,11 +309,11 @@ export const useGameStore = defineStore("game", () => {
         Answer.value.answer == "이제 나의 손을 잡아 보아요" ||
         Answer.value.answer == "안녕은 영원한 헤어짐은 아니겠지요"
       ) {
-        PassFail.value = false;
-        const gameType = stageGame.value[0];
-        router.push({ name: gameType });
+        PassFail.value = "pass";
+        // const gameType = stageGame.value[0];
+        // router.push({ name: gameType });
       } else {
-        PassFail.value = true;
+        PassFail.value = "fail";
       }
     }
   }
@@ -433,6 +433,7 @@ export const useGameStore = defineStore("game", () => {
       console.log("modal true로 바꿈: " + Modal.value);
     }
   }
+  
   // 닉네임 저장 시키는 함수 axios 요청 보내기
   async function saveNickname(userId: number, nickname: string) {
     await axios({

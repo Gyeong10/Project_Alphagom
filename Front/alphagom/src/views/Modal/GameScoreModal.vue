@@ -49,19 +49,15 @@ const router = useRouter();
 // BE 에 점수 저장하는 API 호출
 const getNextStage = () => {
   store.saveScore(authStore.userInfo.userId, score, store.stage);
-  console.log(store.stage);
   if (store.stage === "swamp") {
-    // Swamp 점수 저장
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "darkCaveStartView" });
   } else if (store.stage === "darkcave") {
-    // darkcave 점수 저장
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "skyStartView" });
   } else if (store.stage === "sky") {
-    // sky 점수저장
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "rank" });

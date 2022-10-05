@@ -3,10 +3,6 @@
   <MicRecord v-if="VoiceOnOff" />
   <!--문장 못맞췄을 때 오답이야 뜨도록!-->
   <PassorFail v-if="PassFail" />
-  <!-- <div v-if="PassFail === 'failbutton'">
-    <button class="game-skip-btn" @click="getRecord()">다시하기</button>
-  </div> -->
-  <!---->
 
   <div v-if="!VoiceOnOff" class="common">
     <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
