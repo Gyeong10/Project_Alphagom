@@ -2,8 +2,8 @@
     <div class="modal" tabindex="-1">
         <div class="modal__modal-content">
             <!-- 모달 박스 -->
-            <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#94C178" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+            <svg width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#78C1AB" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
             </svg>
             <!-- 모달 내용 -->
             <div class="modal__modal-body">
@@ -74,7 +74,7 @@ const gotoGame = () => {
     white-space: nowrap;
     color: #FDF8E2;
     // text-shadow: -2px 0 #345A49, 0 2px #345A49, 2px 0 #345A49, 0 -2px #345A49;
-    -webkit-text-stroke: 1.5px #345A49;
+    -webkit-text-stroke: 1.5px #34435A;
 
     position: absolute;
     top: -235px;
@@ -88,7 +88,7 @@ const gotoGame = () => {
     sans-serif;
     font-weight: 500;
     white-space: nowrap;
-    color: #345A49;
+    color: #34435A;
     text-align: center;
     line-height: 110%;
 
@@ -108,7 +108,7 @@ const gotoGame = () => {
     /* margin-left: 19px; */
 
     outline: none;
-    border: 5px solid #94C178;
+    border: 5px solid #78C1AB;
     border-radius: 30px;
     background-color: #FAF4BD;
     cursor: pointer;
@@ -121,7 +121,7 @@ const gotoGame = () => {
     sans-serif;
     font-weight: 700;
     white-space: nowrap;
-    color: #594640;
+    color: #34435A;
   }
 }
 

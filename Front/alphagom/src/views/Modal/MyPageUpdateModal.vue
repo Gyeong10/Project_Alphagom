@@ -86,8 +86,8 @@ const updateNick = () => {
     position: absolute;
     top: -100px;
     left: -190px;
-    width: 100vw;
-    height: 100vh;
+    width: 120vw;
+    height: 120vh;
 
     background-color: black;
     opacity: 0.5;

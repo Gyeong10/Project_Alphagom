@@ -4,34 +4,43 @@
     <KingCureGameModal v-if="Modal" />
     <PassorFail v-if="PassFail" />
     <BackButton class="back-btn" />
+    <Score class="bottom-score"></Score>
+    <div class="score--">점</div>
+    <div class="bottom-items">
+      <PlayBar class="bottom-icons"></PlayBar>
+    </div>
 
     <!--버튼-->
     <div>
       <div v-if="PassFail === 'passbutton'">
-        <button v-if="!GameEnd" @click="getProb()">
+        <button class="" v-if="!GameEnd" @click="getProb()">
           다음 문제로 가보자구!
         </button>
-        <button v-if="GameEnd" @click="getNextPage()">
-          전부 통과! 축하해!
-        </button>
+        <button class="" v-if="GameEnd" @click="getNextPage()">전부 통과! 축하해!</button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button @click="getRecord()">다시 해보자!</button>
+        <button class="" @click="getRecord()">다시 해보자!</button>
       </div>
     </div>
   </div>
 
   <!--문제 템플릿-->
   <div v-if="GameList">
+    <svg class="game-sentence-box" width="393" height="77" viewBox="0 0 393 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2.5" y="2.5" width="388" height="72" rx="27.5" fill="#94C178" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+    </svg>
     <div class="game-sentence">
-      <h2>{{ GameList[probidx].sentance }}</h2>
+      <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
     </div>
     <div
       class="game"
       v-for="(exam, idx) in GameList[probidx].example"
       :key="idx"
     >
-      <h3>{{ exam }}</h3>
+      <div v-if="idx==0" class="game-ex ex-1">{{ exam }}</div>
+      <div v-if="idx==1" class="game-ex ex-2">{{ exam }}</div>
+      <div v-if="idx==2" class="game-ex ex-3">{{ exam }}</div>
+      <div v-if="idx==3" class="game-ex ex-4">{{ exam }}</div>
     </div>
     <div class="game">
       <div v-if="!VoiceOnOff" @click="getRecord()">
@@ -39,28 +48,24 @@
           v-if="GameList[0].sentance === '물을 ** 끓여 손질된 닭을 넣어요'"
           class="samgyetang"
           src="/assets/image/chicken_soup.png"
-          width="200"
+          width="152"
         />
         <img
           v-if="GameList[0].sentance === '물을 ** 끓여 된장을 넣어요'"
           class="dwenjangjjigae"
           src="/assets/image/dwenjangjjigae.png"
-          width="200"
+          width="152"
         />
         <div v-show="!Answer" class="game-howto">
           음식을 누르고<br />
-          보기 중 정답을 골라 말해줘!
+          보기 중 <span class="game-howto" style="color: #FFB0B1; position: static">정답</span>을 골라 말해줘!
         </div>
       </div>
       <MicRecord class="game-count" v-if="VoiceOnOff" />
-      <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-      <button @click="getNextPage()">게임 스킵 버튼</button>
+    </div>
+    <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
+      <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
       <!---->
-    </div>
-    <div class="bottom-items">
-      <PlayBar></PlayBar>
-      <Score style="margin-top: 3px"></Score>
-    </div>
   </div>
 </template>
 
@@ -121,7 +126,7 @@ const getRecord = () => {
 };
 // watch 로 녹음 파일 들어오는지 확인 후 바로 API 함수 실행
 // Answer 값이 들어왔을 때 비교해서 정답 확인 함수 (view 내부에 작성) 실행
-watch(VoiceFile, () => store.getKingAI(store.VoiceFile));
+watch(VoiceFile, () => store.sendAIAPI(store.VoiceFile));
 watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
@@ -168,51 +173,166 @@ const getNextPage = () => {
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
   width: 926px;
   height: 428px;
 }
-
-.game {
-  display: flex;
-  justify-content: center;
-}
-.game-icon {
-  font-size: 100px;
-}
-.game-sentence {
-  display: flex;
-  justify-content: center;
-}
-.game-howto {
-  display: flex;
-  justify-content: center;
-}
-.game-count {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-}
-.game-score {
-  display: flex;
-  justify-content: end;
-  margin-right: 50px;
-}
-.bottom-items {
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 95vw;
-  bottom: -20px;
-  margin: 30px;
-}
 .back-btn {
   position: absolute;
-  color: black;
-  top: 24px;
+  top: 20px;
   left: 884px;
+}
+.bottom-score {
+  position: absolute;
+  top: 370px;
+  left: 800px;
+  /* margin: 0; */
+  text-align: end;
+}
+.score-- {
+  position: absolute;
+  top: 370px;
+  left: 878px;
+  color: #FAF4BD;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.bottom-items {
+  position: absolute;
+}
+.bottom-icons {
+  width: 95vw;
+  top: 377px;
+  left: 30px;
+}
+
+.game {
+  /* display: flex;
+  justify-content: center; */
+}
+.game-sentence-box {
+  position: absolute;
+  top: 62px;
+  left: 266px;
+  width: 393px;
+  height: 77px;
+}
+.game-sectence-content {
+  position: absolute;
+  top: 86px;
+  left: 299px;
+
+  font-size: 20px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #594640;
+}
+.game-ex {
+  font-size: 20px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #594640;
+  text-align: center;
+  padding-top: 2px;
+
+  position: absolute;
+  width: 100px;
+  height: 34px;
+  background-color: #F2F9FF;
+  border-radius: 5px;
+}
+.ex-1 {
+  /* 팔팔 */
+  position: absolute;
+  top: 202px;
+  left: 156px;
+}
+.ex-2 {
+  /* 풀풀 */
+  position: absolute;
+  top: 269px;
+  left: 156px;
+}
+.ex-3 {
+  /* 턱턱 */
+  position: absolute;
+  top: 202px;
+  left: 672px;
+}
+.ex-4 {
+  /* 송송 */
+  position: absolute;
+  top: 269px;
+  left: 672px;
+}
+.samgyetang, .dwenjangjjigae {
+  position: absolute;
+  top: 183px;
+  left: 388px;
+}
+.game-howto {
+  position: absolute;
+  top: 323px;
+  left: 335px;
+
+  font-size: 24px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #fff;
+  text-align: center;
+  line-height: 29px;
+}
+.game-count-content {
+  position: absolute;
+
+  font-size: 20px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #594640;
+}
+/* 스킵버튼입니다 지워질 예정인 듯 */
+.game-skip-btn {
+  position: absolute;
+  top: 0px;
+  left: 700px;
+  width: 112px;
+  height: 40px;
+
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  background-color: #94C178;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #484E23;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="!record.state">
-      <h1>답을 생각하고 말해줘!</h1>
-      <h1 v-if="timer > 0">{{ timercount }} 초 남았어!</h1>
+      <div class="explain">답을 생각하고 말해줘!</div>
+      <div class="count" v-if="timer > 0">{{ timercount }}</div>
     </div>
-    <h1 v-if="record.state">지금 정답을 말해줘!</h1>
+    <div class="explain now" v-if="record.state">지금 정답을 말해줘!</div>
     <audio ref="audioPlayer"></audio>
   </div>
 </template>
@@ -97,4 +97,40 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   console.log("getUserMedia not supported on your browser!");
 }
 </script>
-<style></style>
+<style scoped>
+.explain {
+  position: absolute;
+  top: 351px;
+  left: 355px;
+
+  font-size: 24px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #fff;
+  text-align: center;
+  line-height: 29px;
+}
+.count {
+  position: absolute;
+  top: 240px;
+  left: 420px;
+
+  font-size: 128px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #F48196;
+  text-align: center;
+  line-height: 29px;
+}
+.now {
+  left: 370px;
+}
+</style>

@@ -258,7 +258,7 @@ export const useGameStore = defineStore("game", () => {
       RecordTime.value = 5000;
     }
   }
-
+  
   // Dialog 에서 API 요청 후 대화로그 인덱스 지정
   function checkindex() {
     if (type.value == scriptType.GAME) {

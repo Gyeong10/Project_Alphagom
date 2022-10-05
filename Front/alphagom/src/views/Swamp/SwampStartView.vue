@@ -59,7 +59,9 @@ setTimeout(() => {
 <style scoped>
 .container-bg {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color:rgba(0, 0, 0, 0.4);
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
