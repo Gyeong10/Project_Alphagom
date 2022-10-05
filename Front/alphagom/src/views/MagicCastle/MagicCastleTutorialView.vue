@@ -1,9 +1,9 @@
 <template>
-  <div>게임 설명입니다. 이제 늪으로 넘어가기 구현!</div>
+  <MagicCastleEndModal />
 </template>
 
 <script setup>
-
+import MagicCastleEndModal from "@/views/Modal/MagicCastleEndModal.vue";
 </script>
 
 <style></style>

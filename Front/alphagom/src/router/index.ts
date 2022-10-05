@@ -28,11 +28,11 @@ const router = createRouter({
       name: "rank",
       component: RankView,
     },
-    {
-      path: "/setting",
-      name: "setting",
-      component: SettingView,
-    },
+    // {
+    //   path: "/setting",
+    //   name: "setting",
+    //   component: SettingView,
+    // },
   ],
 });
 
