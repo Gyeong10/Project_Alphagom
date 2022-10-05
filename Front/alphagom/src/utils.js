@@ -1,15 +1,20 @@
-const BACKEND_PORT = 8080;
-const BACKEND_URL = `https://j7d210.p.ssafy.io:${BACKEND_PORT}/api/be`;
-// const BACKEND_URL = `https://localhost:${BACKEND_PORT}/api/be`;
+// const BACKEND_PORT = 8080;
+// const BACKEND_URL = `https://j7d210.p.ssafy.io:${BACKEND_PORT}/api/be`;
+// const BACKEND_URL = `http://localhost:${BACKEND_PORT}/api/be`;
 
-// const FRONTEND_PORT = 3000;
-// const REDIRECT_URI = `http://localhost:${FRONTEND_PORT}/oauth/redirect`;
+const HOST = `https://kauth.kakao.com`
+const REST_API_KEY = `a330ef34e781fc0054c0e48cc1702b6a`
+
+const FRONTEND_PORT = 5173;
+const REDIRECT_URI = `http://localhost:${FRONTEND_PORT}/oauth/redirect`;
+
 // const REDIRECT_URI = `http://j7d210.p.ssafy.io:${FRONTEND_PORT}/oauth/redirect`;
 // const REDIRECT_URI = `https://j7d210.p.ssafy.io/oauth/redirect`;
 
 export default {
   getSocialLoginUrl(socialType) {
-    return `${BACKEND_URL}/oauth2/authorization/${socialType}?redirect_uri=https://j7d210.p.ssafy.io/oauth/redirect`;
+    console.log(socialType);
+    return HOST + `/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   },
   getSocialImage(socialType) {
     switch (socialType) {
