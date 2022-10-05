@@ -444,6 +444,17 @@ export const useGameStore = defineStore("game", () => {
     });
   }
 
+  //점수 저장하는 함수 axios 요청 보내기
+  async function saveScore(userId: number, score: number, gameTag: string) {
+    await axios({
+      url: api.user.postUserScore(userId),
+      method: "POST",
+      data: { score: score, gameTag: gameTag },
+    }).then((response) => {
+      console.log(response.data);
+    });
+  }
+
   return {
     //state
     stage,
@@ -491,5 +502,6 @@ export const useGameStore = defineStore("game", () => {
     sendAIAPI,
     updateModal,
     saveNickname,
+    saveScore,
   };
 });

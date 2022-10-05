@@ -4,7 +4,7 @@
     <text class="top-title">내 정보</text>
     <div class="box">
       <div class="box-header">
-        <button @click="setTabstage('all')">전체 순위</button>
+        <button @click="setTabstage('all')">전체 순위---------</button>
         <button @click="setTabstage('swamp')">늪 순위</button>
         <button @click="setTabstage('cave')">동굴 순위</button>
         <button @click="setTabstage('sky')">하늘 순위</button>
@@ -19,8 +19,7 @@
             <div class="my-rank">
               <span>{{ user.userInfo.userNickname }}</span>
               <span>님의 순위는</span>
-              <p>{{ AllMyRank.rank }}</p>
-              <span>위 입니다.</span>
+              <p>{{ AllMyRank.rank }}위입니다.</p>
             </div>
           </div>
           <div class="box-body-right">
@@ -79,7 +78,7 @@ const AllRankList = computed(() => rank.AllRankList);
 // 나의 랭크
 const AllMyRank = computed(() => rank.AllMyRank);
 
-
+// 스테이지 버튼 누르면 해당 순위 정보 받아오기
 function setTabstage(data) {
   // rank.tabStage.value = "all"
   if (data == "all") {
@@ -112,13 +111,8 @@ function setTabstage(data) {
     rank.getAllRank("sky")
     console.log(rank.AllRankList)
   }
-
   
-
-
 }
-
-
 
 </script>
 

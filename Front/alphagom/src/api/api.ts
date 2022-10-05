@@ -32,7 +32,7 @@ export default {
       HOST + BE + USER + `${userId}` + `castle`,
     // 유저 점수 저장
     postUserScore: (userId: number) =>
-      HOST + BE + `point/` + USER + `${userId}`,
+      HOST + BE + `score/` + USER + `${userId}`,
     // 유저 게임 클리어 여부 조회
     getClearGame: (userId: number) => HOST + BE + `game/` + USER + `${userId}`,
   },

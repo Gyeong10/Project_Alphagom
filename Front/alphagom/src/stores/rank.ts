@@ -10,7 +10,7 @@ import { defineStore } from "pinia";
 export const useRankStore = defineStore("rank", () => {
   //state
 
-  // 랭크당 스테이지 이름
+  // 스테이지 이름
   const rankStage = ref({
     // Rank stage
     ALL: "all",
@@ -20,7 +20,7 @@ export const useRankStore = defineStore("rank", () => {
   });
   Object.freeze(rankStage)
 
-  // 현재 탭의 스테이지 이름
+  // 기본 탭의 스테이지 이름
   const tabStage = ref("all")
 
   // const AllRankList = ref(); // 모든 유저 랭크 받아오는 state
@@ -59,9 +59,9 @@ export const useRankStore = defineStore("rank", () => {
   //   console.log(rank);
   // }
 
-  // 탭을 눌렀을 때 stage 값 주기
 
   // BE api 요청
+  // 스테이지별 1,2,3순위 정보 받아오기
   async function getAllRank(payload: string) {
     console.log("들어왔나?", AllRankList.value)
     await axios({
@@ -73,7 +73,9 @@ export const useRankStore = defineStore("rank", () => {
     console.log("들어왔다!", AllRankList.value)
   }
 
+  // 스테이지별 내 정보 받아오기
   async function getMyRank(payload1: number, payload2: string) {
+    console.log('rank-----',api.rank.getUserRank(payload1, payload2));
     await axios({
       url: api.rank.getUserRank(payload1, payload2),
       method: "GET",

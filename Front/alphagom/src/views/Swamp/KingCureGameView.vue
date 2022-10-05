@@ -13,21 +13,51 @@
     <!--버튼-->
     <div>
       <div v-if="PassFail === 'passbutton'">
-        <button class="game-skip-btn again-btn" v-if="!GameEnd" @click="getProb()">
+        <button
+          class="game-skip-btn again-btn"
+          v-if="!GameEnd"
+          @click="getProb()"
+        >
           다음문제
         </button>
-        <button class="game-skip-btn again-btn" v-if="GameEnd" @click="getNextPage()">전부통과</button>
+        <button
+          class="game-skip-btn again-btn"
+          v-if="GameEnd"
+          @click="getNextPage()"
+        >
+          전부통과
+        </button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button class="game-skip-btn again-btn" @click="getRecord()">다시하기</button>
+        <button class="game-skip-btn again-btn" @click="getRecord()">
+          다시하기
+        </button>
       </div>
     </div>
   </div>
 
   <!--문제 템플릿-->
   <div v-if="GameList">
-    <svg class="game-sentence-box" width="393" height="77" viewBox="0 0 393 77" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2.5" y="2.5" width="388" height="72" rx="27.5" fill="#94C178" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+    <svg
+      class="game-sentence-box"
+      width="393"
+      height="77"
+      viewBox="0 0 393 77"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="2.5"
+        y="2.5"
+        width="388"
+        height="72"
+        rx="27.5"
+        fill="#94C178"
+        stroke="#FDF8E2"
+        stroke-width="5"
+        stroke-linecap="round"
+        stroke-dasharray="10 10"
+      />
     </svg>
     <div class="game-sentence">
       <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
@@ -37,10 +67,10 @@
       v-for="(exam, idx) in GameList[probidx].example"
       :key="idx"
     >
-      <div v-if="idx==0" class="game-ex ex-1">{{ exam }}</div>
-      <div v-if="idx==1" class="game-ex ex-2">{{ exam }}</div>
-      <div v-if="idx==2" class="game-ex ex-3">{{ exam }}</div>
-      <div v-if="idx==3" class="game-ex ex-4">{{ exam }}</div>
+      <div v-if="idx == 0" class="game-ex ex-1">{{ exam }}</div>
+      <div v-if="idx == 1" class="game-ex ex-2">{{ exam }}</div>
+      <div v-if="idx == 2" class="game-ex ex-3">{{ exam }}</div>
+      <div v-if="idx == 3" class="game-ex ex-4">{{ exam }}</div>
     </div>
     <div class="game">
       <div v-if="!VoiceOnOff" @click="getRecord()">
@@ -58,14 +88,17 @@
         />
         <div v-show="!Answer" class="game-howto">
           음식을 누르고<br />
-          보기 중 <span class="game-howto" style="color: #FFB0B1; position: static">정답</span>을 골라 말해줘!
+          보기 중
+          <span class="game-howto" style="color: #ffb0b1; position: static"
+            >정답</span
+          >을 골라 말해줘!
         </div>
       </div>
       <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
     <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-      <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
-      <!---->
+    <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
+    <!---->
   </div>
 </template>
 
@@ -200,8 +233,11 @@ const getNextPage = () => {
   position: absolute;
   top: 370px;
   left: 878px;
-  color: #FAF4BD;
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color: #faf4bd;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 24px;
   font-weight: 800;
   white-space: nowrap;
@@ -233,9 +269,9 @@ const getNextPage = () => {
 
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  sans-serif;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-weight: 800;
   white-space: nowrap;
   color: #594640;
@@ -243,9 +279,9 @@ const getNextPage = () => {
 .game-ex {
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  sans-serif;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-weight: 800;
   white-space: nowrap;
   color: #594640;
@@ -255,7 +291,7 @@ const getNextPage = () => {
   position: absolute;
   width: 100px;
   height: 34px;
-  background-color: #F2F9FF;
+  background-color: #f2f9ff;
   border-radius: 5px;
 }
 .ex-1 {
@@ -282,7 +318,8 @@ const getNextPage = () => {
   top: 269px;
   left: 672px;
 }
-.samgyetang, .dwenjangjjigae {
+.samgyetang,
+.dwenjangjjigae {
   position: absolute;
   top: 183px;
   left: 388px;
@@ -294,9 +331,9 @@ const getNextPage = () => {
 
   font-size: 24px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  sans-serif;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-weight: 800;
   white-space: nowrap;
   color: #fff;
@@ -308,9 +345,9 @@ const getNextPage = () => {
 
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  sans-serif;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-weight: 800;
   white-space: nowrap;
   color: #594640;
@@ -326,17 +363,17 @@ const getNextPage = () => {
   outline: none;
   border: none;
   border-radius: 15px;
-  background-color: #94C178;
+  background-color: #94c178;
   cursor: pointer;
 
   font-size: 16px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  sans-serif;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-weight: 700;
   white-space: nowrap;
-  color: #484E23;
+  color: #484e23;
 }
 .again-btn {
   position: absolute;
@@ -345,8 +382,8 @@ const getNextPage = () => {
   width: 149.17px;
   height: 48px;
 
-  border: 5px solid #94C178;
-  background-color: #FAF4BD;
+  border: 5px solid #94c178;
+  background-color: #faf4bd;
   color: #594640;
 }
 </style>
