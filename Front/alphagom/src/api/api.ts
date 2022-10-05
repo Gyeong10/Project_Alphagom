@@ -57,6 +57,6 @@ export default {
     getAllUserRank: (tag: string) => HOST + BE + RANK + `${tag}`,
     // 해당 유저 랭크 조회
     getUserRank: (userId: number, tag: string) =>
-      HOST + BE + RANK + `user/` + `${userId}` + `${tag}`,
+      HOST + BE + RANK + `user/` + `${userId}/` + `${tag}`,
   },
 };

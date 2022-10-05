@@ -12,14 +12,14 @@
           <div class="box-body-left">
             <!-- 유저 사진 -->
             <div class="my-avatar">
-              <img :src="user.userInfo.profile" alt="" class="myphoto" />
+              <!-- <img :src="user.userInfo.profile" alt="" class="myphoto" /> -->
               <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
             </div>
             <!-- 유저 랭크 -->
             <div class="my-rank">
               <span>{{ user.userInfo.userNickname }}</span>
               <span>님의 순위는</span>
-              <p>{{ myRank.value.rank }}</p>
+              <p>{{ AllMyRank.rank }}</p>
               <span>위 입니다.</span>
             </div>
           </div>
@@ -49,7 +49,7 @@
 <script setup>
 import { useBgStore } from "@/stores/bg";
 import { computed, onMounted, ref } from 'vue';
-import { useRankStore } from "@/stores/";
+import { useRankStore } from "@/stores/rank";
 import { useAuthStore } from "@/stores/auth";
 
 // 배경 경로 수정
@@ -70,38 +70,47 @@ const user = useAuthStore();
 const bgStore = useBgStore();
 
 // 전체 랭크
-// const rankList = ref()
+// const AllRankList = ref([])
 // 나의 랭크
-// const myRank = ref()
+// const AllMyRank = ref(null)
 
 // 전체 랭크 저장
 const AllRankList = computed(() => rank.AllRankList);
 // 나의 랭크
 const AllMyRank = computed(() => rank.AllMyRank);
 
-function setTabstage(data) {
-  rank.tabStage.value = "all"
-  if (data == "all") {
-    AllRankList.value = rank.AllRankList
-    AllMyRank.value = rank.AllMyRank
 
+function setTabstage(data) {
+  // rank.tabStage.value = "all"
+  if (data == "all") {
+    // AllRankList 에 들어있는 키 gameTag 도 all
+    // AllRankList.value = rank.AllRankList.value
+    // AllMyRank.value = rank.AllMyRank.value
+    rank.getAllRank("all")
+    console.log(rank.AllRankList)
   } else if (
     data == "swamp"
   ) {
-    AllRankList.value = rank.AllRankList
-    AllMyRank.value = rank.AllMyRank
+    // AllRankList.value = rank.AllRankList.value
+    // AllMyRank.value = rank.AllMyRank.value
+    rank.getAllRank("swamp")
+    console.log(rank.AllRankList)
   }
   else if (
     data == "cave"
   ) {
-    AllRankList.value = rank.AllRankList
-    AllMyRank.value = rank.AllMyRank
+    // AllRankList.value = rank.AllRankList.value
+    // AllMyRank.value = rank.AllMyRank.value
+    rank.getAllRank("cave")
+    console.log(rank.AllRankList)
   }
   else if (
     data == "sky"
   ) {
-    AllRankList.value = rank.AllRankList
-    AllMyRank.value = rank.AllMyRank
+    // AllRankList.value = rank.AllRankList.value
+    // AllMyRank.value = rank.AllMyRank.value
+    rank.getAllRank("sky")
+    console.log(rank.AllRankList)
   }
 
   

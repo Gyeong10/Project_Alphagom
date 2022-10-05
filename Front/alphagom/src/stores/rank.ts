@@ -63,12 +63,14 @@ export const useRankStore = defineStore("rank", () => {
 
   // BE api 요청
   async function getAllRank(payload: string) {
+    console.log("들어왔나?", AllRankList.value)
     await axios({
       url: api.rank.getAllUserRank(payload),
       method: "GET",
     }).then((response) => {
       AllRankList.value = response.data;
     });
+    console.log("들어왔다!", AllRankList.value)
   }
 
   async function getMyRank(payload1: number, payload2: string) {
@@ -89,8 +91,6 @@ export const useRankStore = defineStore("rank", () => {
     // actions
     getAllRank,
     getMyRank,
-
-    // settabStage,
 
   }
 
