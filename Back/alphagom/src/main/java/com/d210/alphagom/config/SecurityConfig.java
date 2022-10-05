@@ -71,11 +71,11 @@ public class SecurityConfig {
                 .formLogin().disable()
                 .oauth2Login() // OAuth2Login 설정 시작
                     .authorizationEndpoint() //프론트엔드에서 백엔드로 소셜로그인 요청을 보내는 URI
-                        .baseUri("/oauth2/authorize") // 기본 URI는 /oauth2/authorization/{provider}
+                        .baseUri("/api/be/oauth2/authorization") // 기본 URI는 /oauth2/authorization/{provider}
                         .authorizationRequestRepository(cookieAuthorizationRequestRepository)
                     .and()
                         .redirectionEndpoint()
-                        .baseUri("/oauth2/callback/*")
+                        .baseUri("/**/login/oauth2/authorization/**")
                     .and()
                         .userInfoEndpoint() // oauth2Login 성공 이후의 설정을 시작
                         // 소셜로그인 성공 시 후속 조치를 진행할 UserService 인터페이스 구현체 등록
