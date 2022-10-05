@@ -7,6 +7,7 @@ const AUTH = "auth/";
 const GAME = "game/";
 const RANK = "rank/";
 const USER = "user/";
+const NICKNAME = "nickname/";
 
 export default {
   auth: {
@@ -25,7 +26,7 @@ export default {
     getUserLog: (userId: number) => HOST + BE + `log/` + USER + `${userId}`,
     // 유저 닉네임 저장
     postUserNickname: (userId: number, nickname: string) =>
-      HOST + BE + USER + `${userId}` + nickname + `${nickname}`,
+      HOST + BE + USER + `${userId}/` + NICKNAME + `${nickname}`,
     // 유저 튜토리얼 완료
     putUserCastle: (userId: number) =>
       HOST + BE + USER + `${userId}` + `castle`,

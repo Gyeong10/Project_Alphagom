@@ -28,7 +28,12 @@
       />
       <h1 class="script-char-name">{{ store.script.char }}</h1>
       <!--조건 줘서 필요할 때만 이름 호출-->
-      <p class="script-line1">{{ Nickname }} {{ store.script.line1 }}</p>
+      <p class="script-line1" v-if="store.script.type == 'check'">
+        {{ Nickname }}!!
+      </p>
+      <p class="script-line1" v-if="store.script.type != 'check'">
+        {{ store.script.line1 }}
+      </p>
       <p class="script-line2">{{ store.script.line2 }}</p>
       <img
         class="character-face-img"

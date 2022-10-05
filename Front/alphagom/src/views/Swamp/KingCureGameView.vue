@@ -131,17 +131,20 @@ watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
-  console.log(store.Answer);
-  console.log(store.GameList[probidx.value].answer);
-  if (store.GameList[probidx.value].answer === store.Answer && store.Answer) {
-    store.PassFail = "pass";
-  } else if (
-    store.GameList[probidx.value].answer !== store.Answer &&
-    store.Answer
-  ) {
-    store.PassFail = "fail";
-  } else {
-    store.PassFail = null;
+  if (store.Answer) {
+    if (
+      store.GameList[probidx.value].answer === store.Answer.answer &&
+      store.Answer
+    ) {
+      store.PassFail = "pass";
+    } else if (
+      store.GameList[probidx.value].answer !== store.Answer.answer &&
+      store.Answer
+    ) {
+      store.PassFail = "fail";
+    } else {
+      store.PassFail = null;
+    }
   }
 };
 
