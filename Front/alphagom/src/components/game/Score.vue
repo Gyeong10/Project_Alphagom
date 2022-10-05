@@ -4,9 +4,17 @@
 
 <script setup>
 import { useGameStore } from "@/stores/game";
-import { ref } from "vue";
+import { computed } from "vue";
 
-const score = ref(5000);
+const store = useGameStore();
+const score = computed(() => store.score);
+
+// 점수 1초당 10점씩 깎기
+// 게임 진행 시에만 깎도록 조정해야 한다
+const interval = setInterval(() => {
+  if (store.score === 0) clearInterval(interval);
+  else store.score = store.score - 10;
+}, 1000);
 </script>
 
 <style scoped>

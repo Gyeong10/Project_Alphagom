@@ -1,7 +1,11 @@
 <template>
   <div class="container">
+    <div class="container-bg"></div>
+    <div class="top-title">
+      <img src="/assets/image/title.png" width="150" alt="말해봐요 알파곰 제목">
+    </div>
     <div class="home">
-      <div class="container-bg"></div>
+      <!-- <div class="container-bg"></div> -->
       <div class="item-cont">
         <div class="btn-cont">
           <router-link to="/map">
@@ -14,6 +18,9 @@
           </router-link>
           <router-link to="/myPage">
             <button class="warning button-custom-home">내 정보</button>
+          </router-link>
+          <router-link to="/myPage">
+            <button class="warning button-custom-home">로그아웃</button>
           </router-link>
         </div>
         <img
@@ -52,11 +59,23 @@ const bgwatching = computed(() => bgStore.bgUrlState);
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
   width: 100vw;
   height: 100vh;
+}
+.top-title {
+  position: absolute;
+  /* font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #483737; */
+  top: 18px;
+  left: 388px;
+  /* white-space: nowrap; */
 }
 .item-cont {
   display: flex;
@@ -75,12 +94,12 @@ const bgwatching = computed(() => bgStore.bgUrlState);
   left: 250px;
 }
 .button-custom-home {
-  margin: 10px;
+  margin: 6px;
   font-weight: 600;
 }
 .img-hello {
   position: absolute;
-  top: 66px;
+  top: 80px;
   left: 511px;
 }
 /* btn---- */

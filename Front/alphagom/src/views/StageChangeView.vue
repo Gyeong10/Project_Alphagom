@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <GameScoreModal />
 </template>
 
-<script setup></script>
+<script setup>
+import GameScoreModal from "@/views/Modal/GameScoreModal.vue";
+</script>
 
 <style scoped></style>
