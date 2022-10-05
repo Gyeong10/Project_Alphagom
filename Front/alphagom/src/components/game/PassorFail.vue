@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="check === 'pass' || check === 'passbutton'">
-      <div class="game-icon">정답이야!</div>
+      <div class="text pass">정답이야!</div>
     </div>
     <div v-if="check === 'fail' || check === 'failbutton'">
-      <div class="game-icon">오답이야!</div>
+      <div class="text fail">오답이야!</div>
     </div>
   </div>
 </template>
@@ -26,8 +26,20 @@ setTimeout(() => {
 </script>
 
 <style scoped>
-.game-icon {
-  font-size: 50px;
-  color: #fff;
+.text {
+  position: absolute;
+  top: 240px;
+  left: 420px;
+
+  font-size: 128px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #F48196;
+  text-align: center;
+  line-height: 29px;
 }
 </style>
