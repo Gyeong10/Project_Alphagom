@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="container-bg"></div>
+    <!-- <div class="top-title">{{ stage.name }}</div> -->
+    <div class="top-title">늪</div>
     <KingCureGameModal v-if="Modal" />
     <PassorFail v-if="PassFail" />
     <BackButton class="back-btn" />
@@ -240,6 +242,19 @@ const getNextPage = () => {
     sans-serif;
   font-size: 24px;
   font-weight: 800;
+  white-space: nowrap;
+}
+.top-title {
+  position: absolute;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  top: 8px;
+  left: 452px;
   white-space: nowrap;
 }
 .bottom-items {

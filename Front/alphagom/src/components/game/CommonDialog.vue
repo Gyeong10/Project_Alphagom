@@ -3,9 +3,9 @@
   <MicRecord v-if="VoiceOnOff" />
   <!--문장 못맞췄을 때 오답이야 뜨도록!-->
   <PassorFail v-if="PassFail" />
-  <div v-if="PassFail === 'failbutton'">
-    <button @click="getRecord()">다시 해보자!</button>
-  </div>
+  <!-- <div v-if="PassFail === 'failbutton'">
+    <button class="game-skip-btn" @click="getRecord()">다시하기</button>
+  </div> -->
   <!---->
 
   <div v-if="!VoiceOnOff" class="common">
@@ -95,6 +95,28 @@ watch(Answer, () => store.checkindex());
   position: absolute;
   top: 231px;
   left: 135px;
+}
+.game-skip-btn {
+  position: absolute;
+  top: 0px;
+  left: 700px;
+  width: 112px;
+  height: 40px;
+
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  background-color: #94C178;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #484E23;
 }
 /* .character-body-img {
     position: absolute;

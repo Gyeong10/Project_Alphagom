@@ -114,7 +114,7 @@ const gotoGame = () => {
 
     position: absolute;
     top: -235px;
-    left: 158px;
+    left: 203px;
   }
   &__howto-content {
     font-size: 20px;
@@ -130,7 +130,7 @@ const gotoGame = () => {
 
     position: absolute;
     top: -175px;
-    left: 158px;
+    left: 135px;
   }
   &__howto-content-bold {
     font-weight: 800;

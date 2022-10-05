@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <div class="top-title">{{ stage.name }}</div>
+    <!-- <div class="top-title">{{ stage.name }}</div> -->
+    <div class="top-title">마법의 성</div>
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
@@ -41,6 +42,8 @@ game.setStage("MagicCastle");
 .container-bg {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -77,7 +80,7 @@ game.setStage("MagicCastle");
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 390px;
+  left: 416px;
   white-space: nowrap;
 }
 .back-btn {

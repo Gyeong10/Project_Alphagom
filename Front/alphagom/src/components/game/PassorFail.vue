@@ -24,7 +24,9 @@ setTimeout(() => {
   } else {
     store.PassFail = "failbutton";
   }
+  
 }, 1500);
+
 </script>
 
 <style scoped>
@@ -37,6 +39,7 @@ setTimeout(() => {
   border-radius: 20px;
   background-color: #FFE1E2;
   opacity: 90%;
+  z-index: 1;
 }
 .pass-box {
   background-color: #EDFFD8;
@@ -54,6 +57,7 @@ setTimeout(() => {
   font-weight: 800;
   white-space: nowrap;
   text-align: center;
+  z-index: 1;
 }
 .pass {
   color: #159D64;
