@@ -3,11 +3,9 @@
     <div class="modal-content">
       <br />
       <div class="modal-body">
-        <ul>
-          <li>축하합니다!</li>
-          <!-- 점수 받아와야 됨 -->
-          <li>{{ score }} 점입니다!</li>
-        </ul>
+        <div>축하합니다!</div>
+        <!-- 점수 받아와야 됨 -->
+        <div>{{ score }} 점입니다!</div>
       </div>
       <div class="modal-footer">
         <button
