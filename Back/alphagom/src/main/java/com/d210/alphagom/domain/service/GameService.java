@@ -20,14 +20,20 @@ public class GameService {
 
     private final GameRepository gameRepository;
 
-    public Game getGame(GameTag tag) {
+    public List<Game> getGame(GameTag tag) {
         List<Game> games = gameRepository.getGameByGameTagEquals(tag);
         Collections.shuffle(games);
-        Game game = games.stream()
-                .limit(1)
-                .collect(Collectors.toList()).get(0);
-        return game;
+        return games;
     }
+//
+//    public Game getGame(GameTag tag) {
+//        List<Game> games = gameRepository.getGameByGameTagEquals(tag);
+//        Collections.shuffle(games);
+//        Game game = games.stream()
+//                .limit(1)
+//                .collect(Collectors.toList()).get(0);
+//        return game;
+//    }
 
     public List<Game> getWordGameList(GameTag tag) {
         List<Game> games = gameRepository.getGameByGameTagEquals(tag);
