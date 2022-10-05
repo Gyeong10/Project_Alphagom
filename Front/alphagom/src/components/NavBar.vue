@@ -68,6 +68,7 @@ import {
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/auth";
 import BackGroundMusic from "@/components/BackGroundMusic.vue";
+import { storeToRefs } from "pinia";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 

@@ -425,7 +425,6 @@ export const useGameStore = defineStore("game", () => {
     score,
     dialogList,
     stageViewDict,
-    AudioState,
     isActive,
     GameList,
     Answer,

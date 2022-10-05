@@ -411,6 +411,11 @@
   "resolved" "https://registry.npmjs.org/@types/chai/-/chai-4.3.3.tgz"
   "version" "4.3.3"
 
+"@types/howler@^2.2.7":
+  "integrity" "sha512-PEZldwZqJJw1PWRTpupyC7ajVTZA8aHd8nB/Y0n6zRZi5u8ktYDntsHj13ltEiBRqWwF06pASxBEvCTxniG8eA=="
+  "resolved" "https://registry.npmjs.org/@types/howler/-/howler-2.2.7.tgz"
+  "version" "2.2.7"
+
 "@types/jsdom@^20.0.0":
   "integrity" "sha512-YfAchFs0yM1QPDrLm2VHe+WHGtqms3NXnXAMolrgrVP6fgBHHXy1ozAbo/dFtPNtZC/m66bPiCTWYmqp1F14gA=="
   "resolved" "https://registry.npmjs.org/@types/jsdom/-/jsdom-20.0.0.tgz"
