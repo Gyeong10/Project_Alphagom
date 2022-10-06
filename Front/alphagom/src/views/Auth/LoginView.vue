@@ -6,7 +6,7 @@
       <div class="logo">
         <img
           src="/assets/image/alphagom_look_normal.png"
-          width="100"
+          width="90"
           alt="말해봐요 알파곰 로고"
         />
         <img
@@ -15,7 +15,7 @@
           alt="말해봐요 알파곰 제목"
         />
       </div>
-      <div class="userInfo">
+      <div class="kakao-login-btn">
         <a :href="socialLoginUrl('kakao')">
           <img :src="kakao_login_medium_wide" />
         </a>
@@ -64,11 +64,27 @@ const socialLoginUrl = (socialType) => {
   align-items: center;
   justify-content: center;
 }
-.userInfo {
-  position: relative;
-  margin-left: 13px;
+.white-box {
+  position: absolute;
+  top: 104px;
+  left: 263px;
+  width: 400px;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  opacity: 45%;
+  z-index: 0;
 }
-
+.center-alignment {
+  position: absolute;
+  top: 140px;
+  left: 286px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
 .logo {
   display: flex;
   align-items: center;
@@ -77,22 +93,11 @@ const socialLoginUrl = (socialType) => {
 .logo > img {
   margin: 15px;
 }
-
-.center-alignment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  z-index: 1;
+.kakao-login-btn {
+  position: relative;
+  margin-left: 3px;
 }
 
-.white-box {
-  background-color: white;
-  opacity: 45%;
-  width: 400px;
-  height: 250px;
-  position: absolute;
-  z-index: 0;
-  border-radius: 20px;
-}
+
+
 </style>
