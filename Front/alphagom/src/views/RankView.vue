@@ -8,11 +8,10 @@
         <button class="tab-btn tab-swamp" @click="setTabstage('swamp')">늪 순위</button>
         <button class="tab-btn tab-cave" @click="setTabstage('cave')">동굴 순위</button>
         <button class="tab-btn tab-sky" @click="setTabstage('sky')">하늘 순위</button>
-        <div class="box-body">
           <div class="box-body-left">
             <!-- 유저 사진 -->
             <div class="my-avatar">
-              <!-- <img :src="user.userInfo.profile" alt="" class="myphoto" /> -->
+              <img :src="user.userInfo.profile" alt="" class="myphoto" />
               <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
             </div>
             <!-- 유저 랭크 -->
@@ -26,17 +25,23 @@
             <!-- 1,2,3순위 보여주기 -->
             <table>
               <tbody>
-                <tr v-for="rankData in AllRankList" :key="rankData.nickName">
-                  <th>{{ rankData.rank }}위</th>
-                  <td>{{ rankData.nickName }}</td>
-                  <td>{{ rankData.score }}</td>
+                <tr class="rank-data-table" v-for="rankData in AllRankList" :key="rankData.nickName">
+                  <th class="rank-data-text rank-data-rank">{{ rankData.rank }}위</th>
+                  <tb class="rank-data-profile-img">
+                    <div class="rank-data-avatar">
+                      <img :src="user.userInfo.profile" alt="" class="rank-data-photo" />
+                      <!-- 백에서 프사까지 넘겨주면 소스 수정 -->
+                      <!-- <img :src="rankData.profile" alt="" class="rank-data-photo" /> -->
+                    </div>
+                  </tb>
+                  <td class="rank-data-text rank-data-nickname">{{ rankData.nickName }}</td>
+                  <td class="rank-data-text rank-data-score">{{ rankData.score }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
 
-        </div>
       </div>
     </div>
 
@@ -199,6 +204,92 @@ function setTabstage(data) {
   background-color: #BC78C1;
   color: #55345A;
 }
-.my-rank-text {}
-.my-rank-text-bold {}
+.box-body-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 79px;
+  left: 59px;
+  width: 200px;
+}
+.my-avatar {
+  /* position: absolute;
+  top: 79px;
+  left: 109px; */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.myphoto {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.my-rank-text {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  white-space: nowrap;
+  text-align: center;
+}
+.my-rank-text-bold {
+  font-size: 24px;
+  font-weight: 800
+}
+.box-body-right {
+  position: absolute;
+  top: 60px;
+  left: 299px;
+  width: 298px;
+  height: 201px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.rank-data-table {
+  top: 13px;
+  left: 21px;
+}
+.rank-data-text {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;}
+.rank-data-rank {
+  width: 40px;
+  height: 53px;
+}
+.rank-data-profile-img {
+  width: 47px;
+  height: 53px;
+}
+.rank-data-avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0;
+  margin-top: 5px;
+}
+.rank-data-photo {
+  width: 39px;
+  height: 39px;
+  object-fit: cover;
+}
+.rank-data-nickname {
+  width: 119px;
+  height: 53px;
+}
+.rank-data-score {
+  height: 53px;
+}
 </style>
