@@ -1,14 +1,12 @@
 package com.d210.alphagom.api;
 
 import com.d210.alphagom.api.dto.ResponseDTO;
-import com.d210.alphagom.api.dto.User.UserSignUpRequest;
 import com.d210.alphagom.api.dto.UserResponse;
 import com.d210.alphagom.api.dto.login.LoginResponse;
 import com.d210.alphagom.common.AuthProvider;
 import com.d210.alphagom.common.Role;
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.domain.service.UserService;
-import com.d210.alphagom.security.exception.MethodArgumentNotValidException;
 import com.d210.alphagom.security.oauth.AuthService;
 import com.d210.alphagom.security.oauth.MyTokenProvider;
 import com.d210.alphagom.security.oauth.user.KakaoLogin;
@@ -17,11 +15,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -37,7 +32,6 @@ public class UserApiController {
     private final MyTokenProvider tokenProvider;
 
     private final KakaoLogin kakaoLogin;
-    private final PasswordEncoder passwordEncoder;
 
     @Operation(summary = "유저 정보 조회", description = "유저 정보 조회 api 입니다.")
     @GetMapping("/user/{userId}")
@@ -96,18 +90,5 @@ public class UserApiController {
         String accessToken = tokenProvider.createAccessToken(user.get());
 //        return userinfo;
         return ResponseEntity.ok().body(new LoginResponse("로그인되었습니다.", user.get().getId(), accessToken, refreshToken));
-    }
-
-    @PostMapping("/signup")
-    public ResponseEntity<ResponseDTO> signup(@Valid @RequestBody UserSignUpRequest request, BindingResult bindingResult) {
-        log.info("회원가입 요청");
-        validateRequest(bindingResult);
-        userService.joinMember(request.convertMember(passwordEncoder));
-        return ResponseEntity.ok(new ResponseDTO("회원가입이 완료되었습니다."));
-    }
-
-    private void validateRequest(BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            throw new MethodArgumentNotValidException(bindingResult);
     }
 }

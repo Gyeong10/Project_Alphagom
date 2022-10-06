@@ -204,10 +204,6 @@ function gotoNext() {
   height: 65px;
 }
 .game-sectence-content {
-  /* position: absolute;
-  top: 86px;
-  left: 299px; */
-
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",

@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@EntityListeners(value = AuditingEntityListener.class)
+@EntityListeners(value = AuditingEntityListener.class) // JPA Auditing 어노테이션
 @Getter
 public abstract class BaseTimeEntity {
 

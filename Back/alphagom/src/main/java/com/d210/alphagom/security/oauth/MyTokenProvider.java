@@ -3,14 +3,12 @@ package com.d210.alphagom.security.oauth;
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.security.jwt.JwtProperties;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 
@@ -48,24 +46,24 @@ public class MyTokenProvider {
                 .compact();
     }
 
-    public String getMemberId(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("memberId").toString();
-    }
-
-    public Claims getClaims(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
-    }
-
-    public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("Authorization");
-    }
-
-    public boolean validateToken(String jwtToken) {
-        try {
-            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
-            return !claims.getBody().getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public String getMemberId(String token) {
+//        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("memberId").toString();
+//    }
+//
+//    public Claims getClaims(String token) {
+//        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+//    }
+//
+//    public String resolveToken(HttpServletRequest request) {
+//        return request.getHeader("Authorization");
+//    }
+//
+//    public boolean validateToken(String jwtToken) {
+//        try {
+//            Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(jwtToken);
+//            return !claims.getBody().getExpiration().before(new Date());
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 }

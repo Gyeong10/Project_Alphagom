@@ -108,7 +108,7 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 .explain {
   position: absolute;
   top: 351px;
-  left: 355px;
+  left: 360px;
 
   font-size: 24px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,

@@ -26,10 +26,10 @@ public class AuthService {
         return refreshToken;
     }
 
-    public String createNewAccessToken(String refreshToken) {
-        User user = userRepository.findByRefreshToken(refreshToken).get();
-//                .orElseThrow(() -> new RefreshTokenNotFoundException());
-        String newAccessToken = tokenProvider.createAccessToken(user);
-        return newAccessToken;
-    }
+//    public String createNewAccessToken(String refreshToken) {
+//        User user = userRepository.findByRefreshToken(refreshToken).get();
+////                .orElseThrow(() -> new RefreshTokenNotFoundException());
+//        String newAccessToken = tokenProvider.createAccessToken(user);
+//        return newAccessToken;
+//    }
 }

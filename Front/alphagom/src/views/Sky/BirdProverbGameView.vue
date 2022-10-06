@@ -107,7 +107,7 @@
       <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
     <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-    <button class="game-skip-btn" @click="getNextPage()">건너뛰기</button>
+    <button class="game-skip-btn real-skip-btn" @click="getNextPage()">건너뛰기</button>
     <!---->
   </div>
 </template>
@@ -403,26 +403,25 @@ const getNextPage = () => {
 /* 스킵버튼입니다 지워질 예정인 듯 */
 .game-skip-btn {
   position: absolute;
-  top: 340px;
-  left: 815px;
-  width: 86px;
-  height: 29px;
+  top: 0px;
+  left: 700px;
+  width: 112px;
+  height: 40px;
 
   outline: none;
   border: none;
   border-radius: 15px;
-  background-color: #FAF4BD;
+  background-color: #94c178;
   cursor: pointer;
 
-  font-size: 14px;
+  font-size: 16px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     sans-serif;
   font-weight: 700;
   white-space: nowrap;
-  color: #594640;
-  text-align: center;
+  color: #484e23;
 }
 .again-btn {
   position: absolute;
@@ -432,7 +431,22 @@ const getNextPage = () => {
   height: 48px;
 
   border: 5px solid #94c178;
+  border-radius: 30px;
   background-color: #faf4bd;
   color: #594640;
+  font-size: 20px;
+}
+.real-skip-btn {
+  position: absolute;
+  top: 340px;
+  left: 815px;
+  width: 86px;
+  height: 29px;
+
+  background-color: #FAF4BD;
+  font-size: 14px;
+  font-weight: 700;
+  color: #594640;
+  text-align: center;
 }
 </style>
