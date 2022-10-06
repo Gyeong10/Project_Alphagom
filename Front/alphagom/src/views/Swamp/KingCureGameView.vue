@@ -62,7 +62,7 @@
           stroke-dasharray="10 10"
         />
       </svg>
-      <div class="game-sentence">
+      <div class="game-sentence-box">
         <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
       </div>
       <div
@@ -276,15 +276,19 @@ const getNextPage = () => {
 }
 .game-sentence-box {
   position: absolute;
-  top: 62px;
-  left: 266px;
-  width: 393px;
-  height: 77px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 68px;
+  left: 272px;
+  width: 381px;
+  height: 65px;
 }
 .game-sectence-content {
-  position: absolute;
+  /* position: absolute;
   top: 86px;
-  left: 299px;
+  left: 299px; */
 
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,

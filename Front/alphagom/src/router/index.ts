@@ -7,7 +7,7 @@ import { useAuthStore } from "@/stores/auth";
 import HomeView from "@/views/HomeView.vue";
 import MyPageView from "@/views/MyPageView.vue";
 import RankView from "@/views/RankView.vue";
-import SettingView from "@/views/SettingView.vue";
+// import SettingView from "@/views/SettingView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,20 +37,20 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  const isLoggedIn = computed(() => authStore.isLoggedIn);
-  // 로그인되어 있지 않으면
-  if (
-    !isLoggedIn.value &&
-    to.name !== "login" &&
-    to.name !== "OAuthRedirectView"
-  ) {
-    console.log("isLoggedIn", isLoggedIn.value, "to.name", to.name);
-    next({ name: "login" });
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const authStore = useAuthStore();
+//   const isLoggedIn = computed(() => authStore.isLoggedIn);
+//   // 로그인되어 있지 않으면
+//   if (
+//     !isLoggedIn.value &&
+//     to.name !== "login" &&
+//     to.name !== "OAuthRedirectView"
+//   ) {
+//     console.log("isLoggedIn", isLoggedIn.value, "to.name", to.name);
+//     next({ name: "login" });
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;

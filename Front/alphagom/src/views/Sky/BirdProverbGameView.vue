@@ -61,7 +61,7 @@
         stroke-dasharray="10 10"
       />
     </svg>
-    <div class="game-sentence">
+    <div class="game-sentence-box">
       <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
     </div>
     <div
@@ -78,12 +78,13 @@
       <div v-if="!VoiceOnOff" @click="getRecord()">
         <!--물음표 넣기!!-->
         <!--CSS 수정 부타케-->
-        <img
+        <!-- <img
           class="samgyetang"
           src="/assets/image/chicken_soup.png"
           width="152"
           v-if="!PassFail || PassFail == 'failbutton'"
-        />
+        /> -->
+        <div class="question-mark" v-if="!PassFail || PassFail == 'failbutton'">?</div>
         <img
           class="sparrow"
           src="/assets/image/sparrow.png"
@@ -136,7 +137,7 @@ onMounted(() => {
   store.Modal = true
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/assets/image/sky_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 // 스토어 가져오기
@@ -269,7 +270,7 @@ const getNextPage = () => {
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 452px;
+  left: 441px;
   white-space: nowrap;
 }
 .bottom-items {
@@ -287,15 +288,19 @@ const getNextPage = () => {
 }
 .game-sentence-box {
   position: absolute;
-  top: 62px;
-  left: 266px;
-  width: 393px;
-  height: 77px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 68px;
+  left: 272px;
+  width: 381px;
+  height: 65px;
 }
 .game-sectence-content {
-  position: absolute;
+  /* position: absolute;
   top: 86px;
-  left: 299px;
+  left: 299px; */
 
   font-size: 20px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
@@ -348,6 +353,22 @@ const getNextPage = () => {
   top: 269px;
   left: 672px;
 }
+.question-mark {
+  position: absolute;
+  top: 240px;
+  left: 426px;
+
+  font-size: 128px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #F48196;
+  text-align: center;
+  line-height: 29px;
+}
 .samgyetang,
 .dwenjangjjigae {
   position: absolute;
@@ -357,7 +378,7 @@ const getNextPage = () => {
 .game-howto {
   position: absolute;
   top: 323px;
-  left: 335px;
+  left: 338px;
 
   font-size: 24px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,

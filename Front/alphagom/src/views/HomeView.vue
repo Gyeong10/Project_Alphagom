@@ -64,8 +64,8 @@ const bgwatching = computed(() => bgStore.bgUrlState);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
-  width: 100vw;
-  height: 100vh;
+  width: 926px;
+  height: 428px;
 }
 .top-title {
   position: absolute;
@@ -111,7 +111,10 @@ button {
   color: var(--button-color);
   margin: 0;
   padding: 0.5rem 2rem;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   font-size: 1rem;
   font-weight: 400;
   text-align: center;

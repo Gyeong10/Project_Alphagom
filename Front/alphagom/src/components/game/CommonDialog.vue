@@ -88,7 +88,7 @@ watch(VoiceFile, () => store.sendAIAPI(store.VoiceFile));
 watch(Answer, () => store.checkindex());
 </script>
 
-<style>
+<style scoped>
 .common {
   position: absolute;
   width: 100vw;
@@ -127,10 +127,19 @@ watch(Answer, () => store.checkindex());
     left: 200px;
     height: 300px;
 } */
+.script-char-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 242px;
+  left: 169px;
+  width: 124px;
+}
 .script-char-name {
-  position: absolute;
+  /* position: absolute;
   top: 243px;
-  left: 187px;
+  left: 187px; */
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -168,20 +177,20 @@ watch(Answer, () => store.checkindex());
 }
 .character-body-img {
   position: absolute;
-  bottom: -370px;
+  bottom: -348px;
   left: 200px;
   height: 300px;
 }
 .character-face-img {
   position: absolute;
-  bottom: -330px;
+  bottom: -298px;
   left: 666px;
   /* height: 300px; */
   width: 50px;
 }
 .script-btn {
   position: absolute;
-  top: 332px;
+  top: 302px;
   left: 630px;
 
   border: none;
@@ -203,7 +212,7 @@ watch(Answer, () => store.checkindex());
 }
 .pass-btn {
   position: absolute;
-  top: 332px;
+  top: 302px;
   left: 697px;
   color: #f48196;
 }

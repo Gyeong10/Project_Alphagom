@@ -84,6 +84,8 @@ const clickMapItem = name => {
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
