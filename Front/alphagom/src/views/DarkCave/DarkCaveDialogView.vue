@@ -81,7 +81,7 @@ const stage = reactive({ name: "darkcave" });
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 452px;
+  left: 410px;
   white-space: nowrap;
 }
 .back-btn {
