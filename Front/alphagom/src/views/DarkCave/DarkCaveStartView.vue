@@ -99,6 +99,10 @@ setTimeout(() => {
   top: 8px;
   left: 410px;
   white-space: nowrap;
+
+  /* display: felx;
+  justify-content: center;
+  align-items: center; */
 }
 .game-title {
   position: absolute;

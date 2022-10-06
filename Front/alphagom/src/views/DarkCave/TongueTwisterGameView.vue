@@ -1,92 +1,94 @@
 <template>
-  <div>
-    <div class="container-bg"></div>
-    <!-- <div class="top-title">{{ stage.name }}</div> -->
-    <div class="top-title">어둠의 동굴</div>
-    <TongueTwisterGameModal v-if="Modal" />
-    <PassorFail v-if="PassFail" />
-    <BackButton class="back-btn" />
-    <Score class="bottom-score"></Score>
-    <div class="score--">점</div>
-    <div class="bottom-items">
-      <PlayBar class="bottom-icons"></PlayBar>
-    </div>
-
-    <!--버튼-->
+  <div class="container">
     <div>
-      <div v-if="PassFail === 'passbutton'">
-        <button
-          class="game-skip-btn again-btn"
-          v-if="!GameEnd"
-          @click="getProb()"
-        >
-          다음문제
-        </button>
-        <button
-          class="game-skip-btn again-btn"
-          v-if="GameEnd"
-          @click="getNextPage()"
-        >
-          전부통과
-        </button>
+      <div class="container-bg"></div>
+      <!-- <div class="top-title">{{ stage.name }}</div> -->
+      <div class="top-title">어둠의 동굴</div>
+      <TongueTwisterGameModal v-if="Modal" />
+      <PassorFail v-if="PassFail" />
+      <BackButton class="back-btn" />
+      <Score class="bottom-score"></Score>
+      <div class="score--">점</div>
+      <div class="bottom-items">
+        <PlayBar class="bottom-icons"></PlayBar>
       </div>
-      <div v-if="PassFail === 'failbutton'">
-        <button class="game-skip-btn again-btn" @click="getRecord()">
-          다시하기
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!--문제 템플릿-->
-  <div v-if="GameList">
-    <svg
-      class="game-sentence-box"
-      width="393"
-      height="77"
-      viewBox="0 0 393 77"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="2.5"
-        y="2.5"
-        width="388"
-        height="72"
-        rx="27.5"
-        fill="#94C178"
-        stroke="#FDF8E2"
-        stroke-width="5"
-        stroke-linecap="round"
-        stroke-dasharray="10 10"
-      />
-    </svg>
-    <div class="game-sentence">
-      <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
-    </div>
-    <div class="game">
-      <div v-if="!VoiceOnOff" @click="getRecord()">
-        <img
-          class="samgyetang"
-          src="/assets/image/manul_live.png"
-          width="152"
-          v-if="!PassFail || PassFail == 'failbutton'"
-        />
-        <div v-show="!Answer" class="game-howto">
-          마늘을 누르고<br />
-          보기 중
-          <span class="game-howto" style="color: #ffb0b1; position: static"
-            >정답</span
-          >을 골라 말해줘!
+      <!--버튼-->
+      <div>
+        <div v-if="PassFail === 'passbutton'">
+          <button
+            class="game-skip-btn again-btn"
+            v-if="!GameEnd"
+            @click="getProb()"
+          >
+            다음문제
+          </button>
+          <button
+            class="game-skip-btn again-btn"
+            v-if="GameEnd"
+            @click="getNextPage()"
+          >
+            전부통과
+          </button>
+        </div>
+        <div v-if="PassFail === 'failbutton'">
+          <button class="game-skip-btn again-btn" @click="getRecord()">
+            다시하기
+          </button>
         </div>
       </div>
-      <!--TTS 버튼-->
-      <button @click="startSpeechToTxt">읽어줄게ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ!</button>
-      <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
-    <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-    <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
-    <!---->
+
+    <!--문제 템플릿-->
+    <div v-if="GameList">
+      <svg
+        class="game-sentence-box"
+        width="393"
+        height="77"
+        viewBox="0 0 393 77"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="2.5"
+          y="2.5"
+          width="388"
+          height="72"
+          rx="27.5"
+          fill="#94C178"
+          stroke="#FDF8E2"
+          stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="10 10"
+        />
+      </svg>
+      <div class="game-sentence">
+        <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
+      </div>
+      <div class="game">
+        <div v-if="!VoiceOnOff" @click="getRecord()">
+          <img
+            class="samgyetang"
+            src="/assets/image/manul_live.png"
+            width="152"
+            v-if="!PassFail || PassFail == 'failbutton'"
+          />
+          <div v-show="!Answer" class="game-howto">
+            마늘을 누르고<br />
+            보기 중
+            <span class="game-howto" style="color: #ffb0b1; position: static"
+              >정답</span
+            >을 골라 말해줘!
+          </div>
+        </div>
+        <!--TTS 버튼-->
+        <button @click="startSpeechToTxt">읽어줄게ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ!</button>
+        <MicRecord class="game-count" v-if="VoiceOnOff" />
+      </div>
+      <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
+      <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
+      <!---->
+    </div>
   </div>
 </template>
 
