@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-
+  
     <!--문제 템플릿-->
     <div v-if="GameList">
       <svg class="game-sentence-box" width="393" height="77" viewBox="0 0 393 77" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,8 +74,6 @@
     </div>
     <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
     <button class="game-skip-btn real-skip-btn" @click="getNextPage()">건너뛰기</button>
-    <!---->
-  </div>
 </template>
 
 <script setup>
@@ -149,18 +147,20 @@ watch(Answer, () => compareAnswer());
 // 정답비교하는 함수
 const compareAnswer = () => {
   if (store.Answer) {
-    if (
-      store.GameList[probidx.value].answer === store.Answer.answer &&
-      store.Answer
-    ) {
+    
+    const input = store.Answer.answer.replace(/[.*+?^${}()|[\]\\, ]/g, "")
+    const ans = store.GameList[probidx.value].sentance.replace(/[.*+?^${}()|[\]\\, ]/g, "")
+
+    if (ans === input && store.Answer) {
       store.PassFail = "pass";
       console.log('pass: ' + PassFail)
-    } else if (
-      store.GameList[probidx.value].answer !== store.Answer.answer &&
-      store.Answer
-    ) {
+      console.log("입력 :", input)
+      console.log("정답 :", ans)
+    } else if (ans !== input && store.Answer) {
       store.PassFail = "fail";
       console.log('fail: ' + PassFail)
+      console.log("입력 :", input)
+      console.log("정답 :", ans)
     } else {
       store.PassFail = null;
       console.log('passfail else (null): ' + PassFail)
