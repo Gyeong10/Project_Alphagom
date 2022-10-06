@@ -88,7 +88,7 @@
         router.push({ name: "rank" });
     } else if (data == "home") {
         store.scriptNum = 0;
-        router.push({ name: "rank" });
+        router.push({ name: "home" });
     }
   };
   </script>

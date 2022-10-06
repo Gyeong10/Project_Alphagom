@@ -38,6 +38,7 @@
         alt="캐릭터 표정"
       />
     </div>
+    <!--게임, 끝날 때 새로 버튼 만들어야 하나!-->
     <div v-if="!store.isActive">
       <button class="script-btn" @click="store.plusNum()">다음대화</button>
       <button class="script-btn pass-btn" @click="store.skip()">
@@ -47,7 +48,7 @@
     <button
       class="script-btn answer-btn"
       v-if="store.isActive"
-      @click="getRecord()"
+      @click="store.plusNum()"
     >
       대답하기
     </button>

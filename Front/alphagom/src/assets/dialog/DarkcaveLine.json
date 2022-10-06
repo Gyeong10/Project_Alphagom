@@ -214,7 +214,7 @@
       "char": "알파곰",
       "line1": "좋아, 마늘을 구우러 가볼까!",
       "line2": "",
-      "type": "game",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
@@ -222,7 +222,7 @@
       "char": "알파곰",
       "line1": "어때, 인간이 되고 싶은 곰 친구!",
       "line2": "구운 마늘은 먹을만하지?",
-      "type": "story",
+      "type": "game",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },

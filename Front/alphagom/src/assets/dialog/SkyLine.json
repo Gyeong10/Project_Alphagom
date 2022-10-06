@@ -85,7 +85,7 @@
       "char": "알파곰",
       "line1": "오늘 착한 일 무지하게 많이 하네!",
       "line2": "우리 같이 다리 놓으러 가보자!",
-      "type": "game",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     },
@@ -93,7 +93,7 @@
       "char": "견우",
       "line1": "직녀야!!!!!",
       "line2": "",
-      "type": "story",
+      "type": "game",
       "effect": "",
       "imgFace": ""
     },
@@ -109,6 +109,14 @@
       "char": "알파곰",
       "line1": "무사히 만났구나!",
       "line2": "도움이 돼서 기분이 좋네.",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "알파곰",
+      "line1": "역시 착한 일을 하면 기분이 좋아!",
+      "line2": "",
       "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"

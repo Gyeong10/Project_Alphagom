@@ -1,5 +1,4 @@
-// const HOST = "https://j7d210.p.ssafy.io/api/";
-const HOST = "http://localhost:8080/api/";
+const HOST = "https://j7d210.p.ssafy.io/api/";
 
 const BE = "be/";
 const AI = "ai/";
