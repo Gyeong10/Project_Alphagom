@@ -1,14 +1,25 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <div class="userInfo">
-      <ul>
-        <li>
-          <a :href="socialLoginUrl('kakao')">
-            <img :src="kakao_login_medium_wide" />
-          </a>
-        </li>
-      </ul>
+    <div class="white-box"></div>
+    <div class="center-alignment">
+      <div class="logo">
+        <img
+          src="/assets/image/alphagom_look_normal.png"
+          width="100"
+          alt="말해봐요 알파곰 로고"
+        />
+        <img
+          src="/assets/image/title.png"
+          width="200"
+          alt="말해봐요 알파곰 제목"
+        />
+      </div>
+      <div class="userInfo">
+        <a :href="socialLoginUrl('kakao')">
+          <img :src="kakao_login_medium_wide" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +33,7 @@ import $ from "@/utils";
 // 배경 경로 수정
 onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/home_bg_low.jpg")';
 });
 const bgStore = useBgStore();
 // state 감시자
@@ -38,6 +49,8 @@ const socialLoginUrl = (socialType) => {
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -47,8 +60,39 @@ const socialLoginUrl = (socialType) => {
 .container {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .userInfo {
   position: relative;
+  margin-left: 13px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo > img {
+  margin: 15px;
+}
+
+.center-alignment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.white-box {
+  background-color: white;
+  opacity: 45%;
+  width: 400px;
+  height: 250px;
+  position: absolute;
+  z-index: 0;
+  border-radius: 20px;
 }
 </style>

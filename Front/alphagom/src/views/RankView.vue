@@ -126,6 +126,8 @@ function setTabstage(data) {
 .container-bg {
   position: absolute;
   background-color: transparent;
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -204,6 +206,7 @@ function setTabstage(data) {
   background-color: #BC78C1;
   color: #55345A;
 }
+/* 이 친구들을 묶으니 중앙정렬이 가능했다. 이 아이들 제외 다 absolute해서 위치를 지정했기 때문에 가능한 듯 */
 .box-body-left {
   display: flex;
   flex-direction: column;

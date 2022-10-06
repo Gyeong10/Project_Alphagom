@@ -109,6 +109,8 @@ const getNextStage = () => {
   &__modal-body {
     display: flex;
     flex-flow: column;
+    // justify-content: center;
+    // align-items: center;
     position: absolute;
   }
   &__howto-title {
@@ -121,11 +123,11 @@ const getNextStage = () => {
     white-space: nowrap;
     color: #FDF8E2;
     // text-shadow: -2px 0 #345A49, 0 2px #345A49, 2px 0 #345A49, 0 -2px #345A49;
-    -webkit-text-stroke: 1.5px #34435A;
+    -webkit-text-stroke: 1.5px #345A49;
 
     position: absolute;
-    top: -235px;
-    left: 158px;
+    top: -218px;
+    left: 210px;
   }
   &__howto-content {
     font-size: 20px;
@@ -135,16 +137,16 @@ const getNextStage = () => {
     sans-serif;
     font-weight: 500;
     white-space: nowrap;
-    color: #34435A;
+    color: #345A49;
     text-align: center;
     line-height: 110%;
 
     position: absolute;
-    top: -175px;
-    left: 135px;
+    top: -156px;
+    left: 180px;
   }
   &__howto-content-bold {
-    font-size: 60px;
+    font-size: 64px;
     font-weight: 800;
   }
   &__next-btn {

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
+    <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">하늘</div>
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
@@ -59,6 +60,8 @@ setTimeout(() => {
 .container-bg {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
+  /* 위 필터는 모바일 브라우저 대비 */
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   top: 0px;
   left: 0px;
@@ -95,7 +98,7 @@ setTimeout(() => {
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 443px;
+  left: 441px;
   white-space: nowrap;
 }
 .game-title {

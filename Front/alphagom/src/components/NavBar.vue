@@ -145,6 +145,10 @@ aside {
 
       .material-icons {
         font-size: 2rem;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
         color: var(--light-yellow);
         transform: 0.2s ease-out;
       }
@@ -168,6 +172,10 @@ aside {
   h3 {
     color: var(--grey);
     font-size: 0.875rem;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
   }
@@ -188,6 +196,10 @@ aside {
 
       .material-icons {
         font-size: 2rem;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
         height: 1.5rem;
         color: var(--dark-red);
         transition: 0.2s ease-out;
@@ -198,6 +210,10 @@ aside {
         color: var(--dark-red);
         transition: 0.2s ease-out;
         font-size: 0.85rem;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
       }
 
       &:hover,
@@ -240,6 +256,10 @@ aside {
         }
         .user-name {
           font-size: 0.75rem;
+          font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
           font-weight: 600;
           letter-spacing: -1px;
           margin-top: 5.5px;
