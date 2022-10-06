@@ -25,12 +25,14 @@
       </svg>
       <!-- 모달 내용 -->
       <div class="modal__modal-body">
-        <div class="modal__howto-title">{{ store.Nickname }}!! 즐거웠어!</div>
+        <div class="modal__title-box">
+          <div class="modal__howto-title">{{ store.Nickname }}!! 즐거웠어!</div>
+        </div>
         <div class="modal__howto-content">
           <div class="modal__howto-content-regular">
             이제 탐험이 끝났네.
           </div>
-          <div style="height: 6px" />
+          <div style="height: 6px"></div>
           <div class="modal__howto-content-bold">
             덕분에 탐험하는 동안 한국어 실력이 많이 늘었어.
             <br />
@@ -121,6 +123,19 @@ const gotoPage = (data) => {
     display: flex;
     flex-flow: column;
     position: absolute;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title-box {
+    width: 400px;
+    top: -235px;
+    left: 80px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
   }
   &__howto-title {
     font-size: 32px;
@@ -134,9 +149,12 @@ const gotoPage = (data) => {
     // text-shadow: -2px 0 #345A49, 0 2px #345A49, 2px 0 #345A49, 0 -2px #345A49;
     -webkit-text-stroke: 1.5px #345a49;
 
-    position: absolute;
-    top: -235px;
-    left: 213px;
+    // position: absolute;
+    // top: -235px;
+    // left: 213px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
   }
   &__howto-content {
     font-size: 20px;
@@ -152,7 +170,21 @@ const gotoPage = (data) => {
 
     position: absolute;
     top: -175px;
-    left: 186px;
+    left: 100px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  &__howto-content-regular {
+    width: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
   }
   &__howto-content-bold {
     font-weight: 800;

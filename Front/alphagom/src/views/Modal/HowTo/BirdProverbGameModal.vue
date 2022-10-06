@@ -1,30 +1,34 @@
 <template>
-    <div class="modal" tabindex="-1">
-        <div class="modal__modal-content">
-        <!-- 모달 박스 -->
-        <svg width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#BC78C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
-        </svg>
-        <!-- 모달 내용 -->
-        <div class="modal__modal-body">
-            <div class="modal__howto-title">새 속담 게임</div>
-            <div class="modal__howto-content">
-                <div class="modal__howto-content-regular">
-                  견우와 직녀가 만날 수 있도록 새 다리를 만들어주며
-                  <br>
-                  새 이름이 들어간 한국의 속담들을 알아보자구!
-                </div>
-                <div style="height: 6px;" />
-                <div class="modal__howto-content-bold">물음표에 들어갈 단어를 말하면 돼!</div>
-            </div>
+  <div class="modal" tabindex="-1">
+    <div class="modal__modal-content">
+      <!-- 모달 박스 -->
+      <svg width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#BC78C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+      </svg>
+      <!-- 모달 내용 -->
+      <div class="modal__modal-body">
+        <div class="modal__howto-title">새 속담 게임</div>
+        <div class="modal__howto-content">
+          <div class="modal__howto-content-regular">
+            견우와 직녀가 만날 수 있도록 새 다리를 만들어주며
+            <br>
+            새 이름이 들어간 한국의 속담들을 알아보자구!
+          </div>
+          <div style="height: 6px"></div>
+          <div class="modal__howto-content-bold">
+            물음표에 들어갈 단어를 말하면 돼!
+          </div>
         </div>
-        <!-- 버튼 -->
-        <div class="modal__modal-footer">
-            <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>        
-        </div>
+      </div>
+      <!-- 버튼 -->
+      <div class="modal__modal-footer">
+        <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">
+          시작하기
+        </button>
+      </div>
     </div>
     <div class="modal__overlay" @click.self="$emit('close')"></div>
-</div>
+  </div>
 </template>
       
 <script setup>
@@ -99,6 +103,19 @@ const gotoGame = () => {
     position: absolute;
     top: -175px;
     left: 157px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__howto-content-regular {
+    width: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
   }
   &__howto-content-bold {
     font-weight: 800;

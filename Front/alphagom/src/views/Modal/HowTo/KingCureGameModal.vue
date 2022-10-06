@@ -102,6 +102,18 @@ const gotoGame = () => {
     position: absolute;
     top: -175px;
     left: 158px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__howto-content-regular {
+    width: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
   }
   &__howto-content-bold {
     font-weight: 800;

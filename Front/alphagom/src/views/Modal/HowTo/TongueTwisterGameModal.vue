@@ -1,35 +1,35 @@
 <template>
+  <div class="container">  
     <div class="modal" tabindex="-1">
-        <div class="modal__modal-content">
-            <!-- 모달 박스 -->
-            <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="##7888C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
-            </svg>
-            <!-- 모달 내용 -->
-            <div class="modal__modal-body">
-                <div class="modal__howto-title">잰말놀이</div>
-                <div class="modal__howto-content">
-                    <div class="modal__howto-content-regular">
-                      발음하기 어려운 문장들에 도전해보자!
-                      <br>
-                      자연스럽게 발음 능력이 좋아질거야!
-                    </div>
-                    <div style="height: 6px;" />
-                    <div class="modal__howto-content-bold">
-                      '들어보기'를 누르면 정확한 발음을 알 수 있어!
-                    </div>
-                </div>
+      <div class="modal__modal-content">
+        <!-- 모달 박스 -->
+        <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#7888C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+        </svg>
+        <!-- 모달 내용 -->
+        <div class="modal__modal-body">
+          <div class="modal__howto-title">잰말놀이</div>
+          <div class="modal__howto-content">
+            <div class="modal__howto-content-regular">
+              발음하기 어려운 문장들에 도전해보자!
+              <br>
+              자연스럽게 발음 능력이 좋아질거야!
             </div>
-            <div class="modal__modal-footer">
-                <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>        
+            <div style="height: 6px"></div>
+            <div class="modal__howto-content-bold">
+              '들어보기'를 누르면 정확한 발음을 알 수 있어!
             </div>
+          </div>
+        </div>
+        <div class="modal__modal-footer">
+          <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>
         </div>
       </div>
-      <div class="modal__modal-footer">
-        <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>        
-      </div>
-    <div>
-    <div class="modal__overlay" @click.self="$emit('close')"></div>
+    </div>
+    <div class="modal__modal-footer">
+      <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>
+    </div>
+    <div class="modal__overlay" @click.self="$emit('close')"></div> 
   </div>
 </template>
 
@@ -71,7 +71,10 @@ const gotoGame = () => {
   &__modal-body {
     display: flex;
     flex-flow: column;
-    position: absolute;
+    // position: absolute;
+    justify-content: center;
+    align-items: center;
+
   }
   &__howto-title {
     font-size: 32px;
@@ -87,7 +90,7 @@ const gotoGame = () => {
 
     position: absolute;
     top: -235px;
-    left: 198px;
+    // left: 198px;
   }
   &__howto-content {
     font-size: 20px;
@@ -103,7 +106,20 @@ const gotoGame = () => {
 
     position: absolute;
     top: -175px;
-    left: 168px;
+    // left: 168px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__howto-content-regular {
+    width: 100px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
   }
   &__howto-content-bold {
     font-weight: 800;

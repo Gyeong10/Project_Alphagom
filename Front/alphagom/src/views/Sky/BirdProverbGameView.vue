@@ -128,6 +128,7 @@ import PassorFail from "@/components/game/PassorFail.vue";
 onMounted(() => {
   store.getBirdGame();
   store.Modal = true
+  store.Answer = null;
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")';

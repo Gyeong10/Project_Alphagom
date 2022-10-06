@@ -488,7 +488,7 @@ function minusScore() {
       method: "POST",
       data: nickname,
     }).then((response) => {
-      console.log(response.data);
+      console.log('game.ts의 닉네임 수정 함수' + response.data);
     });
   }
 

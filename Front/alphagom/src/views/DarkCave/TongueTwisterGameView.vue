@@ -31,7 +31,7 @@
         </button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button class="game-skip-btn again-btn" @click="getProb()">
+        <button class="game-skip-btn again-btn" @click="getRecord()">
           다시하기
         </button>
       </div>
@@ -54,6 +54,12 @@
             src="/assets/image/manul_live.png"
             width="113"
             v-if="!PassFail || PassFail == 'failbutton'"
+          />
+          <img
+            class="manul"
+            src="/assets/image/manul_tan.png"
+            width="113"
+            v-if="PassFail == 'otherpicture'"
           />
           <div v-show="!Answer" class="game-howto">
             마늘을 누르고<br />
@@ -93,6 +99,7 @@ import PassorFail from "@/components/game/PassorFail.vue";
 onMounted(() => {
   store.getTongueGame();
   store.Modal = true
+  store.Answer = null;
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/assets/image/cave_bg_picture_filter_low.png")';

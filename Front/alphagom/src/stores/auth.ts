@@ -12,7 +12,7 @@ export const useAuthStore = defineStore("auth", () => {
   // const userInfo = ref(null); // 사용자 정보
   const userInfo = reactive({
     // 더미 데이터~~
-    userId: 0,
+    userId: parseInt(localStorage.getItem("userId")) || 0,
     username: "",
     userNickname: "",
     email: "",
@@ -38,6 +38,7 @@ export const useAuthStore = defineStore("auth", () => {
     token.value = mytoken;
     refreshToken.value = myefreshToken;
     localStorage.setItem("token", token.value);
+    localStorage.setItem("userId", userInfo.userId.toString());
   }
   // 사용자 정보 가져오기
   function fetchUserInfo() {
@@ -56,8 +57,10 @@ export const useAuthStore = defineStore("auth", () => {
         userInfo.userId = res.data.id;
         if (res.data.nickname) {
           userInfo.userNickname = res.data.nickname;
+          console.log("res.data.nickname: " + res.data.nickname);
         } else {
           userInfo.userNickname = res.data.name;
+          console.log("res.data.name: " + res.data.name);
         }
       })
       .catch((err) => {
@@ -69,13 +72,31 @@ export const useAuthStore = defineStore("auth", () => {
   function updateUserInfo(payload: string) {
     axios({
       url: api.user.postUserInfo(userInfo.userId),
-      method: "put",
+      method: "post",
       // headers: authHeader
-      headers: authHeader.value.valueOf.prototype,
+      // headers: authHeader.value.valueOf.prototype,
       data: payload,
     })
       .then((res) => {
         userInfo.username = res.data.body.data;
+        console.log("auth.ts의 사용자 정보 수정 함수" + res.data.body.data);
+      })
+      .catch((err) => {
+        console.error(err.response);
+      });
+  }
+  // 사용자 닉네임 수정
+  function updateUserNickname(userId: number, nickname: string) {
+    axios({
+      url: api.user.postUserNickname(userInfo.userId, nickname),
+      method: "post",
+      // headers: authHeader
+      headers: authHeader.value.valueOf.prototype,
+      data: nickname,
+    })
+      .then((res) => {
+        userInfo.username = res.data.body.data;
+        console.log("auth.ts의 닉네임 수정 함수" + res.data.body.data);
       })
       .catch((err) => {
         console.error(err.response);
@@ -104,6 +125,7 @@ export const useAuthStore = defineStore("auth", () => {
     saveToken,
     fetchUserInfo,
     updateUserInfo,
+    updateUserNickname,
     logout,
   };
 });

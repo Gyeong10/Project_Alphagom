@@ -44,8 +44,11 @@
           <Cog6ToothIcon class="material-icons" />
           <span class="text">설정하기</span>
         </router-link> -->
-        <div class="button" @click="modalStore.updateModal()"
-          style="cursor: pointer">
+        <div
+          class="button"
+          @click="modalStore.updateModal()"
+          style="cursor: pointer"
+        >
           <Cog6ToothIcon class="material-icons" />
           <span class="text">설정하기</span>
         </div>
@@ -80,6 +83,9 @@ import SettingModal from "@/views/Modal/SettingModal.vue";
 
 // store 가져오기
 const modalStore = useModalStore();
+const store = useAuthStore();
+const { userInfo } = storeToRefs(store);
+console.log(userInfo.userNickname);
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 
@@ -89,11 +95,10 @@ const ToggleMenu = () => {
   localStorage.setItem("is_expanded", is_expanded.value);
   console.log(is_expanded.value);
   console.log("ToggleMenu func end");
-};
 
-const store = useAuthStore();
-const { userInfo } = storeToRefs(store);
-console.log(userInfo.userNickname);
+  // 네브바 열때마다 fetchUser로 정보 가져옴
+  store.fetchUserInfo();
+};
 </script>
 
 <style lang="scss">
@@ -145,10 +150,10 @@ aside {
 
       .material-icons {
         font-size: 2rem;
-        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+          Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+          "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol", sans-serif;
         color: var(--light-yellow);
         transform: 0.2s ease-out;
       }
@@ -172,10 +177,10 @@ aside {
   h3 {
     color: var(--grey);
     font-size: 0.875rem;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+      Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+      "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", sans-serif;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
   }
@@ -196,10 +201,10 @@ aside {
 
       .material-icons {
         font-size: 2rem;
-        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+          Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+          "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol", sans-serif;
         height: 1.5rem;
         color: var(--dark-red);
         transition: 0.2s ease-out;
@@ -210,10 +215,10 @@ aside {
         color: var(--dark-red);
         transition: 0.2s ease-out;
         font-size: 0.85rem;
-        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+          Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+          "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol", sans-serif;
       }
 
       &:hover,
@@ -256,10 +261,10 @@ aside {
         }
         .user-name {
           font-size: 0.75rem;
-          font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+          font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+            Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+            "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
           font-weight: 600;
           letter-spacing: -1px;
           margin-top: 5.5px;
