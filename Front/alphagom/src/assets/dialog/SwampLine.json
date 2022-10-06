@@ -7,7 +7,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "jara_look_sad"
     },
     {
       "char": "알파곰",
@@ -31,7 +31,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "jara_look_sad"
     },
     {
       "char": "자라",
@@ -55,7 +55,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "jara_look_sad"
     },
     {
       "char": "알파곰",
@@ -71,7 +71,7 @@
       "line2": "토끼 간을 대신할 만한 것이 필요한데...",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "jara_look_sad"
     },
     {
       "char": "알파곰",
@@ -95,7 +95,7 @@
       "line2": "",
       "type": "game",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "dragonKing_look_happy"
     },
     {
       "char": "자라",
@@ -119,7 +119,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "dragonKing_look_happy"
     },
     {
       "char": "자라",
@@ -127,7 +127,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "jara_look_openly"
     },
     {
       "char": "용왕",

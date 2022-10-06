@@ -15,7 +15,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "gyeonu_look_sad"
     },
     {
       "char": "알파곰",
@@ -39,7 +39,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "gyeonu_look_sad"
     },
     {
       "char": "알파곰",
@@ -85,7 +85,7 @@
       "char": "알파곰",
       "line1": "오늘 착한 일 무지하게 많이 하네!",
       "line2": "우리 같이 다리 놓으러 가보자!",
-      "type": "story",
+      "type": "game",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     },
@@ -93,7 +93,7 @@
       "char": "견우",
       "line1": "직녀야!!!!!",
       "line2": "",
-      "type": "game",
+      "type": "story",
       "effect": "",
       "imgFace": ""
     },

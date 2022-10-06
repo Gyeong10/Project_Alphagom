@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.Optional;
 
 @Tag(name = "User", description = "User api 입니다.")
 @Slf4j
@@ -75,25 +76,26 @@ public class UserApiController {
 
         // email 로 이미 회원가입 했는지 안했는지 체크
         log.info("회원가입 여부 체크");
-        User user = userService.findByEmail(userinfo.get("email"));
-        if (user == null) { // 회원가입 안했으면 DB에 저장 (회원가입)
-            user = User.builder()
+        Optional<User> user = userService.findByEmail(userinfo.get("email"));
+        if (!user.isPresent()) { // 회원가입 안했으면 DB에 저장 (회원가입)
+            User tmpuser = User.builder()
                     .email(userinfo.get("email"))
                     .name(userinfo.get("nickname"))
                     .picture(userinfo.get("picture"))
                     .role(Role.USER)
                     .authProvider(AuthProvider.KAKAO)
                     .build();
-            userService.joinMember(user);
+            userService.joinMember(tmpuser);
+            user = userService.findByEmail(tmpuser.getEmail());
         }
 
         // 회원가입 했으면
         // 로그인 해서 jwt를 보내준다.
         log.info("로그인 요청");
-        String refreshToken = authService.createRefreshToken(user.getId());
-        String accessToken = tokenProvider.createAccessToken(user);
+        String refreshToken = authService.createRefreshToken(user.get().getId());
+        String accessToken = tokenProvider.createAccessToken(user.get());
 //        return userinfo;
-        return ResponseEntity.ok().body(new LoginResponse("로그인되었습니다.", user.getId(), accessToken, refreshToken));
+        return ResponseEntity.ok().body(new LoginResponse("로그인되었습니다.", user.get().getId(), accessToken, refreshToken));
     }
 
     @PostMapping("/signup")

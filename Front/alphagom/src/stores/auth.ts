@@ -26,8 +26,8 @@ export const useAuthStore = defineStore("auth", () => {
   // getters
   const recentUserInfo = computed(() => userInfo);
   const recentToken = computed(() => token);
-  const isLoggedIn = computed(() => !!token.value);
-  // const isLoggedIn = true;
+  // const isLoggedIn = computed(() => !!token.value);
+  const isLoggedIn = true;
   const authHeader = computed(() =>
     token.value ? { Authorization: `Bearer ${token.value}` } : ""
   );
