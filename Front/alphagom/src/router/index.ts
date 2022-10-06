@@ -41,8 +41,8 @@ router.beforeEach((to, from, next) => {
   const isLoggedIn = authStore.isLoggedIn;
   // 로그인되어 있지 않으면
   if (!isLoggedIn && to.name !== "login") {
-    alert("로그인이 필요합니다");
-    // next({ name: "login" });
+    // alert("로그인이 필요합니다");
+    next({ name: "login" });
   } else {
     next();
   }

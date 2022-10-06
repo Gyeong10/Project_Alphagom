@@ -26,8 +26,8 @@ export const useAuthStore = defineStore("auth", () => {
   // getters
   const recentUserInfo = computed(() => userInfo);
   const recentToken = computed(() => token);
-  // const isLoggedIn = computed(() => !!token.value);
-  const isLoggedIn = true;
+  const isLoggedIn = computed(() => !!token.value);
+  // const isLoggedIn = true;
   const authHeader = computed(() =>
     token.value ? { Authorization: `Bearer ${token.value}` } : ""
   );
@@ -42,15 +42,23 @@ export const useAuthStore = defineStore("auth", () => {
   // 사용자 정보 가져오기
   function fetchUserInfo() {
     axios({
-      // url: api.user.getUser(userInfo.userId),
-      url: "http://localhost:8080/api/be/user/" + `${userInfo.userId}`,
+      url: api.user.getUser(userInfo.userId),
+      // url: "http://localhost:8080/api/be/user/" + `${userInfo.userId}`,
       method: "get",
       // headers: authHeader
       headers: authHeader.value.valueOf.prototype,
     })
       .then((res) => {
         console.log(res.data);
-        // userInfo = res.data;
+        userInfo.email = res.data.email;
+        userInfo.profile = res.data.picture;
+        userInfo.username = res.data.name;
+        userInfo.userId = res.data.id;
+        if (res.data.nickname) {
+          userInfo.userNickname = res.data.nickname;
+        } else {
+          userInfo.userNickname = res.data.name;
+        }
       })
       .catch((err) => {
         console.error(err.response);
