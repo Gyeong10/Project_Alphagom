@@ -4,8 +4,6 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">마법의 성</div>
     <BackButton class="back-btn" />
-    <Score class="bottom-score"></Score>
-    <div class="score--">점</div>
     <div class="bottom-items">
       <PlayBar class="bottom-icons"></PlayBar>
     </div>
@@ -19,7 +17,6 @@ import { useBgStore } from "@/stores/bg";
 import { reactive, computed, onMounted } from "vue";
 import CommonDialog from "@/components/game/CommonDialog.vue";
 import BackButton from "@/components/BackButton.vue";
-import Score from "@/components/game/Score.vue";
 import PlayBar from "@/components/game/PlayBar.vue";
 
 // 배경 경로 수정
