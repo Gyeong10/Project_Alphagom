@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  
+
     <!--문제 템플릿-->
     <div v-if="GameList">
       <svg class="game-sentence-box" width="393" height="77" viewBox="0 0 393 77" fill="none" xmlns="http://www.w3.org/2000/svg">
