@@ -43,6 +43,7 @@
         <button
           @click="gotoPage('map')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-map"
         >
           탐험 지도로
         </button>
@@ -51,6 +52,7 @@
         <button
           @click="gotoPage('rank')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-rank"
         >
           순위보기
         </button>
@@ -58,6 +60,7 @@
         <button
           @click="gotoPage('home')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-home"
         >
           홈으로
         </button>
@@ -133,7 +136,7 @@ const gotoPage = (data) => {
 
     position: absolute;
     top: -235px;
-    left: 158px;
+    left: 213px;
   }
   &__howto-content {
     font-size: 20px;
@@ -149,16 +152,12 @@ const gotoPage = (data) => {
 
     position: absolute;
     top: -175px;
-    left: 158px;
+    left: 186px;
   }
   &__howto-content-bold {
     font-weight: 800;
   }
   &__next-btn {
-
-    position: absolute;
-    top: -87px;
-    left: 202px;
     width: 149.17px;
     height: 48px;
     /* margin-left: 19px; */
@@ -179,5 +178,20 @@ const gotoPage = (data) => {
     white-space: nowrap;
     color: #594640;
   }
+}
+.to-map {
+  position: absolute;
+  top: -87px;
+  left: 36px;
+}
+.to-rank {
+  position: absolute;
+  top: -87px;
+  left: 202px;
+}
+.to-home {
+  position: absolute;
+  top: -87px;
+  left: 369px;
 }
 </style>

@@ -370,7 +370,10 @@ const getNextPage = () => {
   line-height: 29px;
 }
 .samgyetang,
-.dwenjangjjigae {
+.dwenjangjjigae,
+.sparrow,
+.pheasant,
+.crow {
   position: absolute;
   top: 183px;
   left: 388px;

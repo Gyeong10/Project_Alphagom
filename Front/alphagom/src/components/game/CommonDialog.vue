@@ -4,8 +4,54 @@
   <!--문장 못맞췄을 때 오답이야 뜨도록!-->
   <PassorFail v-if="PassFail" />
   <!--문장 디자인 수정~~~-->
-  <div v-if=" store.stage == 'MagicCastle' && store.script.type == 'sentance'">이제 나의 손을 잡아 보아요</div>
-  <div v-if="store.stage == 'epilogue' && store.script.type == 'sentance'">안녕은 영원한 헤어짐은 아니겠지요</div>
+  <svg class="game-sentence-box" v-if=" store.stage == 'MagicCastle' && store.script.type == 'sentance'"
+    width="393"
+    height="77"
+    viewBox="0 0 393 77"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="2.5"
+      y="2.5"
+      width="388"
+      height="72"
+      rx="27.5"
+      fill="#94C178"
+      stroke="#FDF8E2"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-dasharray="10 10"
+    />
+  </svg>
+  <svg class="game-sentence-box" v-if="store.stage == 'epilogue' && store.script.type == 'sentance'"
+    width="393"
+    height="77"
+    viewBox="0 0 393 77"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="2.5"
+      y="2.5"
+      width="388"
+      height="72"
+      rx="27.5"
+      fill="#94C178"
+      stroke="#FDF8E2"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-dasharray="10 10"
+    />
+  </svg>
+  <div class="game-sentence-box">
+    <div class="game-sectence-content" v-if=" store.stage == 'MagicCastle' && store.script.type == 'sentance'">
+      "이제 나의 손을 잡아 보아요."
+    </div>
+    <div class="game-sectence-content" v-if="store.stage == 'epilogue' && store.script.type == 'sentance'">
+      "안녕은 영원한 헤어짐은 아니겠지요."
+    </div>
+  </div>
 
   <div v-if="!VoiceOnOff" class="common">
     <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
@@ -26,9 +72,33 @@
         alt="대화상자"
       />
       <!--응, 아니 대답 선택지 띄우기-->
-      <div v-if="store.script.type == 'question'">응, 아니 중 하나로 대답해 줘!</div>
+      <svg class="game-sentence-box" v-if="store.script.type == 'question'"
+        width="393"
+        height="77"
+        viewBox="0 0 393 77"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="2.5"
+          y="2.5"
+          width="388"
+          height="72"
+          rx="27.5"
+          fill="#94C178"
+          stroke="#FDF8E2"
+          stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="10 10"
+        />
+      </svg>
+      <div class="game-sentence-box">
+        <div class="game-sectence-content" v-if="store.script.type == 'question'">"응", "아니" 중 하나로 대답해 줘!</div>
+      </div>
 
-      <h1 class="script-char-name">{{ store.script.char }}</h1>
+      <div class="script-char-name-box">
+        <h1 class="script-char-name">{{ store.script.char }}</h1>
+      </div>
       <!--조건 줘서 필요할 때만 이름 호출-->
       <p class="script-line1" v-if="store.script.type == 'check'">
         {{ Nickname }}!!
@@ -89,6 +159,31 @@ watch(Answer, () => store.checkindex());
 </script>
 
 <style scoped>
+.game-sentence-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 68px;
+  left: 272px;
+  width: 381px;
+  height: 65px;
+}
+.game-sectence-content {
+  /* position: absolute;
+  top: 86px;
+  left: 299px; */
+
+  font-size: 20px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #594640;
+}
 .common {
   position: absolute;
   width: 100vw;

@@ -125,7 +125,7 @@ onMounted(() => {
   store.Modal = true
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/seaCastle_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 // 스토어 가져오기

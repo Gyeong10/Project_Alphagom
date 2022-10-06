@@ -4,8 +4,8 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">늪</div>
     <BackButton class="back-btn" />
-    <Score class="bottom-score"></Score>
-    <div class="score--">점</div>
+    <!-- <Score class="bottom-score"></Score>
+    <div class="score--">점</div> -->
     <div class="bottom-items">
       <PlayBar class="bottom-icons"></PlayBar>
     </div>
