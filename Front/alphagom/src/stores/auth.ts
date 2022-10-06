@@ -71,13 +71,31 @@ export const useAuthStore = defineStore("auth", () => {
   function updateUserInfo(payload: string) {
     axios({
       url: api.user.postUserInfo(userInfo.userId),
-      method: "put",
+      method: "post",
       // headers: authHeader
-      headers: authHeader.value.valueOf.prototype,
+      // headers: authHeader.value.valueOf.prototype,
       data: payload,
     })
       .then((res) => {
         userInfo.username = res.data.body.data;
+        console.log('auth.ts의 사용자 정보 수정 함수' + res.data.body.data);
+      })
+      .catch((err) => {
+        console.error(err.response);
+      });
+  }
+  // 사용자 닉네임 수정
+  function updateUserNickname(userId: number, nickname: string) {
+    axios({
+      url: api.user.postUserNickname(userInfo.userId, nickname),
+      method: "post",
+      // headers: authHeader
+      headers: authHeader.value.valueOf.prototype,
+      data: nickname,
+    })
+      .then((res) => {
+        userInfo.username = res.data.body.data;
+        console.log('auth.ts의 닉네임 수정 함수' + res.data.body.data);
       })
       .catch((err) => {
         console.error(err.response);
@@ -106,6 +124,7 @@ export const useAuthStore = defineStore("auth", () => {
     saveToken,
     fetchUserInfo,
     updateUserInfo,
+    updateUserNickname,
     logout,
   };
 });

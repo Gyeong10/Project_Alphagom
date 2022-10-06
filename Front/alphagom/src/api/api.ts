@@ -22,7 +22,7 @@ export default {
     getUser: (userId: number) => HOST + BE + USER + `${userId}`,
     // 유저 정보 변경
     postUserInfo: (userId: number) =>
-      HOST + BE + USER + `${userId}` + `profile`,
+      HOST + BE + USER + `${userId}/` + `profile`,
     // 유저 회원 탈퇴
     deleteUser: (userId: number) => HOST + BE + USER + `${userId}` + `profile`,
     // 유저 게임 로그 조회
