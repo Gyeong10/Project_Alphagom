@@ -287,11 +287,12 @@ function setTabstage(data) {
   width: 39px;
   height: 39px;
   object-fit: cover;
-  margin-left: 10px;
+  /* margin-left: 10px; */
 }
 .rank-data-nickname {
   width: 119px;
   height: 53px;
+  padding-left: 10px;
 }
 .rank-data-score {
   height: 53px;

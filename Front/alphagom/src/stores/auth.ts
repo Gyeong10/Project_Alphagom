@@ -56,8 +56,10 @@ export const useAuthStore = defineStore("auth", () => {
         userInfo.userId = res.data.id;
         if (res.data.nickname) {
           userInfo.userNickname = res.data.nickname;
+          console.log("res.data.nickname: " + res.data.nickname)
         } else {
           userInfo.userNickname = res.data.name;
+          console.log("res.data.name: " + res.data.name)
         }
       })
       .catch((err) => {

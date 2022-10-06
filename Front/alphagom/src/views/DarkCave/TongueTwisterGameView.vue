@@ -61,6 +61,13 @@
               >정답</span
             >을 골라 말해줘!
           </div>
+          <div v-show="!Answer" class="game-howto">
+            마늘을 누르고<br />
+            보기 중
+            <span class="game-howto" style="color: #ffb0b1; position: static"
+              >정답</span
+            >을 골라 말해줘!
+          </div>
         </div>
         <!--TTS 버튼-->
         <button class="tts-btn" @click="startSpeechToTxt">

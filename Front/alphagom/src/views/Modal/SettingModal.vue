@@ -2,6 +2,11 @@
   <transition name="modal" appear>
     <section class="modal" tabindex="-1" appear>
     <!-- <div v-if="settingopen" class="setting-modal" tabindex="-1"> -->
+      <!-- 모달 박스 -->
+      <svg class="modal-box" width="400" height="237" viewBox="0 0 400 237" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.5" y="2.5" width="395" height="231.8" rx="27.5" fill="#FDF8E2" stroke="#94C178" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+      </svg>
+      <!-- 모달 내용 -->
       <div class="modal-content">
         <div class="modal-body">
           <!-- 부트스트랩 슬라이더 -->
@@ -35,6 +40,7 @@
           <span type="button" class="next-btn" data-bs-dismiss="modal">다음 탐험으로</span>
         </div> -->
       </div>
+      <div class="modal__overlay" @click.self="$emit('close')"></div>
     <!-- </div> -->
     </section>
   </transition>
@@ -60,12 +66,23 @@ watch(speakerValue, () => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .modal {
   display: flex;
   justify-content: center;
   text-align: center;
 }
+.modal__overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+  }
 .modal__btn-close {
     --button-color: #212529;
     --button-bg-color: #ffb0b1;
@@ -96,17 +113,27 @@ watch(speakerValue, () => {
     transition: 0.5s;
   }
 .modal__btn-close:hover, .modal__btn-close:active, .modal__btn-close:focus {
-    border: 0 solid transparent;
-    outline: 0;
-  }
+  border: 0 solid transparent;
+  outline: 0;
+}
+.modal-box {
+  position: absolute;
+  top: 120px;
+  left: 264px;
+  z-index: 2;
+}
 .modal-content {
-    background-color: white;
-    border-radius: 20px;
+    /* background: #fff;
+    border-radius: 20px; */
     width: 400px;
     padding: 50px;
-    margin: 110px;
+    /* margin: 110px; */
 
     position: absolute;
+    top: 120px;
+    left: 264px;
+
+
     z-index: 50;
     display: flex;
     justify-content: center;   
@@ -122,5 +149,8 @@ watch(speakerValue, () => {
       "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
     font-weight: 700;
+}
+.form-range, progress {
+  accent-color: #FFEB3B;
 }
 </style>
