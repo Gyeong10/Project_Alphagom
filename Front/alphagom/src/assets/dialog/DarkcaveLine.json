@@ -2,7 +2,7 @@
   "stage": "darkcave",
   "script": [
     {
-      "char": "",
+      "char": "???",
       "line1": "......",
       "line2": "",
       "type": "story",
@@ -291,7 +291,7 @@
       "imgFace": "bear_look_normal"
     },
     {
-      "char": "",
+      "char": "???",
       "line1": "...!!",
       "line2": "",
       "type": "story",
@@ -329,14 +329,6 @@
       "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"
-    },
-    {
-      "char": "알파곰",
-      "line1": "우리 같이 가자!",
-      "line2": "",
-      "type": "story",
-      "effect": "",
-      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",

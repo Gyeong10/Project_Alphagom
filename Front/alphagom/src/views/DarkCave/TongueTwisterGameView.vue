@@ -4,7 +4,7 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">어둠의 동굴</div>
     <TongueTwisterGameModal v-if="Modal" />
-    <PassorFail v-if="PassFail" />
+    <PassorFail v-if="PassFail !='otherpicture' && PassFail" />
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
@@ -14,7 +14,7 @@
 
     <!--버튼-->
     <div>
-      <div v-if="PassFail === 'passbutton'">
+      <div v-if="PassFail === 'passbutton' || PassFail == 'otherpicture'">
         <button
           class="game-skip-btn again-btn"
           v-if="!GameEnd"
@@ -27,11 +27,11 @@
           v-if="GameEnd"
           @click="getNextPage()"
         >
-          전부통과
+          계속하기
         </button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button class="game-skip-btn again-btn" @click="getRecord()">
+        <button class="game-skip-btn again-btn" @click="getProb()">
           다시하기
         </button>
       </div>
@@ -72,6 +72,13 @@
           width="152"
           v-if="!PassFail || PassFail == 'failbutton'"
         />
+        <!--전부 통과 후 익은 마늘 띄우기-->
+        <img
+          class="samgyetang"
+          src="/assets/image/manul_tan.png"
+          width="152"
+          v-if="PassFail == 'otherpicture'"
+        />
         <div v-show="!Answer" class="game-howto">
           마늘을 누르고<br />
           보기 중
@@ -81,6 +88,7 @@
         </div>
       </div>
       <!--TTS 버튼-->
+      <!--버튼 이름은 '들어보기'로-->
       <button @click="startSpeechToTxt">읽어줄게ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ!</button>
       <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
@@ -194,6 +202,7 @@ const getProb = () => {
 // 다시 에필로그 페이지로 렌더링
 const getNextPage = () => {
   store.PassFail = null;
+  store.scriptNum++
   router.push({
     name: "darkCaveDialogView",
     params: { scriptNum: store.scriptNum },

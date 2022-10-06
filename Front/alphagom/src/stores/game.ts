@@ -273,8 +273,7 @@ export const useGameStore = defineStore("game", () => {
     scriptNum.value++;
     isActive.value = false;
     if (type.value == scriptType.GAME) {
-      const gameType = stageGame.value[0];
-      router.push({ name: gameType });
+      isActive.value = true;
     }
     if (type.value == scriptType.QUESTION) {
       isActive.value = true;
@@ -289,7 +288,7 @@ export const useGameStore = defineStore("game", () => {
       RecordTime.value = 5000;
     }
     if (type.value == scriptType.END) {
-      router.push({ name: "stageChangeView" })
+      isActive.value = true;
     }
   }
 
@@ -372,6 +371,20 @@ export const useGameStore = defineStore("game", () => {
         });
     } catch (e) {}
   }
+
+// 점수 1초당 10점씩 깎기
+// 게임 진행 시에만 깎도록 조정해야 한다
+function minusScore() {
+  if (score.value === 0) {
+    return;
+  } 
+  if (window.location.pathname === "/stage/swamp/game/kingCureGame"
+ || window.location.pathname === "/stage/darkCave/game/tongueTwisterGame" 
+ || window.location.pathname === "/stage/sky/game/birdProverbGame") {
+    score.value -= 10;
+    setTimeout(minusScore, 1000);
+  }
+}
 
   /*
    * AI api 요청
@@ -537,5 +550,6 @@ export const useGameStore = defineStore("game", () => {
     updateModal,
     saveNickname,
     saveScore,
+    minusScore,
   };
 });

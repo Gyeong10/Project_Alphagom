@@ -9,11 +9,13 @@
         <div class="modal__modal-body">
             <div class="modal__howto-title">새 속담 게임</div>
             <div class="modal__howto-content">
-                <div class="modal__howto-content-regular">게임 방법을 알아볼까?</div>
+                <div class="modal__howto-content-regular">
+                  견우와 직녀가 만날 수 있도록 새 다리를 만들어주며
+                  <br>
+                  새 이름이 들어간 한국의 속담들을 알아보자구!
+                </div>
                 <div style="height: 6px;" />
-                <div class="modal__howto-content-bold">새 속담이 나올거야
-                <br>
-                답을 버튼을 누르고 읽으면 돼!</div>
+                <div class="modal__howto-content-bold">물음표에 들어갈 단어를 말하면 돼!</div>
             </div>
         </div>
         <!-- 버튼 -->
@@ -33,7 +35,8 @@ const store = useGameStore()
 
 // Modal 창 끄고 게임으로 넘어가기
 const gotoGame = () => {
-    store.Modal = false
+  store.Modal = false
+  store.minusScore()
 }
 
 </script>

@@ -25,16 +25,16 @@
       </svg>
       <!-- 모달 내용 -->
       <div class="modal__modal-body">
-        <div class="modal__howto-title">축하합니다!</div>
+        <div class="modal__howto-title">{{ store.Nickname }}!! 즐거웠어!</div>
         <div class="modal__howto-content">
           <div class="modal__howto-content-regular">
-            이제 탐험이 끝났어!
+            이제 탐험이 끝났네.
           </div>
           <div style="height: 6px" />
           <div class="modal__howto-content-bold">
-            탐험하는 동안 즐거웠어!
+            덕분에 탐험하는 동안 한국어 실력이 많이 늘었어.
             <br />
-            다시 볼 수 있으면 좋겠다!
+            곧 다시 볼 수 있으면 좋겠다!
           </div>
         </div>
       </div>
@@ -91,7 +91,7 @@ const gotoPage = (data) => {
       router.push({ name: "rank" });
   } else if (data == "home") {
       store.scriptNum = 0;
-      router.push({ name: "rank" });
+      router.push({ name: "home" });
   }
 };
 </script>

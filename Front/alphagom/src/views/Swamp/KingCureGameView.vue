@@ -28,7 +28,7 @@
             v-if="GameEnd"
             @click="getNextPage()"
           >
-            전부통과
+            계속하기
           </button>
         </div>
         <div v-if="PassFail === 'failbutton'">
@@ -170,6 +170,7 @@ watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
+  console.log(store.Answer)
   if (store.Answer) {
     if (
       store.GameList[probidx.value].answer === store.Answer.answer &&
@@ -204,6 +205,7 @@ const getProb = () => {
 // 다시 에필로그 페이지로 렌더링
 const getNextPage = () => {
   store.PassFail = null;
+  store.scriptNum++
   router.push({
     name: "swampDialog",
     params: { scriptNum: store.scriptNum },

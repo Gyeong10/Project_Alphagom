@@ -7,13 +7,17 @@
             </svg>
             <!-- 모달 내용 -->
             <div class="modal__modal-body">
-                <div class="modal__howto-title">잰말놀이 게임</div>
+                <div class="modal__howto-title">잰말놀이</div>
                 <div class="modal__howto-content">
-                    <div class="modal__howto-content-regular">게임 방법을 알아볼까?</div>
+                    <div class="modal__howto-content-regular">
+                      발음하기 어려운 문장들에 도전해보자!
+                      <br>
+                      자연스럽게 발음 능력이 좋아질거야!
+                    </div>
                     <div style="height: 6px;" />
-                    <div class="modal__howto-content-bold">잰말이 나올거야
-                    <br>
-                    답을 버튼을 누르고 읽으면 돼!</div>
+                    <div class="modal__howto-content-bold">
+                      '들어보기'를 누르면 정확한 발음을 알 수 있어!
+                    </div>
                 </div>
             </div>
             <div class="modal__modal-footer">
@@ -33,6 +37,7 @@ const store = useGameStore()
 // Modal 창 끄고 게임으로 넘어가기
 const gotoGame = () => {
     store.Modal = false
+    store.minusScore()
 }
 
 </script>

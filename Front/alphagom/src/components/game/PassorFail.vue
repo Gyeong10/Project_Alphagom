@@ -39,11 +39,18 @@ setTimeout(() => {
     }
   } else if (store.stage === 'sky') {
     if (store.PassFail === "pass") {
-      store.PassFail = "birdpicture";
+      store.PassFail = "otherpicture";
     } else {
       store.PassFail = "failbutton";
     }
-  } else {
+  } else if (store.stage == 'darkcave' && store.GameEnd) {
+    if (store.PassFail === "pass") {
+      store.PassFail = "otherpicture";
+    } else {
+      store.PassFail = "failbutton";
+    }
+  }
+  else {
     if (store.PassFail === "pass") {
       store.PassFail = "passbutton";
     } else {
