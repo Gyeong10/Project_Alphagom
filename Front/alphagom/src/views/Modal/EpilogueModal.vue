@@ -64,7 +64,6 @@
       </div>
     </div>
   </div>
-<<<<<<< Front/alphagom/src/views/Modal/EpilogueModal.vue
   <div class="modal__overlay" @click.self="$emit('close')"></div>
 </div>
 </template>
@@ -156,37 +155,7 @@ const gotoPage = (data) => {
     font-weight: 800;
   }
   &__next-btn {
-=======
-  </template>
-  
-  <script setup>
-  import { useGameStore } from "@/stores/game";
-  import { useRouter, useRoute } from "vue-router";
-  
-  // store 가져오기
-  const store = useGameStore();
-  
-  const route = useRoute();
-  const router = useRouter();
-  
-  // Modal 창 끄고 버튼에 따라 넘어가기
-  const gotoPage = (data) => {
-    if (data == "map") {        
-        store.scriptNum = 0;
-        router.push({ name: "mapView" });
-    } else if (data == "rank") {
-        store.scriptNum = 0;
-        router.push({ name: "rank" });
-    } else if (data == "home") {
-        store.scriptNum = 0;
-        router.push({ name: "home" });
-    }
-  };
-  </script>
-  
-  <style lang="scss" scoped>
-  .modal {
->>>>>>> Front/alphagom/src/views/Modal/EpilogueModal.vue
+
     position: absolute;
     top: -87px;
     left: 202px;
