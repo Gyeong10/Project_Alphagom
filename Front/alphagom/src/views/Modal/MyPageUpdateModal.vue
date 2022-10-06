@@ -27,6 +27,7 @@
               type="email"
               v-model="nick"
               placeholder="10자 이하로 입력해주세요."
+              maxlength="10"
               @change="setNick"
             >
             <button class="modal__update-btn" @click="updateNick">수정하기</button>
