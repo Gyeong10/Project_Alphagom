@@ -109,9 +109,17 @@
       "char": "알파곰",
       "line1": "무사히 만났구나!",
       "line2": "도움이 돼서 기분이 좋네.",
-      "type": "end",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "",
+      "line1": "",
+      "line2": "",
+      "type": "end",
+      "effect": "",
+      "imgFace": ""
     }
   ]
 }

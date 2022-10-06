@@ -15,6 +15,9 @@ import TongueTwisterGameView from "@/views/DarkCave/TongueTwisterGameView.vue";
 import SkyStartView from "@/views/Sky/SkyStartView.vue";
 import SkyDialogView from "@/views/Sky/SkyDialogView.vue";
 import BirdProverbGameView from "@/views/Sky/BirdProverbGameView.vue";
+// Epilogue
+import EpilogueDialogView from '@/views/Epilogue/EpilogueDialogView.vue'
+import EpilogueEndView from '@/views/Epilogue/EpilogueEndView.vue'
 // Etc
 import StageChangeView from "@/views/StageChangeView.vue";
 import MapView from "@/views/MapView.vue";
@@ -67,7 +70,7 @@ export default [
   },
   {
     path: "/stage/darkCave/game/tongueTwisterGame",
-    name: "tongueTwisterGameView",
+    name: "TongueTwisterGameView",
     component: TongueTwisterGameView,
   },
   {
@@ -94,5 +97,15 @@ export default [
     path: "/map",
     name: "mapView",
     component: MapView,
+  },
+  {
+    path: "/stage/epilogue/dialog",
+    name: "EpilogueDialogView",
+    component: EpilogueDialogView,
+  },
+  {
+    path: "/stage/epilogue/end",
+    name: "EpilogueEndView",
+    component: EpilogueEndView,
   },
 ];

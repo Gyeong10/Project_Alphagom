@@ -1,4 +1,8 @@
 spring:
+  ssl:
+    key-store: classpath:keystore:p12
+    key-store-type: PKCS12
+    key-store-password: dkfvkrha210@
   profiles:
     active: aws
     include: oauth
@@ -44,3 +48,6 @@ logging:
     org.springframework.web: debug
     #    org.hibernate.type: trace
     com.ssafy.alpagom: debug
+
+jwt:
+  secretKey: ssafygumi2class3teamfightingkdhpgypje

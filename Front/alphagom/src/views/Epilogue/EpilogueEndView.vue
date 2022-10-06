@@ -1,9 +1,9 @@
 <template>
-    <SkyEndModal />
+    <EpilogueModal />
   </template>
   
   <script setup>
-  import SkyEndModal from "@/views/Modal/SkyEndModal.vue";
+  import EpilogueModal from "@/views/Modal/EpilogueModal.vue";
   </script>
   
   <style></style>

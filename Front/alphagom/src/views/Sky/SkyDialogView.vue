@@ -22,7 +22,6 @@ const bgStore = useBgStore()
 const bgwatching = computed(() => bgStore.bgUrlState)
 
 const game = useGameStore();
-game.setStage("sky");
 
 </script>
 

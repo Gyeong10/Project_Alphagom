@@ -117,8 +117,10 @@ import KingCureGameModal from "@/views/Modal/HowTo/KingCureGameModal.vue";
 import PassorFail from "@/components/game/PassorFail.vue";
 
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
+
 onMounted(() => {
   store.getKingGame();
+  store.Modal = true
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
