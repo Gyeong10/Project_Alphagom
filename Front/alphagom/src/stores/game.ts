@@ -33,9 +33,11 @@ import jara_look_sad from "/assets/image/jara_look_sad.png";
 import rabbit_stand from "/assets/image/rabbit_stand.png";
 // dragonKing
 import dragonKing_stand from "/assets/image/dragonKing_stand.png";
+import dragonKing_look_happy from "/assets/image/dragonKing_look_happy.png";
 // gyeonu
 import gyeonu_stand from "/assets/image/gyeonu_stand.png";
 import gyeonu_side from "/assets/image/gyeonu_side.png";
+import gyeonu_look_sad from "/assets/image/gyeonu_look_sad.png";
 // jiknyeo
 import Jiknyeo_side from "/assets/image/Jiknyeo_side.png";
 //hwan_woong
@@ -173,6 +175,10 @@ export const useGameStore = defineStore("game", () => {
         return jara_look_openly;
       case "jara_look_sad":
         return jara_look_sad;
+      case "dragonKing_look_happy":
+        return dragonKing_look_happy;
+      case "gyeonu_look_sad":
+        return gyeonu_look_sad;
       default:
         return "";
     }
