@@ -24,13 +24,21 @@ const route = useRoute();
 const router = useRouter();
 
 setTimeout(() => {
-  if (store.stage == 'MagicCastle') {
+  if (store.stage == 'MagicCastle' ) {
     if (store.PassFail == "pass") {
       router.push({ name: 'MagicCastleTutorialView'})
     } else {
       store.PassFail = null
     }
-  } else {
+  } else if (store.stage == 'epilogue') {
+    if (store.PassFail == "pass") {
+      store.scriptNum == 0
+      router.push({ name: 'EpilogueEndView'})
+    } else {
+      store.PassFail = null
+    }
+  }
+  else {
     if (store.PassFail === "pass") {
       store.PassFail = "passbutton";
     } else {

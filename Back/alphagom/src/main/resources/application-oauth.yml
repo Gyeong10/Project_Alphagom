@@ -3,16 +3,32 @@ spring:
     oauth2:
       client:
         registration:
-          google:
+          kakao:
+            clientId: a330ef34e781fc0054c0e48cc1702b6a
+            clientAuthenticationMethod: post
+            authorizationGrantType: authorization_code
+            redirectUri: "{baseUrl}/api/be/{action}/oauth2/authorization/kakao"
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+            clientName: Kakao
+        provider:
+          kakao:
+            authorizationUri: https://kauth.kakao.com/oauth/authorize
+            tokenUri: https://kauth.kakao.com/oauth/token
+            userInfoUri: https://kapi.kakao.com/v2/user/me
+            userNameAttribute: id
+#          google:
 #            client-id: 1017781499436-1bjj4oggvoqeitf297hr7sqgi3hesrve.apps.googleusercontent.com
 #            client-secret: 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
-            client-id: 1017781499436-d9mofg2igi2ma8eii0e1rf36gu1jasev.apps.googleusercontent.com
-            scope: profile, email
+#            client-id: 1017781499436-d9mofg2igi2ma8eii0e1rf36gu1jasev.apps.googleusercontent.com
+#            scope: profile, email
 #            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
 
 app:
   oauth2:
-    authorizedRedirectUri: "http://localhost:3000/oauth2/redirect"
+    authorizedRedirectUri: "http://localhost:5173/oauth/redirect"
 
 # jwt secret key 설정
 jwt:

@@ -214,17 +214,9 @@
       "char": "알파곰",
       "line1": "좋아, 마늘을 구우러 가볼까!",
       "line2": "",
-      "type": "story",
-      "effect": "",
-      "imgFace": "alphagom_look_normal"
-    },
-    {
-      "char": "",
-      "line1": "",
-      "line2": "",
       "type": "game",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",

@@ -39,35 +39,33 @@
           </div>
         </div>
         <!-- 버튼 -->
-        <div class="modal__modal-footer">
+        <div>
           <button
             @click="gotoPage('map')"
-            class="modal__next-btn"
             data-bs-dismiss="modal"
           >
             탐험 지도로
           </button>
         </div>
-        <div class="modal__modal-footer">
+        <div>
           <button
             @click="gotoPage('rank')"
-            class="modal__next-btn"
             data-bs-dismiss="modal"
           >
             순위보기
           </button>
-          <div class="modal__modal-footer">
+          <div>
           <button
             @click="gotoPage('home')"
-            class="modal__next-btn"
             data-bs-dismiss="modal"
           >
             홈으로
           </button>
         </div>
       </div>
-      <div class="modal__overlay" @click.self="$emit('close')"></div>
     </div>
+    <div class="modal__overlay" @click.self="$emit('close')"></div>
+  </div>
   </template>
   
   <script setup>

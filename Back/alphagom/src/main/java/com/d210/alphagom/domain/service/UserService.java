@@ -20,6 +20,10 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 userId : " + userId + " 는 존재하지 않습니다."));
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElse(null);
+    }
     @Transactional
     public String saveNickname(Long userId, String nickname) {
         User user = userRepository.findById(userId).get();
@@ -36,5 +40,10 @@ public class UserService {
         User user = userRepository.findById(userId).get();
         user.updateIsCastle(true);
         return userId;
+    }
+
+    @Transactional
+    public Long joinMember(User user) {
+        return userRepository.save(user).getId();
     }
 }

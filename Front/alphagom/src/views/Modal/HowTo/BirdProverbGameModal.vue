@@ -124,3 +124,4 @@ const gotoGame = () => {
     color: #594640;
   }
 }
+</style>

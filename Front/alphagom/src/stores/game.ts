@@ -8,6 +8,7 @@ import DarkcaveLine from "@/assets/dialog/DarkcaveLine.json";
 import SkyLine from "@/assets/dialog/SkyLine.json";
 import SwampLine from "@/assets/dialog/SwampLine.json";
 import MagicCastle from "@/assets/dialog/MagicCastle.json";
+import Epilogue from '@/assets/dialog/Epilogue.json'
 import router from "@/router";
 import { stringLiteral } from "@babel/types";
 
@@ -40,6 +41,7 @@ import Jiknyeo_side from "/assets/image/Jiknyeo_side.png";
 import dark_cave_textbox from "/assets/image/dark_cave_textbox.png";
 import swamp_textbox from "/assets/image/swamp_textbox.png";
 import magic_castle_textbox from "/assets/image/magic_castle_textbox.png";
+import epilogue_textbox from "/assets/image/magic_castle_textbox.png";
 import sky_textbox from "/assets/image/sky_textbox.png";
 
 // vuex 를 사용할 대는 store/index.js 파일이 필요했지만,
@@ -63,6 +65,7 @@ export const useGameStore = defineStore("game", () => {
     SkyLine,
     SwampLine,
     MagicCastle,
+    Epilogue,
   ]);
 
   const stageViewDict = ref({
@@ -71,6 +74,7 @@ export const useGameStore = defineStore("game", () => {
     darkcave: ["TongueTwisterGameView"],
     sky: ["birdProverbGameView"],
     swamp: ["kingCureGameView"],
+    epilogue:["EpilogueEndView"]
   });
 
   // 현재 effect
@@ -117,6 +121,8 @@ export const useGameStore = defineStore("game", () => {
         return stageViewDict.value.swamp;
       case "MagicCastle":
         return stageViewDict.value.MagicCastle;
+      case 'epilogue':
+        return stageViewDict.value.epilogue;
     }
   });
 
@@ -131,6 +137,8 @@ export const useGameStore = defineStore("game", () => {
         return swamp_textbox;
       case "MagicCastle":
         return magic_castle_textbox;
+      case "epilogue":
+        return epilogue_textbox
     }
   });
 
@@ -210,7 +218,10 @@ export const useGameStore = defineStore("game", () => {
         type.value == scriptType.FAIL)
     ) {
       getSTTAI(payload);
-    } else if (stage.value === "sky") {
+    } else if (stage.value === 'epilogue') {
+      getSTTAI(payload);
+    }
+    else if (stage.value === "sky") {
       getBirdAI(payload);
     } else if (stage.value === "swamp") {
       getKingAI(payload);
@@ -305,6 +316,7 @@ export const useGameStore = defineStore("game", () => {
         scriptNum.value--;
       }
     } else if (type.value == scriptType.SENTANCE) {
+      console.log(Answer.value)
       if (
         Answer.value.answer == "이제 나의 손을 잡아 보아요" ||
         Answer.value.answer == "안녕은 영원한 헤어짐은 아니겠지요"
@@ -321,6 +333,7 @@ export const useGameStore = defineStore("game", () => {
   // Dialog 끝나고 게임으로 넘어갈 때와 점수 창으로 넘어갈 때 route 함수
   // forEach 기능은 break가 따로 없어서 throw error 로 해결
   function skip() {
+    console.log(scriptNum.value)
     const length = dialog.value.script.length;
     try {
       dialog.value.script

@@ -29,18 +29,24 @@ public class GameApiController {
     public ResponseEntity<?> getTongueGame() {
 
         log.info("젠말놀이 문제 제공");
-        Game cave = gameService.getGame(GameTag.cave);
-        return ResponseEntity.ok(new TongueGameResponse(cave.getSentance()));
+        List<Game> result = gameService.getGame(GameTag.cave);
+        List<TongueGameResponse> caves = result.stream()
+                .limit(2)
+                .map(o -> new TongueGameResponse(o.getSentance()))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(caves);
     }
 
     @GetMapping("/sky/bird")
     public ResponseEntity<?> getBirdGame() {
 
         log.info("새 속담 게임 문제 제공");
-        Game game = gameService.getGame(GameTag.sky);
-        String exampleList = game.getExample();
-        List<String> example = Arrays.asList(exampleList.split(","));
-        return ResponseEntity.ok(new BirdGameResponse(game.getAnswer(), example, game.getSentance()));
+        List<Game> result = gameService.getGame(GameTag.sky);
+        List<BirdGameResponse> birds = result.stream()
+                .limit(3)
+                .map(o -> new BirdGameResponse(o.getAnswer(), Arrays.asList(o.getExample().split(",")), o.getSentance()))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(birds);
     }
 
     @GetMapping("/swamp/word")

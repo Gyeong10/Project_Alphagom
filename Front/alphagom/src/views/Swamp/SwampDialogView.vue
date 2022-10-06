@@ -36,7 +36,6 @@ const game = useGameStore();
 
 const stage = reactive({ name: "Swamp" });
 //reactive : 객체의 반응형 복사본을 반환합니다.
-game.setStage("swamp");
 </script>
 
 <style scoped>

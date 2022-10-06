@@ -60,7 +60,7 @@ const getNextStage = () => {
   } else if (store.stage === "sky") {
     store.score = 3000;
     store.scriptNum = 0;
-    router.push({ name: "rank" });
+    router.push({ name: "EpilogueDialogView" });
   }
 };
 </script>

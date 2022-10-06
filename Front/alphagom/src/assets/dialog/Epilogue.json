@@ -1,0 +1,69 @@
+{
+    "stage": "epilogue",
+    "script": [
+      {
+        "char": "알파곰",
+        "line1": "(삐..삐삑..삐삐삑!!)",
+        "line2": "",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_normal"
+      },
+      {
+        "char": "알파곰",
+        "line1": "어? 뭐지…! 내 몸에서 이상한 소리가 나!",
+        "line2": "",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_normal"
+      },
+      {
+        "char": "알파곰",
+        "line1": "배터리 부족…?!",
+        "line2": "아, 아까 마늘을 굽느라 너무 많이 힘을 썼나 봐…",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_normal"
+      },
+      {
+        "char": "알파곰",
+        "line1": "이제 돌아갈 시간인 것 같다.",
+        "line2": "덕분에 한국어도 많이 배우고 즐거웠어!",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_happy"
+      },
+      {
+        "char": "알파곰",
+        "line1": "아차, 잊을 뻔 했네. 네가 돌아가는 길은 저 문 뒤야.",
+        "line2": "",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_normal"
+      },
+      {
+        "char": "알파곰",
+        "line1": "우리 여기 들어올 때 기억나지?",
+        "line2": "그 때처럼 문에 적혀있는 문장을 읽으면 돼!",
+        "type": "story",
+        "effect": "",
+        "imgFace": "alphagom_look_normal"
+      },
+      {
+        "char": "알파곰",
+        "line1": "잘 가...",
+        "line2": "",
+        "type": "sentance",
+        "effect": "",
+        "imgFace": "alphagom_look_flustered"
+      },
+      {
+        "char": "",
+        "line1": "",
+        "line2": "",
+        "type": "game",
+        "effect": "",
+        "imgFace": ""
+      }
+    ]
+  }
