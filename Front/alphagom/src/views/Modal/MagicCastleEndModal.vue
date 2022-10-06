@@ -30,7 +30,7 @@
           <div class="modal__howto-content-regular">
             이제 탐험을 시작할 수 있어!
           </div>
-          <div style="height: 6px" />
+          <div style="height: 6px"></div>
           <div class="modal__howto-content-bold">
             주의 깊게 문제를 읽고
             <br />

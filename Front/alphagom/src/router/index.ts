@@ -36,16 +36,16 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  const isLoggedIn = authStore.isLoggedIn;
-  // 로그인되어 있지 않으면
-  if (!isLoggedIn && to.name !== "login") {
-    // alert("로그인이 필요합니다");
-    next({ name: "login" });
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const authStore = useAuthStore();
+//   const isLoggedIn = authStore.isLoggedIn;
+//   // 로그인되어 있지 않으면
+//   if (!isLoggedIn && to.name !== "login") {
+//     // alert("로그인이 필요합니다");
+//     next({ name: "login" });
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;
