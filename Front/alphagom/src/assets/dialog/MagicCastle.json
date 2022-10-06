@@ -99,11 +99,19 @@
     },
     {
       "char": "알파곰",
-      "line1": "자 그럼, 탐험을 시작해볼까? 앞에 문이 보이지?",
-      "line2": "저기에 적힌 마법의 문장을 읽으면 탐험의 문이 열릴거야!",
-      "type": "sentance",
+      "line1": "자 그럼, 탐험을 시작해볼까?",
+      "line2": "내가 알려줄 마법의 문장을 읽으면 탐험의 문이 열릴거야!",
+      "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "알파곰",
+      "line1": "이제 읽으면 돼!",
+      "line2": "",
+      "type": "sentance",
+      "effect": "",
+      "imgFace": ""
     },
     {
       "char": "",

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <div class="top-title">{{ stage.name }}</div>
+    <div class="top-title">어둠의 동굴</div>
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>

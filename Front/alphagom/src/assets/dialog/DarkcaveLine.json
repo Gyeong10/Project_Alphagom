@@ -11,20 +11,12 @@
     },
     {
       "char": "알파곰",
-      "line1": "으.. 으윽.. 여기가 어디지?",
+      "line1": "오.. 여기가 어디지?",
       "line2": "",
       "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_flustered"
       
-    },
-    {
-      "char": "",
-      "line1": ".....",
-      "line2": "",
-      "type": "stroy",
-      "effect": "white",
-      "imgFace": ""
     },
     {
       "char": "알파곰",
@@ -36,24 +28,32 @@
     },
     {
       "char": "알파곰",
-      "line1": "아까 소용돌이에 휩쓸려 여기까지 왔나보네",
-      "line2": "어때, 몸은 괜찮아?",
+      "line1": "정처없이 걷다보니 동굴까지 왔네!",
+      "line2": "",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_flustered"
+    },
+    {
+      "char": "알파곰",
+      "line1": "동굴 탐험! 어때, 같이 가볼래?",
+      "line2": "",
       "type": "question",
       "effect": "",
       "imgFace": "alphagom_look_flustered"
     },
     {
       "char": "알파곰",
-      "line1": "휴, 다행이다!",
-      "line2": "그러면 우리 여기 나가는 길을 찾아보자!",
+      "line1": "좋아!",
+      "line2": "그러면 우리 여기를 돌아다녀 보자!",
       "type": "yes",
       "effect": "",
       "imgFace": "alphagom_look_normal"
     },
     {
       "char": "알파곰",
-      "line1": "헉, 그럼 얼른 나가는 길을 찾아야겠어!",
-      "line2": "같이 찾으러 가보자!",
+      "line1": "헉, 그래도 모처럼 온 탐험인데!",
+      "line2": "같이 돌아 다녀 보자!",
       "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_normal"

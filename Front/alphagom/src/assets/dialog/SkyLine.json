@@ -15,7 +15,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "gyeonu_look_sad"
     },
     {
       "char": "알파곰",
@@ -39,7 +39,7 @@
       "line2": "",
       "type": "story",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "gyeonu_look_sad"
     },
     {
       "char": "알파곰",
@@ -109,6 +109,14 @@
       "char": "알파곰",
       "line1": "무사히 만났구나!",
       "line2": "도움이 돼서 기분이 좋네.",
+      "type": "story",
+      "effect": "",
+      "imgFace": "alphagom_look_happy"
+    },
+    {
+      "char": "알파곰",
+      "line1": "역시 착한 일을 하면 기분이 좋아!",
+      "line2": "",
       "type": "story",
       "effect": "",
       "imgFace": "alphagom_look_happy"

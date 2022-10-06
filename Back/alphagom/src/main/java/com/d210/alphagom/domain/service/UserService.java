@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -19,9 +21,9 @@ public class UserService {
         return userRepository.findUserById(userId);
     }
 
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("email이 존재하지 않습니다."));
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+//                .orElseThrow(() -> new IllegalArgumentException("email이 존재하지 않습니다."));
     }
     @Transactional
     public String saveNickname(Long userId, String nickname) {

@@ -37,15 +37,19 @@ setTimeout(() => {
     } else {
       store.PassFail = null
     }
-  }
-  else {
+  } else if (store.stage === 'sky') {
+    if (store.PassFail === "pass") {
+      store.PassFail = "birdpicture";
+    } else {
+      store.PassFail = "failbutton";
+    }
+  } else {
     if (store.PassFail === "pass") {
       store.PassFail = "passbutton";
     } else {
       store.PassFail = "failbutton";
     }
   }
-  
 }, 1500);
 
 </script>
