@@ -37,6 +37,8 @@ import gyeonu_stand from "/assets/image/gyeonu_stand.png";
 import gyeonu_side from "/assets/image/gyeonu_side.png";
 // jiknyeo
 import Jiknyeo_side from "/assets/image/Jiknyeo_side.png";
+//hwan_woong
+import hwan_woong from "/assets/image/hwan_woong.png";
 // textbox
 import dark_cave_textbox from "/assets/image/dark_cave_textbox.png";
 import swamp_textbox from "/assets/image/swamp_textbox.png";
@@ -105,6 +107,8 @@ export const useGameStore = defineStore("game", () => {
         return jara_stand;
       case "용왕":
         return dragonKing_stand;
+      case "환웅":
+        return hwan_woong;
       default:
         return "";
     }
@@ -241,6 +245,7 @@ export const useGameStore = defineStore("game", () => {
     CHECK: "check",
     FAIL: "fail",
     NICKNAMEAGAIN: "nicknameAgain",
+    END: "end"
   };
   Object.freeze(scriptType); // 한번 선언된 객체의 값 변경 못하도록 고정 => enum 처럼 사용
 
@@ -268,6 +273,9 @@ export const useGameStore = defineStore("game", () => {
     if (type.value == scriptType.SENTANCE) {
       isActive.value = true;
       RecordTime.value = 5000;
+    }
+    if (type.value == scriptType.END) {
+      router.push({ name: "stageChangeView" })
     }
   }
 
@@ -333,7 +341,6 @@ export const useGameStore = defineStore("game", () => {
   // Dialog 끝나고 게임으로 넘어갈 때와 점수 창으로 넘어갈 때 route 함수
   // forEach 기능은 break가 따로 없어서 throw error 로 해결
   function skip() {
-    console.log(scriptNum.value)
     const length = dialog.value.script.length;
     try {
       dialog.value.script

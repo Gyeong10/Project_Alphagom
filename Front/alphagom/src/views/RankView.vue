@@ -4,39 +4,44 @@
     <text class="top-title">내 정보</text>
     <div class="box">
       <div class="box-header">
-        <button @click="setTabstage('all')">전체 순위---------</button>
-        <button @click="setTabstage('swamp')">늪 순위</button>
-        <button @click="setTabstage('cave')">동굴 순위</button>
-        <button @click="setTabstage('sky')">하늘 순위</button>
-        <div class="box-body">
+        <button class="tab-btn tab-all" @click="setTabstage('all')">전체 순위</button>
+        <button class="tab-btn tab-swamp" @click="setTabstage('swamp')">늪 순위</button>
+        <button class="tab-btn tab-cave" @click="setTabstage('cave')">동굴 순위</button>
+        <button class="tab-btn tab-sky" @click="setTabstage('sky')">하늘 순위</button>
           <div class="box-body-left">
             <!-- 유저 사진 -->
             <div class="my-avatar">
-              <!-- <img :src="user.userInfo.profile" alt="" class="myphoto" /> -->
+              <img :src="user.userInfo.profile" alt="" class="myphoto" />
               <!-- <img src="@/assets/image/alphagom_look_normal.png" alt="프사" class="myimg"> -->
             </div>
             <!-- 유저 랭크 -->
             <div class="my-rank">
-              <span>{{ user.userInfo.userNickname }}</span>
-              <span>님의 순위는</span>
-              <p>{{ AllMyRank.rank }}위입니다.</p>
+              <div class="my-rank-text"><span class="my-rank-text-bold">{{ user.userInfo.userNickname }}</span>
+              님의 순위는</div>
+              <div class="my-rank-text"><span class="my-rank-text-bold">{{ AllMyRank.rank }}</span>위입니다.</div>
             </div>
           </div>
           <div class="box-body-right">
             <!-- 1,2,3순위 보여주기 -->
             <table>
               <tbody>
-                <tr v-for="rankData in AllRankList" :key="rankData.nickName">
-                  <th>{{ rankData.rank }}위</th>
-                  <td>{{ rankData.nickName }}</td>
-                  <td>{{ rankData.score }}</td>
+                <tr class="rank-data-table" v-for="rankData in AllRankList" :key="rankData.nickName">
+                  <th class="rank-data-text rank-data-rank">{{ rankData.rank }}위</th>
+                  <tb class="rank-data-profile-img">
+                    <div class="rank-data-avatar">
+                      <img :src="user.userInfo.profile" alt="" class="rank-data-photo" />
+                      <!-- 백에서 프사까지 넘겨주면 소스 수정 -->
+                      <!-- <img :src="rankData.profile" alt="" class="rank-data-photo" /> -->
+                    </div>
+                  </tb>
+                  <td class="rank-data-text rank-data-nickname">{{ rankData.nickName }}</td>
+                  <td class="rank-data-text rank-data-score">{{ rankData.score }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
 
-        </div>
       </div>
     </div>
 
@@ -75,6 +80,7 @@ const bgStore = useBgStore();
 
 // 전체 랭크 저장
 const AllRankList = computed(() => rank.AllRankList);
+console.log('AllRankList' + AllRankList.value)
 // 나의 랭크
 const AllMyRank = computed(() => rank.AllMyRank);
 
@@ -125,5 +131,165 @@ function setTabstage(data) {
   left: 0px;
   width: 926px;
   height: 428px;
-} 
+}
+.top-title {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #483737;
+  white-space: nowrap;
+  position: absolute;
+  top: 8px;
+  left: 427px;
+}
+.box {
+  position: absolute;
+  top: 81px;
+  left: 138px;
+  width: 651px;
+  height: 281px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.tab-btn {
+  width: 112px;
+  height: 36px;
+  /* margin-left: 19px; */
+
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  outline: 0;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tab-btn:hover, .tab-btn:active, .tab-btn:focus {
+  border: 3px solid #FAF4BD;
+}
+.tab-all {
+  position: absolute;
+  top: 9px;
+  left: 87px;
+  background-color: #94C178;
+  color: #484E23;
+}
+.tab-swamp {
+  position: absolute;
+  top: 9px;
+  left: 208px;
+  background-color: #78C1AB;
+  color: #34435A;
+}
+.tab-cave {
+  position: absolute;
+  top: 9px;
+  left: 329px;
+  background-color: #7888C1;
+  color: #34385A;
+}
+.tab-sky {
+  position: absolute;
+  top: 9px;
+  left: 450px;
+  background-color: #BC78C1;
+  color: #55345A;
+}
+.box-body-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 79px;
+  left: 59px;
+  width: 200px;
+}
+.my-avatar {
+  /* position: absolute;
+  top: 79px;
+  left: 109px; */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.myphoto {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.my-rank-text {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 140%;
+  white-space: nowrap;
+  text-align: center;
+}
+.my-rank-text-bold {
+  font-size: 24px;
+  font-weight: 800
+}
+.box-body-right {
+  position: absolute;
+  top: 60px;
+  left: 299px;
+  width: 298px;
+  height: 201px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+}
+.rank-data-table {
+  top: 13px;
+  left: 21px;
+}
+.rank-data-text {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;}
+.rank-data-rank {
+  width: 40px;
+  height: 53px;
+}
+.rank-data-profile-img {
+  width: 47px;
+  height: 53px;
+}
+.rank-data-avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0;
+  margin-top: 5px;
+}
+.rank-data-photo {
+  width: 39px;
+  height: 39px;
+  object-fit: cover;
+}
+.rank-data-nickname {
+  width: 119px;
+  height: 53px;
+}
+.rank-data-score {
+  height: 53px;
+}
 </style>

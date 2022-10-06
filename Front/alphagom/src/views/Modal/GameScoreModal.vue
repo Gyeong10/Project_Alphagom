@@ -9,20 +9,11 @@
       </div>
       <div class="modal-footer">
         <button
-          v-if="store.stage.value !== 'sky'"
           @click="getNextStage()"
           class="next-btn"
           data-bs-dismiss="modal"
         >
           다음 탐험으로
-        </button>
-        <button
-          v-if="store.stage.value === 'sky'"
-          @click="getNextStage()"
-          class="next-btn"
-          data-bs-dismiss="modal"
-        >
-          순위 보기!
         </button>
       </div>
     </div>
@@ -48,16 +39,18 @@ const router = useRouter();
 // 다음 스테이지로 넘어가기
 // BE 에 점수 저장하는 API 호출
 const getNextStage = () => {
-  store.saveScore(authStore.userInfo.userId, score, store.stage);
   if (store.stage === "swamp") {
+    store.saveScore(authStore.userInfo.userId, score, store.stage);
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "darkCaveStartView" });
   } else if (store.stage === "darkcave") {
+    store.saveScore(authStore.userInfo.userId, score, 'cave');
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "skyStartView" });
   } else if (store.stage === "sky") {
+    store.saveScore(authStore.userInfo.userId, score, store.stage);
     store.score = 3000;
     store.scriptNum = 0;
     router.push({ name: "EpilogueDialogView" });

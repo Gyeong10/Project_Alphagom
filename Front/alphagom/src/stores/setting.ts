@@ -68,6 +68,10 @@ export const useSettingStore = defineStore("setting", () => {
     });
   }
 
+  function setVolume(vol: number) {
+    sound.value.volume(vol)
+  }
+
   return {
     // bgm 설정 관련
     playing,
@@ -78,5 +82,6 @@ export const useSettingStore = defineStore("setting", () => {
     audioStart,
     audioStop,
     setBGM,
+    setVolume,
   };
 });

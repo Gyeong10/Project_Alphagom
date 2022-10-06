@@ -2,8 +2,6 @@ package com.d210.alphagom.security.oauth;
 
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.domain.repository.UserRepository;
-import com.d210.alphagom.security.exception.LoginException;
-import com.d210.alphagom.security.exception.RefreshTokenNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,7 @@ public class AuthService {
 
     @Transactional
     public String createRefreshToken(Long userId) {
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findUserById(userId);
 //                .orElseThrow(() -> new LoginException());
         String refreshToken = tokenProvider.createRefreshToken(user);
         user.createRefreshToken(refreshToken);

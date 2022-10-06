@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { computed } from "vue";
 import authRouter from "./authRouter";
 import gameRouter from "./gameRouter";
 import { useAuthStore } from "@/stores/auth";
@@ -38,10 +39,14 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  const isLoggedIn = authStore.isLoggedIn;
+  const isLoggedIn = computed(() => authStore.isLoggedIn);
   // 로그인되어 있지 않으면
-  if (!isLoggedIn && to.name !== "login") {
-    // alert("로그인이 필요합니다");
+  if (
+    !isLoggedIn.value &&
+    to.name !== "login" &&
+    to.name !== "OAuthRedirectView"
+  ) {
+    console.log("isLoggedIn", isLoggedIn.value, "to.name", to.name);
     next({ name: "login" });
   } else {
     next();

@@ -16,28 +16,27 @@ public class UserService {
     private final UserRepository userRepository;
 
     public User findUser(Long userId) {
-        return userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 userId : " + userId + " 는 존재하지 않습니다."));
+        return userRepository.findUserById(userId);
     }
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException("email이 존재하지 않습니다."));
     }
     @Transactional
     public String saveNickname(Long userId, String nickname) {
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findUserById(userId);
         user.setNickname(nickname);
         return nickname;
     }
 
     public String findUserNickName(Long userId) {
-        return userRepository.findById(userId).get().getNickname();
+        return userRepository.findUserById(userId).getNickname();
     }
 
     @Transactional
     public Long checkIsCastle(Long userId) {
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findUserById(userId);
         user.updateIsCastle(true);
         return userId;
     }
