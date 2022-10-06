@@ -3,27 +3,36 @@
         <div class="modal__modal-content">
             <!-- 모달 박스 -->
             <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#94C178" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+                <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="##7888C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
             </svg>
             <!-- 모달 내용 -->
             <div class="modal__modal-body">
-                <div class="modal__howto-title">잰말놀이 게임</div>
+                <div class="modal__howto-title">잰말놀이</div>
                 <div class="modal__howto-content">
-                    <div class="modal__howto-content-regular">게임 방법을 알아볼까?</div>
+                    <div class="modal__howto-content-regular">
+                      발음하기 어려운 문장들에 도전해보자!
+                      <br>
+                      자연스럽게 발음 능력이 좋아질거야!
+                    </div>
                     <div style="height: 6px;" />
-                    <div class="modal__howto-content-bold">잰말이 나올거야
-                    <br>
-                    답을 버튼을 누르고 읽으면 돼!</div>
+                    <div class="modal__howto-content-bold">
+                      '들어보기'를 누르면 정확한 발음을 알 수 있어!
+                    </div>
                 </div>
             </div>
             <div class="modal__modal-footer">
                 <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>        
             </div>
         </div>
-        <div class="modal__overlay" @click.self="$emit('close')"></div>
-    </div>
+      </div>
+      <div class="modal__modal-footer">
+        <button @click="gotoGame()" class="modal__next-btn" data-bs-dismiss="modal">시작하기</button>        
+      </div>
+    <div>
+    <div class="modal__overlay" @click.self="$emit('close')"></div>
+  </div>
 </template>
-      
+
 <script setup>
 import { useGameStore } from '@/stores/game'
 
@@ -33,6 +42,7 @@ const store = useGameStore()
 // Modal 창 끄고 게임으로 넘어가기
 const gotoGame = () => {
     store.Modal = false
+    store.minusScore()
 }
 
 </script>
@@ -73,11 +83,11 @@ const gotoGame = () => {
     white-space: nowrap;
     color: #FDF8E2;
     // text-shadow: -2px 0 #345A49, 0 2px #345A49, 2px 0 #345A49, 0 -2px #345A49;
-    -webkit-text-stroke: 1.5px #345A49;
+    -webkit-text-stroke: 1.5px #34385A;
 
     position: absolute;
     top: -235px;
-    left: 158px;
+    left: 198px;
   }
   &__howto-content {
     font-size: 20px;
@@ -87,13 +97,13 @@ const gotoGame = () => {
     sans-serif;
     font-weight: 500;
     white-space: nowrap;
-    color: #345A49;
+    color: #34385A;
     text-align: center;
     line-height: 110%;
 
     position: absolute;
     top: -175px;
-    left: 158px;
+    left: 168px;
   }
   &__howto-content-bold {
     font-weight: 800;
@@ -101,13 +111,13 @@ const gotoGame = () => {
   &__next-btn {
     position: absolute;
     top: -87px;
-    left: 202px;
+    left: 208px;
     width: 149.17px;
     height: 48px;
     /* margin-left: 19px; */
 
     outline: none;
-    border: 5px solid #94C178;
+    border: 5px solid #7888C1;
     border-radius: 30px;
     background-color: #FAF4BD;
     cursor: pointer;

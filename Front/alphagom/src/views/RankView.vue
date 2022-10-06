@@ -29,9 +29,9 @@
                   <th class="rank-data-text rank-data-rank">{{ rankData.rank }}위</th>
                   <tb class="rank-data-profile-img">
                     <div class="rank-data-avatar">
-                      <img :src="user.userInfo.profile" alt="" class="rank-data-photo" />
+                      <!-- <img :src="user.userInfo.profile" alt="" class="rank-data-photo" /> -->
                       <!-- 백에서 프사까지 넘겨주면 소스 수정 -->
-                      <!-- <img :src="rankData.profile" alt="" class="rank-data-photo" /> -->
+                      <img :src="rankData.picture" alt="해당 랭크 프사" class="rank-data-photo" />
                     </div>
                   </tb>
                   <td class="rank-data-text rank-data-nickname">{{ rankData.nickName }}</td>
@@ -287,6 +287,7 @@ function setTabstage(data) {
   width: 39px;
   height: 39px;
   object-fit: cover;
+  margin-left: 10px;
 }
 .rank-data-nickname {
   width: 119px;

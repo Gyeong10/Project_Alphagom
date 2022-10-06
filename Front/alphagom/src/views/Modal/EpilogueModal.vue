@@ -25,16 +25,16 @@
       </svg>
       <!-- 모달 내용 -->
       <div class="modal__modal-body">
-        <div class="modal__howto-title">축하합니다!</div>
+        <div class="modal__howto-title">{{ store.Nickname }}!! 즐거웠어!</div>
         <div class="modal__howto-content">
           <div class="modal__howto-content-regular">
-            이제 탐험이 끝났어!
+            이제 탐험이 끝났네.
           </div>
           <div style="height: 6px" />
           <div class="modal__howto-content-bold">
-            탐험하는 동안 즐거웠어!
+            덕분에 탐험하는 동안 한국어 실력이 많이 늘었어.
             <br />
-            다시 볼 수 있으면 좋겠다!
+            곧 다시 볼 수 있으면 좋겠다!
           </div>
         </div>
       </div>
@@ -43,6 +43,7 @@
         <button
           @click="gotoPage('map')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-map"
         >
           탐험 지도로
         </button>
@@ -51,6 +52,7 @@
         <button
           @click="gotoPage('rank')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-rank"
         >
           순위보기
         </button>
@@ -58,6 +60,7 @@
         <button
           @click="gotoPage('home')"
           data-bs-dismiss="modal"
+          class="modal__next-btn to-home"
         >
           홈으로
         </button>
@@ -88,7 +91,7 @@ const gotoPage = (data) => {
       router.push({ name: "rank" });
   } else if (data == "home") {
       store.scriptNum = 0;
-      router.push({ name: "rank" });
+      router.push({ name: "home" });
   }
 };
 </script>
@@ -133,7 +136,7 @@ const gotoPage = (data) => {
 
     position: absolute;
     top: -235px;
-    left: 158px;
+    left: 213px;
   }
   &__howto-content {
     font-size: 20px;
@@ -149,16 +152,12 @@ const gotoPage = (data) => {
 
     position: absolute;
     top: -175px;
-    left: 158px;
+    left: 186px;
   }
   &__howto-content-bold {
     font-weight: 800;
   }
   &__next-btn {
-
-    position: absolute;
-    top: -87px;
-    left: 202px;
     width: 149.17px;
     height: 48px;
     /* margin-left: 19px; */
@@ -179,5 +178,20 @@ const gotoPage = (data) => {
     white-space: nowrap;
     color: #594640;
   }
+}
+.to-map {
+  position: absolute;
+  top: -87px;
+  left: 36px;
+}
+.to-rank {
+  position: absolute;
+  top: -87px;
+  left: 202px;
+}
+.to-home {
+  position: absolute;
+  top: -87px;
+  left: 369px;
 }
 </style>

@@ -1,5 +1,6 @@
 const HOST = "https://j7d210.p.ssafy.io/api/";
 
+// const TESTHOST = "http://127.0.0.1:5678/api/";
 // const HOST = "http://localhost:8080/api/";
 
 const BE = "be/";

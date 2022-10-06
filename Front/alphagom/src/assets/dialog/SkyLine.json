@@ -117,17 +117,9 @@
       "char": "알파곰",
       "line1": "역시 착한 일을 하면 기분이 좋아!",
       "line2": "",
-      "type": "story",
-      "effect": "",
-      "imgFace": "alphagom_look_happy"
-    },
-    {
-      "char": "",
-      "line1": "",
-      "line2": "",
       "type": "end",
       "effect": "",
-      "imgFace": ""
+      "imgFace": "alphagom_look_happy"
     }
   ]
 }

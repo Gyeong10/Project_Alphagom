@@ -4,7 +4,7 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">어둠의 동굴</div>
     <TongueTwisterGameModal v-if="Modal" />
-    <PassorFail v-if="PassFail" />
+    <PassorFail v-if="PassFail !='otherpicture' && PassFail" />
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
@@ -14,7 +14,7 @@
 
     <!--버튼-->
     <div>
-      <div v-if="PassFail === 'passbutton'">
+      <div v-if="PassFail === 'passbutton' || PassFail == 'otherpicture'">
         <button
           class="game-skip-btn again-btn"
           v-if="!GameEnd"
@@ -27,11 +27,11 @@
           v-if="GameEnd"
           @click="getNextPage()"
         >
-          전부통과
+          계속하기
         </button>
       </div>
       <div v-if="PassFail === 'failbutton'">
-        <button class="game-skip-btn again-btn" @click="getRecord()">
+        <button class="game-skip-btn again-btn" @click="getProb()">
           다시하기
         </button>
       </div>
@@ -72,6 +72,13 @@
           width="152"
           v-if="!PassFail || PassFail == 'failbutton'"
         />
+        <!--전부 통과 후 익은 마늘 띄우기-->
+        <img
+          class="samgyetang"
+          src="/assets/image/manul_tan.png"
+          width="152"
+          v-if="PassFail == 'otherpicture'"
+        />
         <div v-show="!Answer" class="game-howto">
           마늘을 누르고<br />
           보기 중
@@ -81,11 +88,12 @@
         </div>
       </div>
       <!--TTS 버튼-->
+      <!--버튼 이름은 '들어보기'로-->
       <button @click="startSpeechToTxt">읽어줄게ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ!</button>
       <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
     <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-    <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
+    <button class="game-skip-btn" @click="getNextPage()">건너뛰기</button>
     <!---->
   </div>
 </template>
@@ -194,6 +202,7 @@ const getProb = () => {
 // 다시 에필로그 페이지로 렌더링
 const getNextPage = () => {
   store.PassFail = null;
+  store.scriptNum++
   router.push({
     name: "darkCaveDialogView",
     params: { scriptNum: store.scriptNum },
@@ -364,25 +373,26 @@ const getNextPage = () => {
 /* 스킵버튼입니다 지워질 예정인 듯 */
 .game-skip-btn {
   position: absolute;
-  top: 0px;
-  left: 700px;
-  width: 112px;
-  height: 40px;
+  top: 340px;
+  left: 815px;
+  width: 86px;
+  height: 29px;
 
   outline: none;
   border: none;
   border-radius: 15px;
-  background-color: #94c178;
+  background-color: #FAF4BD;
   cursor: pointer;
 
-  font-size: 16px;
+  font-size: 14px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     sans-serif;
   font-weight: 700;
   white-space: nowrap;
-  color: #484e23;
+  color: #594640;
+  text-align: center;
 }
 .again-btn {
   position: absolute;

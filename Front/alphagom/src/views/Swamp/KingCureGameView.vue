@@ -28,7 +28,7 @@
             v-if="GameEnd"
             @click="getNextPage()"
           >
-            전부통과
+            계속하기
           </button>
         </div>
         <div v-if="PassFail === 'failbutton'">
@@ -100,7 +100,7 @@
         <MicRecord class="game-count" v-if="VoiceOnOff" />
       </div>
       <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
-      <button class="game-skip-btn" @click="getNextPage()">게임 스킵 버튼</button>
+      <button class="game-skip-btn" @click="getNextPage()">건너뛰기</button>
       <!---->
     </div>
   </div>
@@ -125,7 +125,7 @@ onMounted(() => {
   store.Modal = true
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/seaCastle_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 // 스토어 가져오기
@@ -170,6 +170,7 @@ watch(Answer, () => compareAnswer());
 
 // 정답비교하는 함수
 const compareAnswer = () => {
+  console.log(store.Answer)
   if (store.Answer) {
     if (
       store.GameList[probidx.value].answer === store.Answer.answer &&
@@ -204,6 +205,7 @@ const getProb = () => {
 // 다시 에필로그 페이지로 렌더링
 const getNextPage = () => {
   store.PassFail = null;
+  store.scriptNum++
   router.push({
     name: "swampDialog",
     params: { scriptNum: store.scriptNum },
@@ -378,25 +380,26 @@ const getNextPage = () => {
 /* 스킵버튼입니다 지워질 예정인 듯 */
 .game-skip-btn {
   position: absolute;
-  top: 0px;
-  left: 700px;
-  width: 112px;
-  height: 40px;
+  top: 340px;
+  left: 815px;
+  width: 86px;
+  height: 29px;
 
   outline: none;
   border: none;
   border-radius: 15px;
-  background-color: #94c178;
+  background-color: #FAF4BD;
   cursor: pointer;
 
-  font-size: 16px;
+  font-size: 14px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     sans-serif;
   font-weight: 700;
   white-space: nowrap;
-  color: #484e23;
+  color: #594640;
+  text-align: center;
 }
 .again-btn {
   position: absolute;

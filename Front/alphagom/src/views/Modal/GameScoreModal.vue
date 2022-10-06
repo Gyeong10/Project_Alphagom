@@ -127,7 +127,7 @@ const getNextStage = () => {
 
     position: absolute;
     top: -218px;
-    left: 210px;
+    left: 208px;
   }
   &__howto-content {
     font-size: 20px;
@@ -143,7 +143,8 @@ const getNextStage = () => {
 
     position: absolute;
     top: -156px;
-    left: 180px;
+    // left: 180px;
+    width: 553px;
   }
   &__howto-content-bold {
     font-size: 64px;

@@ -4,8 +4,8 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">어둠의 동굴</div>
     <BackButton class="back-btn" />
-    <Score class="bottom-score"></Score>
-    <div class="score--">점</div>
+    <!-- <Score class="bottom-score"></Score>
+    <div class="score--">점</div> -->
     <div class="bottom-items">
       <PlayBar class="bottom-icons"></PlayBar>
     </div>
@@ -81,7 +81,7 @@ const stage = reactive({ name: "darkcave" });
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 452px;
+  left: 410px;
   white-space: nowrap;
 }
 .back-btn {

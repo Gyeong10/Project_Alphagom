@@ -85,7 +85,7 @@
       "char": "알파곰",
       "line1": "걱정 마, 자라!",
       "line2": "용왕님이 좋아하실 만한 음식을 만들어 드리자!",
-      "type": "story",
+      "type": "game",
       "effect": "",
       "imgFace": "alphagom_look_happy"
     },
@@ -93,7 +93,7 @@
       "char": "용왕",
       "line1": "이제 기침이 나질 않는구나!",
       "line2": "",
-      "type": "game",
+      "type": "story",
       "effect": "",
       "imgFace": "dragonKing_look_happy"
     },
@@ -148,14 +148,6 @@
     {
       "char": "알파곰",
       "line1": "우리도 그러면 다음 탐험으로 떠나볼까?",
-      "line2": "",
-      "type": "story",
-      "effect": "",
-      "imgFace": ""
-    },
-    {
-      "char": "",
-      "line1": "",
       "line2": "",
       "type": "end",
       "effect": "",

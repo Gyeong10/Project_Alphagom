@@ -7,14 +7,16 @@
       </svg>
       <!-- 모달 내용 -->
       <div class="modal__modal-body">
-        <div class="modal__howto-title">의성어/의태어 게임</div>
+        <div class="modal__howto-title">의성어 / 의태어 게임</div>
         <div class="modal__howto-content">
-          <div class="modal__howto-content-regular">게임 방법을 알아볼까?</div>
+          <div class="modal__howto-content-regular">
+            요리와 관련한 다양한 의성어 / 의태어를 익히며 
+            <br>
+            어휘력을 길러보자!
+          </div>
           <div style="height: 6px"></div>
           <div class="modal__howto-content-bold">
-            의성어 의태어가 나올거야
-            <br>
-            답을 버튼을 누르고 읽으면 돼!
+            물음표에 들어갈 단어를 말하면 돼!
           </div>
         </div>
       </div>
@@ -37,6 +39,7 @@ const store = useGameStore()
 // Modal 창 끄고 게임으로 넘어가기
 const gotoGame = () => {
     store.Modal = false
+    store.minusScore()
 }
 
 </script>

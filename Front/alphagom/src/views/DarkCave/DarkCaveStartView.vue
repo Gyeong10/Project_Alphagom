@@ -3,8 +3,8 @@
     <div class="container-bg"></div>
     <div class="top-title">어둠의 동굴</div>
     <BackButton class="back-btn" />
-    <Score class="bottom-score"></Score>
-    <div class="score--">점</div>
+    <!-- <Score class="bottom-score"></Score>
+    <div class="score--">점</div> -->
     <div class="bottom-items">
       <PlayBar class="bottom-icons"></PlayBar>
     </div>
@@ -99,6 +99,10 @@ setTimeout(() => {
   top: 8px;
   left: 410px;
   white-space: nowrap;
+
+  /* display: felx;
+  justify-content: center;
+  align-items: center; */
 }
 .game-title {
   position: absolute;
