@@ -36,6 +36,7 @@ const game = useGameStore();
 
 const stage = reactive({ name: "darkcave" });
 //reactive : 객체의 반응형 복사본을 반환합니다.
+
 </script>
 
 <style scoped>

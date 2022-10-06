@@ -21,7 +21,7 @@
           <input type="range" class="form-range" min="0" max="5" id="customRange1">
           <!-- 스피커 크기 -->
           <label for="customRange2" class="form-label">스피커 크기</label>
-          <input type="range" class="form-range" min="0" max="5" id="customRange2">
+          <input type="range" class="form-range" min="0" max="1" step="0.1" id="customRange2" v-model="speakerValue">
         </div>
         <!-- <div class="modal-footer">
           <span type="button" class="next-btn" data-bs-dismiss="modal">다음 탐험으로</span>
@@ -34,15 +34,21 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
+import { useSettingStore } from "@/stores/setting";
 
 const modalStore = useModalStore();
-// const closeModal = () => {
-//   modalStore.Modal = false
-// }
 
+const store = useSettingStore();
+// const playing = computed(() => store.playing);
+// const audioStart = store.audioStart;
+// const audioStop = store.audioStop;
+const speakerValue = ref(0.5)
 
+watch(speakerValue, () => {
+  store.setVolume(speakerValue.value)
+})
 
 </script>
 
@@ -59,7 +65,7 @@ const modalStore = useModalStore();
     left: 505px;
     z-index: 50;
   }
-.modal__btn-close:hover, &__btn-close:active, &__btn-close:focus {
+.modal__btn-close:hover, .modal__btn-close:active, .modal__btn-close:focus {
     border: 0 solid transparent;
     outline: 0;
   }

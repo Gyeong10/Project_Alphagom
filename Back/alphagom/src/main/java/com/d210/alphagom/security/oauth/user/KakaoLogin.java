@@ -37,7 +37,8 @@ public class KakaoLogin {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=a330ef34e781fc0054c0e48cc1702b6a");
-            sb.append("&redirect_uri=http://localhost:5173/oauth/redirect");
+//            sb.append("&redirect_uri=http://localhost:5173/oauth/redirect");
+            sb.append("&redirect_uri=https://j7d210.p.ssafy.io/oauth/redirect");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();

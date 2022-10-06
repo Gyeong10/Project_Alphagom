@@ -13,18 +13,22 @@ public class RankResponse {
 
     private int score;
 
+    private String picture;
+
     private Long rank;
 
-    public RankResponse(String gameTag, String nickName, int score) {
+    public RankResponse(String gameTag, String nickName, int score, String picture) {
         this.gameTag = gameTag;
         this.nickName = nickName;
         this.score = score;
+        this.picture = picture;
     }
 
-    public RankResponse(String gameTag, String nickName, int score, Long rank) {
+    public RankResponse(String gameTag, String nickName, int score, String picture, Long rank) {
         this.gameTag = gameTag;
         this.nickName = nickName;
         this.score = score;
+        this.picture = picture;
         this.rank = rank;
     }
 }

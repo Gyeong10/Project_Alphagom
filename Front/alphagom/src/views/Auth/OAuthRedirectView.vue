@@ -14,13 +14,12 @@ const route = useRoute();
 const router = useRouter();
 
 const codes = route.query.code;
-// const accessToken = store.token;
-// const refreshToken = computed(() => store.refreshToken);
 
 function getToken() {
   console.log("code : " + codes);
   axios
-    .get("http://localhost:8080/api/be/klogin?authorize_code=" + codes)
+    // .get("http://localhost:8080/api/be/klogin?authorize_code=" + codes)
+    .get("https://j7d210.p.ssafy.io/api/be/klogin?authorize_code=" + codes)
     .then((res) => {
       console.log(res.data);
       store.userInfo.userId = res.data.id;
@@ -33,12 +32,6 @@ function getToken() {
 if (codes) {
   getToken(codes);
 }
-
-// if (token) {
-//   store.saveToken(token);
-//   store.fetchUserInfo();
-// }
-// router.replace("/");
 </script>
 
 <style scoped>

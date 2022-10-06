@@ -23,4 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void updateRefreshToken(@Param("id") Long id, @Param("token") String token);
 
     Optional<User> findByRefreshToken(String refreshToken);
+
+    User findUserById(Long userId);
 }

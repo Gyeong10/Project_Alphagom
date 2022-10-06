@@ -1,8 +1,8 @@
 package com.d210.alphagom.api;
 
-import com.d210.alphagom.api.dto.*;
-import com.d210.alphagom.domain.condition.RankCondition;
-import com.d210.alphagom.domain.entity.GameStatus;
+import com.d210.alphagom.api.dto.GameStatusRequest;
+import com.d210.alphagom.api.dto.RankResponse;
+import com.d210.alphagom.api.dto.ResponseDTO;
 import com.d210.alphagom.domain.entity.User;
 import com.d210.alphagom.domain.service.GameStatusService;
 import com.d210.alphagom.domain.service.UserService;
@@ -15,7 +15,6 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -50,7 +49,7 @@ public class GameStatusApiController {
         ZSetOperations<String, String> stringStringZSetOperations = redisTemplate.opsForZSet();
         Set<ZSetOperations.TypedTuple<String>> typedTuples = stringStringZSetOperations.reverseRangeWithScores(key, 0, Long.MAX_VALUE);
         List<RankResponse> collect = typedTuples.stream()
-                .map(o -> new RankResponse(key, userService.findUserNickName(Long.parseLong(o.getValue())), o.getScore().intValue()))
+                .map(o -> new RankResponse(key, userService.findUserNickName(Long.parseLong(o.getValue())), o.getScore().intValue(), userService.findUser(Long.parseLong(o.getValue())).getPicture()))
                 .collect(Collectors.toList());
         return ResponseEntity.ok(collect);
     }
@@ -61,9 +60,10 @@ public class GameStatusApiController {
         log.info("{} 게임의 {} 유저의 순위", tag, userId);
 
         String key = tag;
+        String picture = userService.findUser(userId).getPicture();
         Double score = redisTemplate.opsForZSet().score(key, userId.toString());
         Long rank = redisTemplate.opsForZSet().reverseRank(key, userId.toString());
 
-        return ResponseEntity.ok(new RankResponse(key, userService.findUserNickName(userId), score.intValue(), rank + 1));
+        return ResponseEntity.ok(new RankResponse(key, userService.findUserNickName(userId), score.intValue(), picture, rank + 1));
     }
 }
