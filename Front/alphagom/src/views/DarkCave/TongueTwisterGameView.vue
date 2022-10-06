@@ -54,22 +54,12 @@
             width="113"
             v-if="!PassFail || PassFail == 'failbutton'"
           />
-<<<<<<< Updated upstream
-          <div v-show="!Answer" class="game-howto">
-            마늘을 누르고<br />
-            보기 중
-            <span class="game-howto" style="color: #ffb0b1; position: static"
-              >정답</span
-            >을 골라 말해줘!
-          </div>
-=======
           <img
             class="manul"
             src="/assets/image/manul_tan.png"
             width="113"
             v-if="PassFail == 'otherpicture'"
           />
->>>>>>> Stashed changes
           <div v-show="!Answer" class="game-howto">
             마늘을 누르고<br />
             보기 중
