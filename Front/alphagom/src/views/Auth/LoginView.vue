@@ -23,7 +23,6 @@ import $ from "@/utils";
 onMounted(() => {
   // store의 bgUrlState 값을 직접 변경
   bgStore.bgUrlState = 'url("/map_bg_picture_filter_low.png")';
-  console.log(bgStore.bgUrlState.value);
 });
 const bgStore = useBgStore();
 // state 감시자
@@ -31,7 +30,6 @@ const bgwatching = computed(() => bgStore.bgUrlState);
 
 // 소셜로그인
 const socialLoginUrl = (socialType) => {
-  console.log(socialType);
   return $.getSocialLoginUrl(socialType);
 };
 </script>

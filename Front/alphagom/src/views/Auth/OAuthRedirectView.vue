@@ -29,6 +29,7 @@ function getToken() {
     });
 }
 
+console.log(codes);
 if (codes) {
   getToken(codes);
 }

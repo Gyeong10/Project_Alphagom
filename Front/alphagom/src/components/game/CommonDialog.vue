@@ -3,7 +3,8 @@
   <MicRecord v-if="VoiceOnOff" />
   <!--문장 못맞췄을 때 오답이야 뜨도록!-->
   <PassorFail v-if="PassFail" />
-
+  <div v-if=" store.stage == 'MagicCastle' && store.script.type == 'sentance'">이제 나의 손을 잡아 보아요</div>
+      <div v-if="store.stage == 'epilogue' && store.script.type == 'sentance'">안녕은 영원한 헤어짐은 아니겠지요</div>
   <div v-if="!VoiceOnOff" class="common">
     <!-- <img v-if="store.imgBody" :src="store.getImgUrl(store.imgBody)" width="50">
         <img v-if="store.faceImg" :src="store.getImgUrl(store.faceImg)" width="50"> -->
@@ -22,6 +23,8 @@
         width="656"
         alt="대화상자"
       />
+      <!--문장 디자인 수정~~~-->
+     
       <h1 class="script-char-name">{{ store.script.char }}</h1>
       <!--조건 줘서 필요할 때만 이름 호출-->
       <p class="script-line1" v-if="store.script.type == 'check'">
@@ -38,6 +41,7 @@
         alt="캐릭터 표정"
       />
     </div>
+    <!--게임, 끝날 때 새로 버튼 만들어야 하나!-->
     <div v-if="!store.isActive">
       <button class="script-btn" @click="store.plusNum()">다음대화</button>
       <button class="script-btn pass-btn" @click="store.skip()">

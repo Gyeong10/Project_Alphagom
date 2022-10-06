@@ -4,7 +4,7 @@
     <!-- <div class="top-title">{{ stage.name }}</div> -->
     <div class="top-title">하늘</div>
     <BirdProverbGameModal v-if="Modal" />
-    <PassorFail v-if="PassFail" />
+    <PassorFail v-if="PassFail !='birdpicture' && PassFail" />
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
@@ -14,7 +14,7 @@
 
     <!--버튼-->
     <div>
-      <div v-if="PassFail === 'passbutton'">
+      <div v-if="PassFail === 'passbutton' || PassFail == 'birdpicture'">
         <button
           class="game-skip-btn again-btn"
           v-if="!GameEnd"
@@ -76,7 +76,7 @@
     </div>
     <div class="game">
       <div v-if="!VoiceOnOff" @click="getRecord()">
-        <!--그림자 넣기!!-->
+        <!--물음표 넣기!!-->
         <!--CSS 수정 부타케-->
         <img
           class="samgyetang"
@@ -88,22 +88,22 @@
           class="sparrow"
           src="/assets/image/sparrow.png"
           width="152"
-          v-if="PassFail == 'pass' && GameList[probidx].answer == '참새'"
+          v-if="PassFail == 'birdpicture' && GameList[probidx].answer == '참새'"
         />
         <img
           class="pheasant"
           src="/assets/image/pheasant.png"
           width="152"
-          v-if="PassFail == 'pass' && GameList[probidx].answer == '꿩'"
+          v-if="PassFail == 'birdpicture' && GameList[probidx].answer == '꿩'"
         />
         <img
           class="crow"
           src="/assets/image/crow.png"
           width="152"
-          v-if="PassFail == 'pass' && GameList[probidx].answer == '까마귀'"
+          v-if="PassFail == 'birdpicture' && GameList[probidx].answer == '까마귀'"
         />
         <div v-show="!Answer" class="game-howto">
-          그림자를 누르고<br />
+          물음표를 누르고<br />
           보기 중
           <span class="game-howto" style="color: #ffb0b1; position: static"
             >정답</span
@@ -133,9 +133,10 @@ import PassorFail from "@/components/game/PassorFail.vue";
 // 페이지가 렌더링 되자마자 마운트한다 (게임 받아오기)
 onMounted(() => {
   store.getBirdGame();
+  store.Modal = true
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/assets/image/sky_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 // 스토어 가져오기

@@ -11,11 +11,8 @@ const REDIRECT_URI = `https://j7d210.p.ssafy.io/oauth/redirect`;
 
 export default {
   getSocialLoginUrl(socialType) {
-    console.log(socialType);
-    return (
-      HOST +
-      `/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`
-    );
+    if (socialType === "kakao")
+      return `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   },
   getSocialImage(socialType) {
     switch (socialType) {

@@ -62,19 +62,26 @@
       />
     </svg>
     <div class="game-sentence">
-      <h2 class="game-sectence-content">{{ GameList[probidx].sentance }} <br>
-      {{ Answer }}</h2>
+      <h2 class="game-sectence-content">{{ GameList[probidx].sentance }}</h2>
     </div>
     <div class="game">
       <div v-if="!VoiceOnOff" @click="getRecord()">
+        <img
+          class="samgyetang"
+          src="/assets/image/manul_live.png"
+          width="152"
+          v-if="!PassFail || PassFail == 'failbutton'"
+        />
         <div v-show="!Answer" class="game-howto">
-          문장을 누르고<br />
+          마늘을 누르고<br />
           보기 중
           <span class="game-howto" style="color: #ffb0b1; position: static"
             >정답</span
           >을 골라 말해줘!
         </div>
       </div>
+      <!--TTS 버튼-->
+      <button @click="startSpeechToTxt">읽어줄게ㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔㅔ!</button>
       <MicRecord class="game-count" v-if="VoiceOnOff" />
     </div>
     <!--게임 그냥 넘어가는 디버깅 용도입니다~~~ 나중에 지우세요-->
@@ -130,6 +137,12 @@ const GameEnd = computed(() => store.GameEnd);
 
 // state 감시자
 const bgwatching = computed(() => bgStore.bgUrlState);
+
+// TTS
+function startSpeechToTxt() {
+  let utterance = new SpeechSynthesisUtterance(store.GameList[probidx.value].sentance);
+  window.speechSynthesis.speak(utterance);
+}
 
 // true 값이면 녹음기가 켜진다 (MicRecord.Vue)
 // 녹음 시간 주기

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="container-bg"></div>
-    <div class="top-title">{{ stage.name }}</div>
+    <div class="top-title">하늘</div>
     <BackButton class="back-btn" />
     <Score class="bottom-score"></Score>
     <div class="score--">점</div>
