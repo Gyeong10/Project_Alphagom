@@ -2,9 +2,9 @@
     <div class="modal" tabindex="-1">
         <div class="modal__modal-content">
         <!-- 모달 박스 -->
-            <svg class="modal__modalbox" width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#94C178" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
-            </svg>
+        <svg width="553" height="251" viewBox="0 0 553 251" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="2.5" width="548" height="246" rx="27.5" fill="#BC78C1" stroke="#FDF8E2" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 10"/>
+        </svg>
         <!-- 모달 내용 -->
         <div class="modal__modal-body">
             <div class="modal__howto-title">새 속담 게임</div>
@@ -55,9 +55,10 @@ const gotoGame = () => {
 
     background-color: black;
     opacity: 0.5;
+    z-index: 1;
   }
   &__modal-content {
-    z-index: 1;
+    z-index: 2;
   }
   &__modal-body {
     display: flex;
@@ -74,11 +75,11 @@ const gotoGame = () => {
     white-space: nowrap;
     color: #FDF8E2;
     // text-shadow: -2px 0 #345A49, 0 2px #345A49, 2px 0 #345A49, 0 -2px #345A49;
-    -webkit-text-stroke: 1.5px #345A49;
+    -webkit-text-stroke: 1.5px #55345A;
 
     position: absolute;
     top: -235px;
-    left: 158px;
+    left: 200px;
   }
   &__howto-content {
     font-size: 20px;
@@ -88,13 +89,13 @@ const gotoGame = () => {
     sans-serif;
     font-weight: 500;
     white-space: nowrap;
-    color: #345A49;
+    color: #55345A;
     text-align: center;
     line-height: 110%;
 
     position: absolute;
     top: -175px;
-    left: 158px;
+    left: 157px;
   }
   &__howto-content-bold {
     font-weight: 800;
@@ -108,7 +109,7 @@ const gotoGame = () => {
     /* margin-left: 19px; */
 
     outline: none;
-    border: 5px solid #94C178;
+    border: 5px solid #BC78C1;
     border-radius: 30px;
     background-color: #FAF4BD;
     cursor: pointer;
@@ -121,7 +122,7 @@ const gotoGame = () => {
     sans-serif;
     font-weight: 700;
     white-space: nowrap;
-    color: #594640;
+    color: #55345A;
   }
 }
 </style>

@@ -78,12 +78,13 @@
       <div v-if="!VoiceOnOff" @click="getRecord()">
         <!--그림자 넣기!!-->
         <!--CSS 수정 부타케-->
-        <img
+        <!-- <img
           class="samgyetang"
           src="/assets/image/chicken_soup.png"
           width="152"
           v-if="!PassFail || PassFail == 'failbutton'"
-        />
+        /> -->
+        <div class="question-mark" v-if="!PassFail || PassFail == 'failbutton'">?</div>
         <img
           class="sparrow"
           src="/assets/image/sparrow.png"
@@ -103,7 +104,7 @@
           v-if="PassFail == 'pass' && GameList[probidx].answer == '까마귀'"
         />
         <div v-show="!Answer" class="game-howto">
-          그림자를 누르고<br />
+          물음표를 누르고<br />
           보기 중
           <span class="game-howto" style="color: #ffb0b1; position: static"
             >정답</span
@@ -135,7 +136,7 @@ onMounted(() => {
   store.getBirdGame();
   // 배경 경로 수정
   // store의 bgUrlState 값을 직접 변경
-  bgStore.bgUrlState = 'url("/assets/image/chase_bg_picture_filter_low.png")';
+  bgStore.bgUrlState = 'url("/sky_bg_picture_filter_low.png")';
   console.log(bgStore.bgUrlState.value);
 });
 // 스토어 가져오기
@@ -268,7 +269,7 @@ const getNextPage = () => {
   font-weight: 800;
   color: #fff;
   top: 8px;
-  left: 452px;
+  left: 441px;
   white-space: nowrap;
 }
 .bottom-items {
@@ -347,6 +348,22 @@ const getNextPage = () => {
   top: 269px;
   left: 672px;
 }
+.question-mark {
+  position: absolute;
+  top: 240px;
+  left: 426px;
+
+  font-size: 128px;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+  "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  sans-serif;
+  font-weight: 800;
+  white-space: nowrap;
+  color: #F48196;
+  text-align: center;
+  line-height: 29px;
+}
 .samgyetang,
 .dwenjangjjigae {
   position: absolute;
@@ -356,7 +373,7 @@ const getNextPage = () => {
 .game-howto {
   position: absolute;
   top: 323px;
-  left: 335px;
+  left: 338px;
 
   font-size: 24px;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
